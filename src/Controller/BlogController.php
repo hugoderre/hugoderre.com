@@ -25,7 +25,7 @@ class BlogController extends AbstractController
     // #[ParamConverter('post')]
     public function create(Request $request): Response
     {
-
+        
         $post = new Post();
 
         $post->setTitle('Hello world')
@@ -41,6 +41,19 @@ class BlogController extends AbstractController
         return $this->render('blog/list.html.twig', [
             'controller_name' => 'BlogController',
             'post_name'       => $post->getTitle()
+        ]);
+
+    }
+
+    #[Route('/blog/list', name: 'list')]
+    // #[ParamConverter('post')]
+    public function showPostList(Request $request): Response
+    {
+        
+        
+        return $this->render('blog/list.html.twig', [
+            'controller_name' => 'BlogController',
+            
         ]);
 
     }
