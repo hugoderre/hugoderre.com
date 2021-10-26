@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles
+{% endblock %}
+
+{% block content %}
+    
+	<div class="container">
+		<div class="row">
+			{% for post in posts %}
+				<div class="col-3">
+					<div class="card" style="width: 18rem;">
+						<img class="card-img-top" src="{{ post.thumbnail }}" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">{{ post.title }}</h5>
+							<p class="card-text">{{ post.excerpt }}</p>
+							<a href="#" class="btn btn-primary">Lire l'article</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

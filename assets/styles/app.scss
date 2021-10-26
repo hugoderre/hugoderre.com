@@ -1,4 +1,9 @@
-body {
-    background-color: lightgray;
-    color:red;
-}
+@import "abstracts/variables";
+
+@import "base/reset";
+@import "~bootstrap/scss/bootstrap";
+@import 'base/typography';
+
+@import "layout/header.scss";
+
+@import "themes/theme";
