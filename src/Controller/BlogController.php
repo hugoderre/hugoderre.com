@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Post;
-use App\Repository\PostRepository;
 use DateTimeImmutable;
+use Doctrine\ORM\Repository\RepositoryFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,22 +38,20 @@ class BlogController extends AbstractController
         $manager->persist($post);
         $manager->flush();
 
-        return $this->render('blog/list.html.twig', [
-            'controller_name' => 'BlogController',
-            'post_name'       => $post->getTitle()
-        ]);
+        return $this->render('');
 
     }
 
-    #[Route('/blog/list', name: 'list')]
+    #[Route('/blog', name: 'blog')]
     // #[ParamConverter('post')]
-    public function showPostList(Request $request): Response
+    public function all(): Response
     {
         
-        
-        return $this->render('blog/list.html.twig', [
-            'controller_name' => 'BlogController',
-            
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+
+        return $this->render('blog/blog.html.twig', [
+            'controller_name'   => 'BlogController',
+            'posts'             => $posts,
         ]);
 
     }

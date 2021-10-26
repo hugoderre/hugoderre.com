@@ -17,7 +17,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 20; $i++) {
             $product = new Post();
             $product->setTitle(loremizer::getTitle());
-            $product->setThumbnail(loremizer::getImg());
+            $product->setThumbnail('https://picsum.photos/id/' . $i + 20 . '/200/300');
             $product->setContent(loremizer::getPhrase(5)); 
             $product->setExcerpt(loremizer::getPhrase(2));
             $product->setCreatedAt(new DateTimeImmutable());
