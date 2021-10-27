@@ -17,6 +17,9 @@ php bin/console make:migration
 ## Execute migration
 php bin/console doctrine:migrations:migrate (Execute all migrations files)
 
+## Fixture
+php bin/console doctrine:fixtures:load
+
 
 
 # Misc composer req
