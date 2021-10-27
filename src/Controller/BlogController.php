@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Repository\PostRepository;
 use DateTimeImmutable;
+use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Repository\RepositoryFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,14 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
-    #[Route('/blog', name: 'blog')]
-    public function list(): Response
-    {
-        return $this->render('blog/list.html.twig', [
-            'controller_name' => 'BlogController',
-        ]);
-    }
-
+    
     #[Route('/blog/create', name: 'create')]
     // #[ParamConverter('post')]
     public function create(Request $request): Response
@@ -44,14 +39,28 @@ class BlogController extends AbstractController
 
     #[Route('/blog', name: 'blog')]
     // #[ParamConverter('post')]
-    public function all(): Response
+    public function all(PostRepository $postRepository): Response
     {
         
-        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+        $posts = $postRepository->findAll();
 
         return $this->render('blog/blog.html.twig', [
             'controller_name'   => 'BlogController',
             'posts'             => $posts,
+        ]);
+
+    }
+
+    #[Route('/blog/{id}', name: 'post')]
+    // #[ParamConverter('post')]
+    public function post($id, Post $post): Response
+    {
+        
+        dd($post);
+
+        return $this->render('blog/blog.html.twig', [
+            'controller_name'   => 'BlogController',
+            
         ]);
 
     }
