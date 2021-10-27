@@ -154,6 +154,12 @@
     "laminas/laminas-code": {
         "version": "4.4.3"
     },
+    "laminas/laminas-eventmanager": {
+        "version": "3.4.0"
+    },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.4.0"
+    },
     "league/uri": {
         "version": "6.5.0"
     },
