@@ -10,8 +10,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 class LoginType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username', TextType::class);
-        $builder->add('password', TextType::class);
-        $builder->add('submit', SubmitType::class, ['label' => 'Se connecter']);
+        $builder
+            ->add('username', TextType::class, [
+                'label' => 'Nom d\'utilisateur',
+                'attr'  => [
+                    'placeholder' => '',
+                ]
+            ])
+            ->add('password', TextType::class, [
+                'label' => 'Mot de passe',
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Se connecter'
+            ]);
     }
 }

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SecurityController!{% endblock %}
+
+{% block content %}
+    <h1>Connexion</h1>
+    {{ form_start(formView) }}
+    {{ form_widget(formView) }}
+    {{ form_end(formView) }}
+{% endblock %}
