@@ -14,7 +14,7 @@
 						<div class="card-body">
 							<h5 class="card-title">{{ post.title }}</h5>
 							<p class="card-text">{{ post.excerpt }}</p>
-							<a href="{{ path('post', {id: post.id}) }}" class="btn btn-primary">Lire l'article</a>
+							<a href="{{ path('post', {slug: post.slug}) }}" class="btn btn-primary">Lire l'article</a>
 						</div>
 					</div>
 				</div>

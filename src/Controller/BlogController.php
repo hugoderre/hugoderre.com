@@ -28,7 +28,6 @@ class BlogController extends AbstractController
         $posts = $postRepository->findAll();
         
         return $this->render('blog/blog.html.twig', [
-            'controller_name'   => 'BlogController',
             'posts'             => $posts,
         ]);
         
@@ -61,21 +60,14 @@ class BlogController extends AbstractController
 
     }
 
-    #[Route('/blog/{id}', name: 'post')]
+    #[Route('/blog/{slug}', name: 'post')]
     // #[ParamConverter('post')]
-    public function post($id, Post $post): Response
+    public function post($slug, Post $post): Response
     {
-        
-        // dd($post);
-
         return $this->render('blog/single.html.twig', [
             'post' => $post
-            
         ]);
-
     }
-
-    
 }
 ?>
 
