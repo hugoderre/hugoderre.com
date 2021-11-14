@@ -36,10 +36,10 @@ class BlogController extends AbstractController
     
     #[Route('/blog/create', name: 'create')]
     // #[ParamConverter('post')]
-    public function createPostInterface(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response
+    public function createPost(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response
     {
         $post = new Post();
-        $post->setThumbnail('https://picsum.photos/200/300')
+        $post->setThumbnail('https://picsum.photos/800/500')
             ->setCreatedAt(new DateTimeImmutable())
             ->setIsPublished(true);
 
@@ -52,24 +52,12 @@ class BlogController extends AbstractController
             $post = $form->getData();
             $entityManager->persist($post);
             $entityManager->flush();
-            $this->redirectToRoute('blog');
+            return $this->redirectToRoute('blog');
         }
 
         return $this->renderForm('admin/post/create.html.twig', [
             'form' => $form
         ]);
-
-        // $post->setTitle('Hello world')
-        //      ->setContent('Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas veritatis mollitia incidunt sint, quae dolore quidem, explicabo itaque aperiam reiciendis dicta quia tenetur placeat, nemo rerum? Excepturi officiis consequatur nihil.')
-        //      ->setThumbnail('https://picsum.photos/200/300')
-        //      
-        //      
-
-        // $manager = $this->getDoctrine()->getManager();
-        // $manager->persist($post);
-        // $manager->flush();
-
-        // return $this->render('');
 
     }
 

@@ -19,6 +19,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "global": "^4.4.0"
+        "global": "^4.4.0",
+        "highlight.js": "^11.3.1"
     }
 }
