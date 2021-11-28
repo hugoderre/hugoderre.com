@@ -15,13 +15,27 @@ class LoginType extends AbstractType {
                 'label' => 'Nom d\'utilisateur',
                 'attr'  => [
                     'placeholder' => '',
-                ]
+                    'class' => 'form-control',
+                ],
+                'row_attr' => [
+                    'class' => 'form-group',
+                ],
             ])
             ->add('password', TextType::class, [
                 'label' => 'Mot de passe',
+                'attr'  => [
+                    'placeholder' => '',
+                    'class' => 'form-control',
+                ],
+                'row_attr' => [
+                    'class' => 'form-group',
+                ],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Se connecter'
+                'label' => 'Se connecter',
+                'attr'  => [
+                    'class' => 'btn btn-primary',
+                ],
             ]);
     }
 }

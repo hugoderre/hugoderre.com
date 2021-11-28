@@ -2,17 +2,24 @@
 
 namespace App\Security;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\PasswordUpgradeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
@@ -20,10 +27,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 class SecurityAuthenticator extends AbstractAuthenticator
 {
 
-    public function __construct(UserRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
+    public function __construct(protected UserRepository $userRepository, protected UserPasswordHasherInterface $encoder) {}
 
     public function supports(Request $request): ?bool
     {
@@ -33,28 +37,52 @@ class SecurityAuthenticator extends AbstractAuthenticator
 
     public function authenticate(Request $request): PassportInterface
     {
-        return new Passport(
-            new UserBadge($request->get('login')['username']), 
-            new PasswordCredentials($request->get('login')['password']), 
-            [
-                // and CSRF protection using a "csrf_token" field
-                new CsrfTokenBadge('login', $request->get('login')['_token']),
 
-                // and add support for upgrading the password hash
-                new PasswordUpgradeBadge($request->get('login')['password'])
+        $username   = $request->get('login')['username'];
+        $password   = $request->get('login')['password'];
+        $token      = $request->get('login')['_token'];
+
+        return new Passport(
+            new UserBadge($username, function($userIdentifier) {
+                // Optionally pass a callback to load the User manually
+                $user = $this->userRepository->findOneBy(['username' => $userIdentifier]);
+                
+                if(!$user) {
+                    throw new AuthenticationException("Utilisateur introuvable. Veuillez ressayer.");
+                }
+    
+                return $user;
+            }),
+            new CustomCredentials(function($credentials, User $user) {
+                // Check if valid user password
+                $isValid = $this->encoder->isPasswordValid($user, $credentials);
+                
+                if(!$isValid) {
+                    throw new AuthenticationException('Mot de passe incorrect.');
+                }
+                
+                return true;
+            }, $password),
+            [
+                // CSRF protection using a "csrf_token" field
+                new CsrfTokenBadge('login', $token),
+
+                // Support for upgrading the password hash
+                new PasswordUpgradeBadge($password)
             ]
         );
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        return new Response('Success !');
+        return new RedirectResponse('/');
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
-        dd($exception);
-        return new Response('Failure !');
+        $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
+        $request->getSession()->set(Security::LAST_USERNAME, $request->get('login')['username']);
+        return new RedirectResponse('/login');
     }
 
 }

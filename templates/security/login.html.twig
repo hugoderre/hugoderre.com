@@ -3,8 +3,17 @@
 {% block title %}Hello SecurityController!{% endblock %}
 
 {% block content %}
+<div class="container">
     <h1>Connexion</h1>
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error.message }}
+        </div>
+    {% endif %}
+    
     {{ form_start(formView) }}
     {{ form_widget(formView) }}
     {{ form_end(formView) }}
+    
+</div>
 {% endblock %}
