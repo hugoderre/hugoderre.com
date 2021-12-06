@@ -42,3 +42,6 @@ npm run build
 
 
 # For server-side rendering, see React Build
+
+php bin/console debug:config
+php bin/console config:dump <name>

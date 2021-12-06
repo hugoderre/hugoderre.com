@@ -20,4 +20,9 @@ class SecurityController extends AbstractController
             'error' => $utils->getLastAuthenticationError()
         ]);
     }
+
+    #[Route('/logout', name: 'security_logout', priority:1)]
+    public function logout()
+    {
+    }
 }
