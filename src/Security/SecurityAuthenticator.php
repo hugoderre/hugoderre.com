@@ -80,4 +80,9 @@ class SecurityAuthenticator extends AbstractAuthenticator
         return new RedirectResponse('/login');
     }
 
+    public function start()
+    {
+        # code...
+    }
+
 }

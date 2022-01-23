@@ -38,6 +38,9 @@
     "amphp/windows-registry": {
         "version": "v0.3.3"
     },
+    "cocur/slugify": {
+        "version": "v4.1.0"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.4"
     },

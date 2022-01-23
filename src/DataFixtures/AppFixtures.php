@@ -33,15 +33,15 @@ class AppFixtures extends Fixture
     private function posts()
     {
         for ($i = 0; $i < 20; $i++) {
-            $product = new Post();
-            $product->setTitle(loremizer::getTitle());
-            $product->setSlug(strtolower($this->slugger->slug($product->getTitle())));
-            $product->setThumbnail('https://picsum.photos/id/' . intval($i + 20) . '/800/500');
-            $product->setContent(loremizer::getPhrase(5));
-            $product->setExcerpt(loremizer::getPhrase(2));
-            $product->setCreatedAt(new DateTimeImmutable());
-            $product->setIsPublished(true);
-            $this->manager->persist($product);
+            $post = new Post();
+            $post->setTitle(loremizer::getTitle());
+            // $post->setSlug(strtolower($this->slugger->slug($post->getTitle())));
+            $post->setThumbnail('https://picsum.photos/id/' . intval($i + 20) . '/800/500');
+            $post->setContent(loremizer::getPhrase(5));
+            $post->setExcerpt(loremizer::getPhrase(2));
+            // $post->setCreatedAt(new DateTimeImmutable());
+            $post->setIsPublished(true);
+            $this->manager->persist($post);
         }
     }
 

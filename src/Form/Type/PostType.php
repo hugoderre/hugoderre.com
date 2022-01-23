@@ -8,11 +8,45 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class PostType extends AbstractType {
+class PostType extends AbstractType
+{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title', TextType::class);
-        $builder->add('content', TextareaType::class);
-        $builder->add('save', SubmitType::class, ['label' => 'Publier']);
+        $builder->add('title', TextType::class, [
+            'label' => 'Titre',
+            'attr'  => [
+                'placeholder' => '',
+                'class' => 'form-control',
+            ],
+            'row_attr' => [
+                'class' => 'form-group',
+            ],
+        ]);
+        $builder->add('slug', TextType::class, [
+            'label' => 'Slug',
+            'attr'  => [
+                'placeholder' => '',
+                'class' => 'form-control',
+            ],
+            'row_attr' => [
+                'class' => 'form-group',
+            ],
+        ]);
+        $builder->add('content', TextareaType::class, [
+            'label' => 'Contenu',
+            'attr'  => [
+                'placeholder' => '',
+                'class' => 'form-control',
+            ],
+            'row_attr' => [
+                'class' => 'form-group',
+            ],
+        ]);
+        $builder->add('save', SubmitType::class, [
+            'label' => 'Publier',
+            'attr'  => [
+                'class' => 'btn btn-primary',
+            ],
+        ]);
     }
 }

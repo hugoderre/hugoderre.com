@@ -20,12 +20,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            # custom_authenticator: App\Security\SecurityAuthenticator
-            form_login:
-                login_path: security_login
-                check_path: security_login
-                username_parameter: login[username]
-                password_parameter: login[password]
+            custom_authenticator: App\Security\SecurityAuthenticator
+            # form_login:
+            #     login_path: security_login
+            #     check_path: security_login
+            #     username_parameter: login[username]
+            #     password_parameter: login[password]
                 # default_target_path: after_login_route_name - Redirect après succes
                 # failure_path: login_failure_route_name - Redirect après échec
                 # use_referer: true
@@ -43,5 +43,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/blog/create, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
