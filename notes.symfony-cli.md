@@ -43,5 +43,6 @@ npm run build
 
 # For server-side rendering, see React Build
 
-php bin/console debug:config
+php bin/console debug:config framework mailer (voir config possible d'un composant)
+php bin/console debug:autowiring mail (voir services d'un composant)
 php bin/console config:dump <name>
