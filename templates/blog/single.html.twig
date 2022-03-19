@@ -1,24 +1,20 @@
 {% extends 'base.html.twig' %}
-
 {% block content %}
-	<div class="container">
-		<h1>{{ post.title }}</h1>
-		<div class="row">
-			<div class="col-6 post-content">
-				{{ post.content }}
-				<pre><code class="language-js">export default class extends Controller {
+    <div class="container">
+        <h1>
+            {{ post.title }}
+        </h1>
+        <div class="row">
+            <div>
+                {{ post.content }}
+            </div>
+            <pre><code class="language-js">export default class extends Controller {
     connect() {
         this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
     }
 }
-</code></pre>
-			</div>
-			<div class="col-6">
-				<img src="{{ post.thumbnail }}" alt="{ post.thumbnailAlt }"/>
-			</div>
-		</div>
-
-		<div data-controller="hello"></div>
-	</div>
-
+	</code></pre>
+        </div>
+        <div data-controller="hello"></div>
+    </div>
 {% endblock %}

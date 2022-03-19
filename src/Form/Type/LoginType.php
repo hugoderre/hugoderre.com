@@ -3,6 +3,7 @@
 namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +22,7 @@ class LoginType extends AbstractType {
                     'class' => 'form-group',
                 ],
             ])
-            ->add('password', TextType::class, [
+            ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'attr'  => [
                     'placeholder' => '',

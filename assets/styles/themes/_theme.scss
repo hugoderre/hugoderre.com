@@ -1,4 +1,15 @@
 body {
     background-color: $secondary;
-    color:$base-color;
+    color:$text-dark-color;
+    max-width: 1200px;
+    margin: auto;
+}
+
+#login {
+    label {
+        color: $text-light-color;
+    }
+    & > div {
+        margin-bottom: 10px;
+    }
 }
