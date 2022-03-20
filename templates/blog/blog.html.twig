@@ -8,16 +8,18 @@
 	<div class="container">
 		<div class="row">
 			{% for post in posts %}
-				<div class="col-4 d-flex align-items-stretch mb-2">
-					<div class="card rounded-0">
-						<img class="card-img-top rounded-0" src="{{ post.thumbnail }}" alt="Card image cap">
-						<div class="card-body p-0 d-flex flex-column">
-							<div class="card-content p-3">
-								<h5 class="card-title">{{ post.title }}</h5>
-								<p class="card-text">{{ post.excerpt }}</p>
+				<div class="col-md-4 col-sm-6 col-12">
+					<div class="card">
+						<div>
+							<img src="{{ post.thumbnail }}" alt="Card image cap">
+							<div class="card-body" style="">
+								<div class="card-content">
+									<h5 class="card-title">{{ post.title }}</h5>
+									<p class="card-text">{{ post.excerpt }}</p>
+								</div>
 							</div>
-							<a href="{{ path('post', {slug: post.slug}) }}" class="btn btn-primary mt-auto rounded-0">Lire l'article</a>
 						</div>
+						<a href="{{ path('post', {slug: post.slug}) }}" class="">Lire l'article</a>
 					</div>
 				</div>
 			{% endfor %}

@@ -20,7 +20,8 @@ class BlogController extends AbstractController
         $posts = $postRepository->findAll();
         
         return $this->render('blog/blog.html.twig', [
-            'posts'             => $posts,
+            'posts' => $posts,
+            'page'  => 'blog',
         ]);
         
     }
@@ -33,7 +34,8 @@ class BlogController extends AbstractController
         $dispatcher->dispatch($postViewEvent, 'post.view');
 
         return $this->render('blog/single.html.twig', [
-            'post' => $post
+            'post' => $post,
+            'page' => 'single'
         ]);
     }
 }
