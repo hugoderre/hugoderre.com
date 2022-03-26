@@ -1,0 +1,16 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height:300px;
+    background-color: #38383e;
+    padding: 10px;
+    &__footer {
+        margin-top: auto;
+        &__socials {
+            display: flex;
+            width: 40%;
+            justify-content: space-around;
+            margin: auto;
+        }
+    }
+}

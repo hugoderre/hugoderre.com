@@ -1,8 +1,16 @@
 body {
     background-color: $secondary;
     color:$text-dark-color;
-    max-width: 1320px;
-    margin: auto;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: $text-light-color;
 }
 
 #login {

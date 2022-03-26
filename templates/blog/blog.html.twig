@@ -4,26 +4,44 @@
 {% endblock %}
 
 {% block content %}
-    
+
 	<div class="container">
-		<div class="row">
+		
+		<section class="row">
 			{% for post in posts %}
-				<div class="col-md-4 col-sm-6 col-12">
+				<article class="col-md-4 col-sm-6 col-12">
+				<a href="{{ path('post', {slug: post.slug}) }}" class="">
 					<div class="card">
-						<div>
-							<img src="{{ post.thumbnail }}" alt="Card image cap">
-							<div class="card-body" style="">
-								<div class="card-content">
-									<h5 class="card-title">{{ post.title }}</h5>
-									<p class="card-text">{{ post.excerpt }}</p>
+						<div class="card__header">
+							<h3 class="card__header-title">{{ post.title }}</h3>
+						</div>
+						<div class="card__body">
+							<p class="card__body-text">{{ post.excerpt }}</p>
+						</div>
+						<div class="card__footer">
+							<div class="card__footer__tags">
+								<img src="{{ assets }}" width="500" height="500" alt="">
+							</div>
+							<div class="card__footer__socials">
+								<div class="card__footer__socials__likes">
+									<i class="fa-solid fa-heart"></i>
+									<span>0</span>
+								</div>
+								<div class="card__footer__socials__shares">
+									<i class="fa-solid fa-share"></i>
+									<span>0</span>
+								</div>
+								<div class="card__footer__socials__comments">
+									<i class="fa-solid fa-comments"></i>
+									<span>0</span>
 								</div>
 							</div>
 						</div>
-						<a href="{{ path('post', {slug: post.slug}) }}" class="">Lire l'article</a>
 					</div>
-				</div>
+				</a>
+				</article>
 			{% endfor %}
-		</div>
+		</section>
 	</div>
 
 {% endblock %}
