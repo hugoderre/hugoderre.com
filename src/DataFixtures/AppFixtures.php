@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Post;
+use App\Entity\Tag;
 use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -25,13 +26,34 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $this->manager = $manager;
+        $this->tags();
         $this->posts();
         $this->users();
         $this->manager->flush();
     }
 
+    private function tags() {
+        $this->wordpressTag = new Tag();
+        $this->wordpressTag->setName('WordPress');
+        $this->wordpressTag->setColor('#00749C');
+        $this->manager->persist($this->wordpressTag);
+
+        $this->phpTag = new Tag();
+        $this->phpTag->setName('PHP');
+        $this->phpTag->setColor('#474A8A');
+        $this->manager->persist($this->phpTag);
+
+        $this->symfonyTag = new Tag();
+        $this->symfonyTag->setName('Symfony');
+        $this->symfonyTag->setColor('#FFF');
+        $this->manager->persist($this->symfonyTag);
+    }
+
     private function posts()
     {
+        // $wordpressTag = $this->manager->getRepository(Tag::class)->findBy(['name' => 'WordPress']);
+        // $phpTag = $this->manager->getRepository(Tag::class)->findBy(['name' => 'PHP']);
+        // $symfonyTag = $this->manager->getRepository(Tag::class)->findBy(['name' => 'Symfony']);
         for ($i = 0; $i < 20; $i++) {
             $post = new Post();
             $post->setTitle(loremizer::getTitle());
@@ -39,6 +61,9 @@ class AppFixtures extends Fixture
             $post->setThumbnail('https://picsum.photos/id/' . intval($i + 20) . '/800/500');
             $post->setContent(loremizer::getPhrase(5));
             $post->setExcerpt(loremizer::getPhrase(2));
+            $post->addTag($this->wordpressTag);
+            $post->addTag($this->phpTag);
+            $post->addTag($this->symfonyTag);
             // $post->setCreatedAt(new DateTimeImmutable());
             $post->setIsPublished(true);
             $this->manager->persist($post);

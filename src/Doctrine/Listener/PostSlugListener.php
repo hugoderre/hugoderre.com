@@ -17,7 +17,7 @@ class PostSlugListener
         $this->slugger = $slugger;
     }
 
-    public function prePersist(Post $post, LifecycleEventArgs $event)
+    public function prePersist(Post $post)
     {
         if(empty($post->getSlug()) && $title = $post->getTitle()) {
             $slug = strtolower($this->slugger->slug($title));
