@@ -4,10 +4,9 @@ namespace App\Doctrine\Listener;
 
 use App\Entity\Post;
 use DateTimeImmutable;
-use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class PostSlugListener
+class PostListener
 {
 
     private $slugger;

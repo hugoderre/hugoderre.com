@@ -4,8 +4,24 @@
     height:300px;
     background-color: #38383e;
     padding: 10px;
+    text-align: center;
     &__footer {
         margin-top: auto;
+        &__tags {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            width: 60%;
+            margin: auto;
+            margin-bottom: 10px;
+            &-tag {
+                background-color: #fff;
+                color: $text-dark-color;
+                padding: 5px;
+                border-radius: 5px;
+            }
+        }
         &__socials {
             display: flex;
             width: 40%;
