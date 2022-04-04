@@ -11,7 +11,10 @@
 @import "components/buttons";
 @import "components/card";
 
+@import "themes/theme";
+@import "themes/admin";
+
 @import "pages/blog";
 @import "pages/single";
+@import "pages/login";
 
-@import "themes/theme";

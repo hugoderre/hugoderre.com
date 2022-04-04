@@ -1,0 +1,11 @@
+@import "abstracts/variables";
+
+@import "base/reset";
+@import "~bootstrap/scss/bootstrap";
+@import "~highlight.js/scss/codepen-embed";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css";
+@import "base/typography";
+
+@import "components/buttons";
+
+@import "themes/admin";

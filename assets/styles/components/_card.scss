@@ -4,11 +4,11 @@
     background-color: #38383e;
     padding: 18px;
     text-align: left;
-    color: $text-secondary;
+    color: $secondary;
     &__body {
         margin-top: 16px;
         &-date {
-            color: #fff;
+            color: $secondary;
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 8px;
@@ -31,10 +31,9 @@
             flex-wrap: wrap;
             gap: 12px;
             &-tag {
-                background-color: #fff;
-                color: $text-primary;
+                background-color: $secondary;
+                color: $primary;
                 padding: 5px;
-                // border-radius: 5px;
             }
         }
         &__socials {

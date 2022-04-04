@@ -44,6 +44,7 @@ class AdminController extends AbstractController
         return $this->renderForm('admin/post/create.html.twig', [
             'form' => $form,
             'page' => 'admin-post-create',
+            'admin' => true,
         ]);
     }
 }

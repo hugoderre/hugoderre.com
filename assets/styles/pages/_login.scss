@@ -1,0 +1,8 @@
+#login {
+    label {
+        color: $secondary;
+    }
+    & > div {
+        margin-bottom: 10px;
+    }
+}
