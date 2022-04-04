@@ -12,18 +12,23 @@
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 8px;
-            font-style: italic;
         }
         &-excerpt {
             margin-top:20px;
         }
     }
     &__footer {
+        margin-top: 20px;
+        &-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
         &__tags {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            margin-top: 18px;
             gap: 12px;
             &-tag {
                 background-color: #fff;
@@ -34,8 +39,6 @@
         }
         &__socials {
             display: flex;
-            margin: auto;
-            margin-top: 10px;
             gap: 12px;
         }
     }

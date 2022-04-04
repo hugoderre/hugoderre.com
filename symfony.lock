@@ -160,12 +160,6 @@
     "laminas/laminas-code": {
         "version": "4.4.3"
     },
-    "laminas/laminas-eventmanager": {
-        "version": "3.4.0"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.4.0"
-    },
     "league/uri": {
         "version": "6.5.0"
     },
@@ -697,6 +691,9 @@
     },
     "twig/extra-bundle": {
         "version": "v3.3.3"
+    },
+    "twig/intl-extra": {
+        "version": "v3.3.5"
     },
     "twig/twig": {
         "version": "v3.3.3"
