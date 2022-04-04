@@ -31,6 +31,7 @@ class PostType extends AbstractType
             'row_attr' => [
                 'class' => 'form-group',
             ],
+            'required' => false,
         ]);
         $builder->add('content', TextareaType::class, [
             'label' => 'Contenu',
@@ -41,6 +42,7 @@ class PostType extends AbstractType
             'row_attr' => [
                 'class' => 'form-group',
             ],
+            'required' => false,
         ]);
         $builder->add('save', SubmitType::class, [
             'label' => 'Publier',

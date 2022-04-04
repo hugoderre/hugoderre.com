@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
-    #[Route('/admin/blog/create', name: 'admin_create_post')]
+    #[Route('/admin/post/create', name: 'admin_create_post')]
     // #[IsGranted('ROLE_ADMIN')]
     public function index(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response
     {
@@ -42,7 +42,8 @@ class AdminController extends AbstractController
         }
 
         return $this->renderForm('admin/post/create.html.twig', [
-            'form' => $form
+            'form' => $form,
+            'page' => 'admin-post-create',
         ]);
     }
 }
