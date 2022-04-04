@@ -1,32 +1,42 @@
 .card {
     display: flex;
     flex-direction: column;
-    height:300px;
     background-color: #38383e;
-    padding: 10px;
-    text-align: center;
+    padding: 18px;
+    text-align: left;
+    color: $text-secondary;
+    &__body {
+        margin-top: 16px;
+        &-date {
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        &-excerpt {
+            margin-top:20px;
+        }
+    }
     &__footer {
-        margin-top: auto;
         &__tags {
             display: flex;
             flex-direction: row;
-            justify-content: space-evenly;
             flex-wrap: wrap;
-            width: 60%;
-            margin: auto;
-            margin-bottom: 10px;
+            margin-top: 18px;
+            gap: 12px;
             &-tag {
                 background-color: #fff;
-                color: $text-dark-color;
+                color: $text-primary;
                 padding: 5px;
-                border-radius: 5px;
+                // border-radius: 5px;
             }
         }
         &__socials {
             display: flex;
-            width: 40%;
-            justify-content: space-around;
             margin: auto;
+            margin-top: 10px;
+            gap: 12px;
         }
     }
 }

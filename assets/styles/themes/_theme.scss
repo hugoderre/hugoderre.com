@@ -1,6 +1,6 @@
 body {
     background-color: $secondary;
-    color:$text-dark-color;
+    color:$text-primary;
 }
 
 h3 {
@@ -10,12 +10,12 @@ h3 {
 
 a {
     text-decoration: none;
-    color: $text-light-color;
+    color: $text-secondary;
 }
 
 #login {
     label {
-        color: $text-light-color;
+        color: $text-secondary;
     }
     & > div {
         margin-bottom: 10px;
