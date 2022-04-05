@@ -24,7 +24,9 @@
 			{% include "admin/header.html.twig" %}
 		{% endblock %}
 
-		{% block content %}{% endblock %}
+		{% block body %}
+			{% include "admin/body.html.twig" %}
+		{% endblock %}
 
 		{% block footer %}
 			{% include "admin/footer.html.twig" %}

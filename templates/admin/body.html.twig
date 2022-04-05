@@ -1,0 +1,17 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block body %}
+
+    <div class="row body-container">
+        <div class="col-2">
+            {% block sidebar %}
+                {% include "admin/sidebar.html.twig" %}
+            {% endblock %}
+        </div>
+        <div class="col-10">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

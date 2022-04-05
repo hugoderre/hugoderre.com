@@ -2,3 +2,27 @@ body {
     background-color: $primary;
     color:$secondary;
 }
+
+#sidebar {
+    margin-bottom: 50px;
+    position: sticky;
+    top: 0;
+    ul {
+        li {
+            border: 1px solid $secondary;
+            margin: 0px;
+            &:not(:first-child) {
+                margin-top: -1px;
+            }
+            a {
+                color: $secondary;
+                text-decoration: none;
+                margin: 0px; 
+                display: block; 
+                width: 100%; 
+                height: 100%;
+                padding: 20px;
+            }
+        }
+    }
+}
