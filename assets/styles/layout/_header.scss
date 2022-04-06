@@ -1,7 +1,23 @@
 header {
-    .top-bar__container {
-        border-bottom: 2px solid $secondary;
-        margin-bottom: 20px;
+    nav {
+        ul {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            li {
+                a {
+                    color: $tertiary;
+                    display: block; 
+                    width: 100%; 
+                    height: 100%;
+                    padding: 20px;
+                    box-sizing: border-box;
+                }
+            }
+        }
     }
-    
+
+    hr {
+        border-color: $tertiary;
+    }
 }

@@ -5,6 +5,7 @@
     padding: 18px;
     text-align: left;
     color: $secondary;
+    border-radius: $global-radius;
     &__body {
         margin-top: 16px;
         &-date {
@@ -34,6 +35,7 @@
                 background-color: $secondary;
                 color: $primary;
                 padding: 5px;
+                border-radius: $global-radius;
             }
         }
         &__socials {

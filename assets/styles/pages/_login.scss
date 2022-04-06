@@ -1,8 +1,28 @@
 #login {
+ 
+    margin-top: 10px;
+
     label {
         color: $secondary;
     }
     & > div {
         margin-bottom: 10px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ced4da;
+            border-radius: $global-radius;
+        }
+    }
+
+    button {
+        border: 1px solid $tertiary;
+        border-radius: $global-radius;
+        padding: 10px;
     }
 }
