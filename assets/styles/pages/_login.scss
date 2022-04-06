@@ -1,5 +1,4 @@
 #login {
- 
     margin-top: 10px;
 
     label {
@@ -18,11 +17,5 @@
             border: 1px solid #ced4da;
             border-radius: $global-radius;
         }
-    }
-
-    button {
-        border: 1px solid $tertiary;
-        border-radius: $global-radius;
-        padding: 10px;
     }
 }

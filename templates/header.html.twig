@@ -1,10 +1,20 @@
 <header>
-	<nav>
+	<div class="topbar__logo">
+
+	</div>
+	<nav class="topbar__nav">
 		<ul>
-			<li><a class="" href="{{ path('blog') }}">Blog</a></li>
-			<li><a class="" href="{{ path('home') }}">Kisouij</a></li>
-			<li><a class="" href="#">Projets</a></li>
+			<li><a class="" href="{{ path('blog') }}"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+			<li><a class="" href="#"><i class="fa-solid fa-diagram-project"></i> Projets</a></li>
+			<li><a class="" href="{{ path('home') }}"><i class="fa-solid fa-face-smile"></i> Kisouij</a></li>
 		</ul>
 	</nav>
-	<hr>
+	<div class="topbar__login">
+		{% if app.user %}
+			<a class="btn" href="{{ path('security_logout') }}">Deconnexion</a>
+		{% else %}
+			<a class="btn" href="{{ path('security_login') }}">S'inscrire</a>
+			<a class="btn" href="{{ path('security_login') }}">Se connecter</a>
+		{% endif %}
+	</div>
 </header>

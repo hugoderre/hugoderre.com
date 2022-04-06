@@ -20,14 +20,18 @@
 
 	</head>
 	<body class="{{ page }}">
-		{% block header %}
-			{% include "header.html.twig" %}
-		{% endblock %}
+		<div class="container">
+			{% block header %}
+				{% include "header.html.twig" %}
+			{% endblock %}
 
-		{% block content %}{% endblock %}
+			<div class="content">
+				{% block content %}{% endblock %}
+			</div>
 
-		{% block footer %}
-			{% include "footer.html.twig" %}
-		{% endblock %}
+			{% block footer %}
+				{% include "footer.html.twig" %}
+			{% endblock %}
+		</div>
 	</body>
 </html>
