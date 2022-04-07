@@ -1,8 +1,27 @@
-h1 {
-    color: $secondary;
-    margin-top: 50px;
-}
 
-.post-content {
-    color: $secondary; 
+.single {
+
+    background-color: $secondary;
+
+    h1 {
+        color: $secondary;
+        margin-top: 50px;
+    }
+
+    .content {
+        min-width: 0;
+    }
+
+    &__post-date {
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    &__post-content {
+        color: $primary;
+        margin-top: 150px;
+        line-height: 1.6;
+    }
+
+    @import "../components/shape-divider";
 }

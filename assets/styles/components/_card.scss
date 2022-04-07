@@ -1,15 +1,21 @@
 .card {
     display: flex;
     flex-direction: column;
-    background-color: #38383e;
+    background-color: $secondary;
     padding: 18px;
     text-align: left;
-    color: $secondary;
+    color: $primary;
     border-radius: $global-radius;
+    &__header {
+        h2 a {
+            color: $primary;
+            font-size: 38px;
+        }
+    }
     &__body {
         margin-top: 16px;
         &-date {
-            color: $secondary;
+            color: $primary;
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 8px;

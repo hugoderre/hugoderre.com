@@ -17,8 +17,7 @@
 							</h2>
 						</div>
 						<div class="card__body">
-							<p class="card__body-date">
-								{{ post.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY")|upper }}</p>
+							<p class="card__body-date">{{ post.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY")|upper }}</p>
 							<p class="card__body-excerpt">{{ post.excerpt }}</p>
 						</div>
 						<div class="card__footer">
