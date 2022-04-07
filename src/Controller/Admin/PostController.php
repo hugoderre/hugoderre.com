@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Post;
 use DateTimeImmutable;
@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AdminController extends AbstractController
+class PostController extends AbstractController
 {
-    #[Route('/admin/post/create', name: 'admin_create_post')]
+    #[Route('/admin/posts/create', name: 'admin_create_post')]
     // #[IsGranted('ROLE_ADMIN')]
     public function index(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response
     {
