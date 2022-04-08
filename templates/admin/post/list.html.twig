@@ -1,0 +1,35 @@
+{% extends 'admin/body.html.twig' %}
+
+{% block content %}
+	<table class="admin-table-list">
+        <thead>
+            <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td class="admin-posts__title">
+                    <h2>
+                        <a href="">{{ post.title }}</a>
+                    </h2>
+                </td>
+                <td class="admin-posts__created-at">
+                    <p>{{ post.createdAt|date('d/m/Y') }}</p>
+                </td>
+                <td class="admin-posts__actions">
+                    <p>
+                        <a href="">Edit</a>
+                        <a href="">Delete</a>
+                            {# {{ path('admin_post_edit', {'id': post.id}) }}
+                            {{ path('admin_post_delete', {'id': post.id}) }} #}
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+	</table>
+{% endblock %}

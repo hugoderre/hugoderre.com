@@ -19,3 +19,18 @@ h3 {
     font-size: 32px;
     line-height: 1.2;
 }
+
+a {
+    color: $secondary;
+    text-decoration: none;
+    &:hover {
+        color: $tertiary;
+    }
+}
+
+*::selection {
+    background-color : $tertiary;
+}
+*::-moz-selection{
+    background-color : $tertiary;
+}

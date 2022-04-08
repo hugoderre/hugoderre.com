@@ -15,8 +15,6 @@ body {
                 margin-top: -1px;
             }
             a {
-                color: $secondary;
-                text-decoration: none;
                 margin: 0px; 
                 display: block; 
                 width: 100%; 
@@ -25,4 +23,43 @@ body {
             }
         }
     }
+}
+
+.admin-table-list {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    thead {
+        tr {
+            th {
+                border: 1px solid $secondary;
+                padding: 10px;
+                text-align: left;
+                &:not(:first-child) {
+                    border-left: none;
+                }
+            }
+        }
+    }
+    tbody {
+        tr {
+            background-color: $quinary;
+            th {
+                border: 1px solid $secondary;
+                padding: 10px;
+                text-align: left;
+            }
+            td {
+                border: 1px solid $secondary;
+                padding: 10px;
+                text-align: left;
+                h2 {
+                    font-size: 20px;
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+
+    
 }

@@ -16,9 +16,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PostController extends AbstractController
 {
+    #[Route('/admin/posts', name: 'admin_post_list')]
+    public function postList(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')) {
+            return new RedirectResponse('/login');
+        }
+
+        $posts = $entityManager->getRepository(Post::class)->findAll();
+
+        return $this->render('admin/post/list.html.twig', [
+            'posts' => $posts,
+            'page'  => 'admin-post-list',
+        ]);
+    }
+
     #[Route('/admin/posts/create', name: 'admin_create_post')]
     // #[IsGranted('ROLE_ADMIN')]
-    public function index(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response
+    public function postCreate(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response
     {
         if(!$this->isGranted('ROLE_ADMIN')) {
             return new RedirectResponse('/login');
