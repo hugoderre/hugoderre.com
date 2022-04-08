@@ -10,22 +10,22 @@
             </tr>
         </thead>
         <tbody>
-            {% for post in posts %}
+            {% for item in items %}
             <tr>
                 <td class="admin-posts__title">
                     <h2>
-                        <a href="">{{ post.title }}</a>
+                        <a href="">{{ item.title }}</a>
                     </h2>
                 </td>
                 <td class="admin-posts__created-at">
-                    <p>{{ post.createdAt|date('d/m/Y') }}</p>
+                    <p>{{ item.createdAt|date('d/m/Y') }}</p>
                 </td>
                 <td class="admin-posts__actions">
                     <p>
                         <a href="">Edit</a>
-                        <a href="">Delete</a>
-                            {# {{ path('admin_post_edit', {'id': post.id}) }}
-                            {{ path('admin_post_delete', {'id': post.id}) }} #}
+                        <a href="{{ path('admin_post_delete', {'id': item.id }) }}">Delete</a>
+                            {# {{ path('admin_post_edit', {'id': item.id}) }}
+                            {{ path('admin_post_delete', {'id': item.id}) }} #}
                     </p>
                 </td>
             </tr>

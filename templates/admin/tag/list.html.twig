@@ -1,0 +1,29 @@
+{% extends 'admin/body.html.twig' %}
+
+{% block content %}
+	<table class="admin-table-list">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td class="admin-tag__name">
+                    <h2>
+                        <a href="">{{ item.name }}</a>
+                    </h2>
+                </td>
+                <td class="admin-tag__actions">
+                    <p>
+                        <a href="">Edit</a>
+                        <a href="{{ path('admin_tag_delete', {'id': item.id }) }}">Delete</a>
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+	</table>
+{% endblock %}
