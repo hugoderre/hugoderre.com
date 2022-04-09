@@ -26,9 +26,9 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $this->manager = $manager;
+        $this->users();
         $this->tags();
         $this->posts();
-        $this->users();
         $this->manager->flush();
     }
 
@@ -51,9 +51,6 @@ class AppFixtures extends Fixture
 
     private function posts()
     {
-        // $wordpressTag = $this->manager->getRepository(Tag::class)->findBy(['name' => 'WordPress']);
-        // $phpTag = $this->manager->getRepository(Tag::class)->findBy(['name' => 'PHP']);
-        // $symfonyTag = $this->manager->getRepository(Tag::class)->findBy(['name' => 'Symfony']);
         for ($i = 0; $i < 20; $i++) {
             $post = new Post();
             $post->setTitle(loremizer::getTitle());
@@ -64,24 +61,24 @@ class AppFixtures extends Fixture
             $post->addTag($this->wordpressTag);
             $post->addTag($this->phpTag);
             $post->addTag($this->symfonyTag);
-            // $post->setCreatedAt(new DateTimeImmutable());
-            $post->setIsPublished(true);
+            $post->setStatus('publish');
+            $post->setAuthor($this->userAdmin);
             $this->manager->persist($post);
         }
     }
 
     private function users()
     {
-        $admin = new User();
+        $this->userAdmin = new User();
 
-        $hash = $this->hasher->hashPassword($admin, 'password');
+        $hash = $this->hasher->hashPassword($this->userAdmin, 'password');
 
-        $admin->setUsername('admin');
-        $admin->setFirstName('Hugo');
-        $admin->setLastName('Derré');
-        $admin->setPassword($hash);
-        $admin->setRoles(['ROLE_ADMIN']);
-        $this->manager->persist($admin);
+        $this->userAdmin->setUsername('admin');
+        $this->userAdmin->setFirstName('Hugo');
+        $this->userAdmin->setLastName('Derré');
+        $this->userAdmin->setPassword($hash);
+        $this->userAdmin->setRoles(['ROLE_ADMIN']);
+        $this->manager->persist($this->userAdmin);
 
         for ($i = 0; $i < 20; $i++) {
             $user = new User();

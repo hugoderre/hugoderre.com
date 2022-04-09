@@ -61,14 +61,20 @@ class Post
     private $publishedAt;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isPublished;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="posts")
      */
     private $tags;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
 
     public function __construct()
     {
@@ -176,18 +182,6 @@ class Post
         return $this;
     }
 
-    public function getIsPublished(): ?bool
-    {
-        return $this->isPublished;
-    }
-
-    public function setIsPublished(bool $isPublished): self
-    {
-        $this->isPublished = $isPublished;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Tag[]
      */
@@ -208,6 +202,30 @@ class Post
     public function removeTag(Tag $tag): self
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
