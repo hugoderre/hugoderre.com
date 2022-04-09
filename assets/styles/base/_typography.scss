@@ -23,7 +23,7 @@ h3 {
 a {
     color: $secondary;
     text-decoration: none;
-    &:hover {
+    &:hover:not(.btn) {
         color: $tertiary;
     }
 }
