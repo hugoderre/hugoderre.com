@@ -26,16 +26,16 @@ class BlogController extends AbstractController
         
     }
 
-    #[Route('/blog/{slug}', name: 'post')]
+    #[Route('/blog/{slug}', name: 'post_view')]
     // #[ParamConverter('post')]
     public function post($slug, Post $post, EventDispatcherInterface $dispatcher): Response
     {
         $postViewEvent = new PostViewEvent($post);
         $dispatcher->dispatch($postViewEvent, 'post.view');
 
-        return $this->render('blog/single.html.twig', [
+        return $this->render('blog/post.html.twig', [
             'post' => $post,
-            'page' => 'single'
+            'page' => 'post'
         ]);
     }
 }

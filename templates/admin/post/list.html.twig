@@ -1,7 +1,7 @@
 {% extends 'admin/body.html.twig' %}
 
 {% block content %}
-    <a href="" class="btn admin-list__add-item-btn">Créer un article</a>
+    <a href="{{ path('admin_post_create') }}" class="btn admin-list__add-item-btn">Créer un article</a>
 	<table class="admin-list__table">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
                     <p>{{ item.createdAt|date('d/m/Y') }}</p>
                 </td>
                 <td class="admin-list__table__actions">
-                    <a href="" title="Voir"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                    <a href="{{ path('post_view', {'slug': item.slug }) }}" title="Voir" target="_blank"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                     <a href="" title="Modifier"><i class="fa-solid fa-file-pen"></i></a>
                     <a href="{{ path('admin_post_delete', {'id': item.id }) }}" title="Supprimer"><i class="fa-solid fa-trash"></i></a>
                 </td>

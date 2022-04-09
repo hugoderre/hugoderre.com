@@ -1,5 +1,4 @@
-
-.single {
+.post {
 
     background-color: $secondary;
 
@@ -12,12 +11,12 @@
         min-width: 0;
     }
 
-    &__post-date {
+    &__date {
         font-size: 14px;
         opacity: 0.8;
     }
 
-    &__post-content {
+    &__content {
         color: $primary;
         margin-top: 150px;
         line-height: 1.6;

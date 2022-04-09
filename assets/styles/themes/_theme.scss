@@ -7,6 +7,15 @@ body {
         grid-template-rows: 80px 1fr 200px;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
+        @media screen and (max-width: 1200px) {
+            grid-template-columns: 1fr 5fr 1fr;
+        }
+        @media screen and (max-width: 992px) {
+            grid-template-columns: 1fr 6fr 1fr;
+        }
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr 7fr 1fr;
+        }
         & > .content {
             grid-row-start: 2;
             grid-column-start: 2;
