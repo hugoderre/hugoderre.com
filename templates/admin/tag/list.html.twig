@@ -1,7 +1,8 @@
 {% extends 'admin/body.html.twig' %}
 
 {% block content %}
-	<table class="admin-table-list">
+    <a href="" class="btn admin-list__add-item-btn">Créer un article</a>
+	<table class="admin-list__table">
         <thead>
             <tr>
                 <th scope="col">Nom</th>
@@ -11,16 +12,14 @@
         <tbody>
             {% for item in items %}
             <tr>
-                <td class="admin-tag__name">
+                <td class="admin-list__table__name">
                     <h2>
                         <a href="">{{ item.name }}</a>
                     </h2>
                 </td>
-                <td class="admin-tag__actions">
-                    <p>
-                        <a href="">Edit</a>
-                        <a href="{{ path('admin_tag_delete', {'id': item.id }) }}">Delete</a>
-                    </p>
+                <td class="admin-list__table__actions">
+                    <a href="" title="Modifier"><i class="fa-solid fa-file-pen"></i></a>
+                    <a href="" title="Supprimer"><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
             {% endfor %}

@@ -1,10 +1,12 @@
 {% extends 'admin/body.html.twig' %}
 
 {% block content %}
-	<table class="admin-table-list">
+    <a href="" class="btn admin-list__add-item-btn">Créer un article</a>
+	<table class="admin-list__table">
         <thead>
             <tr>
                 <th scope="col">Titre</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Date</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -12,21 +14,23 @@
         <tbody>
             {% for item in items %}
             <tr>
-                <td class="admin-posts__title">
+                <td class="admin-list__table__name">
                     <h2>
                         <a href="">{{ item.title }}</a>
                     </h2>
                 </td>
-                <td class="admin-posts__created-at">
+                <td class="admin-list__table__tags">
+                    {% for tag in item.tags %}
+                        <span class="admin-list__table__tags__tag">{{ tag.name }}</span>
+                    {% endfor %}
+                </td>
+                <td class="admin-list__table__created-at">
                     <p>{{ item.createdAt|date('d/m/Y') }}</p>
                 </td>
-                <td class="admin-posts__actions">
-                    <p>
-                        <a href="">Edit</a>
-                        <a href="{{ path('admin_post_delete', {'id': item.id }) }}">Delete</a>
-                            {# {{ path('admin_post_edit', {'id': item.id}) }}
-                            {{ path('admin_post_delete', {'id': item.id}) }} #}
-                    </p>
+                <td class="admin-list__table__actions">
+                    <a href="" title="Voir"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                    <a href="" title="Modifier"><i class="fa-solid fa-file-pen"></i></a>
+                    <a href="{{ path('admin_post_delete', {'id': item.id }) }}" title="Supprimer"><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
             {% endfor %}

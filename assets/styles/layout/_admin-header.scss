@@ -1,0 +1,44 @@
+header {
+    height: 80px;
+    border-bottom: 1px solid $tertiary;
+    grid-column: 1 / span 3;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    .topbar__nav {
+        grid-column-start: 2;
+        ul {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            li {
+                height: 100%;
+                a {
+                    color: $tertiary;
+                    display: flex; 
+                    align-items: center;
+                    gap: 5px;
+                    width: 100%; 
+                    height: 100%;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    &:hover {
+                        background-color: $quaternary;
+                        color: $tertiary;
+                        transition: 0.5s;
+                    }
+                }
+            }
+        }
+    }
+    .topbar__login {
+        grid-column-start: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+}
