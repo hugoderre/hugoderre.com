@@ -2,13 +2,13 @@
 
 {% block body %}
 
-    <div class="row body-container">
-        <div class="col-2">
-            {% block sidebar %}
-                {% include "admin/sidebar.html.twig" %}
-            {% endblock %}
-        </div>
-        <div class="col-10">
+    <div class="row panel">
+
+        {% block sidebar %}
+            {% include "admin/sidebar.html.twig" %}
+        {% endblock %}
+
+        <div class="content">
             {% block content %}
             {% endblock %}
         </div>

@@ -26,7 +26,7 @@ class AdminPostController extends AdminItemController
         $post = new Post();
         $post->setThumbnail('https://picsum.photos/800/500')
             ->setCreatedAt(new DateTimeImmutable())
-            ->setIsPublished(true);
+            ->setStatus('draft');
 
         $builder = $formFactoryInterface->createBuilder(PostType::class, $post);
 
