@@ -43,15 +43,15 @@ class AdminTagController extends AdminItemController
     }
 
     #[Route('/admin/tags/delete/{id}', name: 'admin_tag_delete')]
-    public function tagDelete(int $id, EntityManagerInterface $entityManager): Response
+    public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
-        return $this->delete($id, $entityManager, Tag::class, 'admin_tag_list');
+        return $this->deleteItem($id, $entityManager, Tag::class, 'admin_tag_list');
     }
 
     #[Route('/admin/tags', name: 'admin_tag_list')]
-    public function tagList(EntityManagerInterface $entityManager): Response
+    public function list(EntityManagerInterface $entityManager): Response
     {
-        return $this->list($entityManager, Tag::class);
+        return $this->renderList($entityManager, Tag::class);
     }
 
 }

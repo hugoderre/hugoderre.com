@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Interface\ItemInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,11 +11,10 @@ use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-abstract class AdminItemController extends AbstractController
+abstract class AdminItemController extends AbstractController implements ItemInterface
 {
-    abstract public function create(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response;
 
-    public function delete(int $id, EntityManagerInterface $entityManager, string $entityClass, string $redirectRouteName): Response
+    public function deleteItem(int $id, EntityManagerInterface $entityManager, string $entityClass, string $redirectRouteName): Response
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
             return new RedirectResponse('/login');
@@ -28,7 +28,7 @@ abstract class AdminItemController extends AbstractController
         return $this->redirectToRoute($redirectRouteName);
     }
 
-    public function list(EntityManagerInterface $entityManager, string $entityClass): Response
+    public function renderList(EntityManagerInterface $entityManager, string $entityClass): Response
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
             return new RedirectResponse('/login');

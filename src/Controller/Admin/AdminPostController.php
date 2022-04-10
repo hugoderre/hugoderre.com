@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AdminPostController extends AdminItemController
 {
-
     #[Route('/admin/posts/create', name: 'admin_post_create')]
     // #[IsGranted('ROLE_ADMIN')]
     public function create(Request $request, FormFactoryInterface $formFactoryInterface, EntityManagerInterface $entityManager): Response
@@ -48,14 +47,14 @@ class AdminPostController extends AdminItemController
     }
 
     #[Route('/admin/posts/delete/{id}', name: 'admin_post_delete')]
-    public function postDelete(int $id, EntityManagerInterface $entityManager): Response
+    public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
-        return $this->delete($id, $entityManager, Post::class, 'admin_post_list');
+        return $this->deleteItem($id, $entityManager, Post::class, 'admin_post_list');
     }
 
     #[Route('/admin/posts', name: 'admin_post_list')]
-    public function postList(EntityManagerInterface $entityManager): Response
+    public function list(EntityManagerInterface $entityManager): Response
     {
-        return $this->list($entityManager, Post::class);
+        return $this->renderList($entityManager, Post::class);
     }
 }
