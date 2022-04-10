@@ -49,10 +49,13 @@ class AdminTagController extends AdminItemController
     }
 
     #[Route('/admin/tags', name: 'admin_tag_list')]
-    public function list(EntityManagerInterface $entityManager): Response
+    public function list(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $tags = $entityManager->getRepository(Tag::class)->findAll();
-        return $this->renderList($tags, Tag::class);
+        return $this->renderList(
+            $entityManager->getRepository(Tag::class)->findAll(), 
+            Tag::class, 
+            $request
+        );
     }
 
 }

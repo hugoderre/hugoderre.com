@@ -10,17 +10,20 @@
 			</div>
 			<div class="admin-list__table__header-right">
 				<div class="admin-list__table__header-right__filters">
-					<a href="">Tous</a>
+					<a href="{{ path('admin_post_list', query|merge({'status': null})) }}">Tous</a>
 					|
-					<a href="">Publié</a>
+					<a href="{{ path('admin_post_list', query|merge({'status': 'publish'})) }}">Publié</a>
 					|
-					<a href="">Brouillon</a>
+					<a href="{{ path('admin_post_list', query|merge({'status': 'draft'})) }}">Brouillon</a>
 					|
-					<a href="">Corbeille</a>
+					<a href="{{ path('admin_post_list', query|merge({'status': 'trash'})) }}">Corbeille</a>
 				</div>
                 <div class="admin-list__table__header-right__search">
                     <form action="{{ path('admin_post_list') }}">
-                        <input type="text" name="s" placeholder="Recherche ...">
+                        <input type="text" name="s" value="{{ query.s }}" placeholder="Recherche ...">
+                        {% if query.status %}
+                            <input type="hidden" name="status" value="{{ query.status }}">
+                        {% endif %}
                     </form>
                 </div>
 			</div>

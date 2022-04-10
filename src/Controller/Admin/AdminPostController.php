@@ -5,13 +5,13 @@ namespace App\Controller\Admin;
 use App\Entity\Post;
 use DateTimeImmutable;
 use App\Form\Type\PostType;
+use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AdminPostController extends AdminItemController
 {
@@ -52,9 +52,19 @@ class AdminPostController extends AdminItemController
 
     #[Route('/admin/posts', name: 'admin_post_list')]
     #[IsGranted('ROLE_ADMIN')]
-    public function list(EntityManagerInterface $entityManager): Response
+    public function list(Request $request, PostRepository $postRepository): Response
     {
-        $posts = $entityManager->getRepository(Post::class)->findAll();
-        return $this->renderList($posts, Post::class);
+        $fields = [];
+        if($search = $request->query->get('s')) {
+            $fields['title'] = ['value' => '%' . $search . '%', 'operator' => 'LIKE'];
+        }
+        if($status = $request->query->get('status')) {
+            $fields['status'] = ['value' => $status];
+        }
+        return $this->renderList(
+            $postRepository->findByFields($fields, 'ASC'), 
+            Post::class, 
+            $request
+        );
     }
 }
