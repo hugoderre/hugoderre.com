@@ -17,10 +17,12 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+            access_denied_handler: App\Security\AccessDeniedHandler
         main:
             lazy: true
             provider: app_user_provider
             custom_authenticator: App\Security\SecurityAuthenticator
+            access_denied_handler: App\Security\AccessDeniedHandler
             # form_login:
             #     login_path: security_login
             #     check_path: security_login

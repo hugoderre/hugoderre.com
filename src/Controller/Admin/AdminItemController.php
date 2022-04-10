@@ -4,11 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Interface\ItemInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 abstract class AdminItemController extends AbstractController implements ItemInterface
@@ -16,26 +14,16 @@ abstract class AdminItemController extends AbstractController implements ItemInt
 
     public function deleteItem(int $id, EntityManagerInterface $entityManager, string $entityClass, string $redirectRouteName): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return new RedirectResponse('/login');
-        }
+        $item = $entityManager->getRepository($entityClass)->find($id);
 
-        $post = $entityManager->getRepository($entityClass)->find($id);
-
-        $entityManager->remove($post);
+        $entityManager->remove($item);
         $entityManager->flush();
 
         return $this->redirectToRoute($redirectRouteName);
     }
 
-    public function renderList(EntityManagerInterface $entityManager, string $entityClass): Response
+    public function renderList($items, string $entityClass): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            return new RedirectResponse('/login');
-        }
-
-        $items = $entityManager->getRepository($entityClass)->findAll();
-
         // Each admin item twig template must be in a folder with the same name as the entity class
         $templateFolder = explode('\\',$entityClass);
         $templateFolder = strtolower(array_pop($templateFolder));
