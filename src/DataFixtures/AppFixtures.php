@@ -15,7 +15,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppFixtures extends Fixture
 {
-
     public function __construct(SluggerInterface $slugger, UserPasswordHasherInterface $hasher)
     {
         $this->slugger  = $slugger;
@@ -74,6 +73,7 @@ class AppFixtures extends Fixture
         $hash = $this->hasher->hashPassword($this->userAdmin, 'password');
 
         $this->userAdmin->setUsername('admin');
+        $this->userAdmin->setEmail($this->faker->email());
         $this->userAdmin->setFirstName('Hugo');
         $this->userAdmin->setLastName('Derré');
         $this->userAdmin->setPassword($hash);
@@ -86,6 +86,7 @@ class AppFixtures extends Fixture
             $hash = $this->hasher->hashPassword($user, 'password');
 
             $user->setUsername($this->faker->userName());
+            $user->setEmail($this->faker->email());
             $user->setFirstName($this->faker->firstName());
             $user->setLastName($this->faker->lastName());
             $user->setPassword($hash);
