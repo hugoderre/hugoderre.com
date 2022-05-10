@@ -26,7 +26,7 @@ class SecurityAuthenticator extends AbstractAuthenticator
 
     public function supports(Request $request): ?bool
     {
-        return $request->attributes->get('_route') === 'security_login'
+        return $request->attributes->get('_route') === 'login'
             && $request->isMethod('POST');
     }
 

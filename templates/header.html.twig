@@ -11,10 +11,10 @@
 	</nav>
 	<div class="topbar__login">
 		{% if app.user %}
-			<a class="btn" href="{{ path('security_logout') }}">Deconnexion</a>
+			<a class="btn" href="{{ path('logout') }}">Deconnexion</a>
 		{% else %}
-			<a class="btn" href="{{ path('security_registration') }}">S'inscrire</a>
-			<a class="btn" href="{{ path('security_login') }}">Se connecter</a>
+			<a class="btn" href="{{ path('registration') }}">S'inscrire</a>
+			<a class="btn" href="{{ path('login') }}">Se connecter</a>
 		{% endif %}
 	</div>
 </header>
