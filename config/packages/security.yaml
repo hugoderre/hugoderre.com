@@ -32,7 +32,7 @@ security:
                 # failure_path: login_failure_route_name - Redirect après échec
                 # use_referer: true
             logout: 
-                path: logout
+                path: security_logout
                 # target: blog - Redirect après logout
                 
 
