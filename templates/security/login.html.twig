@@ -7,11 +7,11 @@
     <h1>Connexion</h1>
     
     {% for flash_success in app.flashes('success') %}
-        <div class="alert alert-success" role="alert">{{ flash_success }}</div>
+        <div class="notice notice-success">{{ flash_success }}</div>
     {% endfor %}
 
     {% for flash_error in app.flashes('error') %}
-        <div class="alert alert-error" role="alert">{{ flash_error }}</div>
+        <div class="notice notice-error">{{ flash_error }}</div>
     {% endfor %}
     
     {{ form_start(formView) }}

@@ -1,0 +1,21 @@
+.notice {
+    padding: 10px;
+    background: white;
+    color: black;
+    margin: 20px 0;  
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: $secondary;
+
+    &-success {
+        border-bottom-color: $success-color;
+    }
+
+    &-error {
+        border-bottom-color: $error-color;
+    }
+
+    &-warning {
+        border-bottom-color: $warning-color;
+    }
+}
