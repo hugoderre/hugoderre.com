@@ -20,7 +20,7 @@ abstract class AdminItemController extends AbstractController
         return $this->redirectToRoute($redirectRouteName);
     }
 
-    public function renderList($items, string $entityClass, Request $request): Response
+    public function renderList($items, string $entityClass, Request $request, $extraTwigParams = []): Response
     {
         // Each admin item twig template must be in a folder with the same name as the entity class
         $templateFolder = explode('\\', $entityClass);
@@ -33,6 +33,6 @@ abstract class AdminItemController extends AbstractController
         return $this->render("admin/$templateFolder/list.html.twig", [
             'items' => $items,
             'query' => $request->query->all(),
-        ]);
+        ] + $extraTwigParams);
     }
 }
