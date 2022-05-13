@@ -76,6 +76,10 @@ class Post
      */
     private $status;
 
+    const STATUS_PUBLISH = 'publish';
+    const STATUS_DRAFT = 'draft';
+    const STATUS_TRASH = 'trash';
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();

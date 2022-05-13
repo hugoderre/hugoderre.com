@@ -53,14 +53,13 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 20; $i++) {
             $post = new Post();
             $post->setTitle(loremizer::getTitle());
-            // $post->setSlug(strtolower($this->slugger->slug($post->getTitle())));
             $post->setThumbnail('https://picsum.photos/id/' . intval($i + 20) . '/800/500');
             $post->setContent(loremizer::getPhrase(5));
             $post->setExcerpt(loremizer::getPhrase(2));
             $post->addTag($this->wordpressTag);
             $post->addTag($this->phpTag);
             $post->addTag($this->symfonyTag);
-            $post->setStatus('publish');
+            $post->setStatus(Post::STATUS_PUBLISH);
             $post->setAuthor($this->userAdmin);
             $this->manager->persist($post);
         }

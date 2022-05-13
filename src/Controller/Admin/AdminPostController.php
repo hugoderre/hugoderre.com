@@ -44,19 +44,35 @@ class AdminPostController extends AdminItemController
     }
 
     #[Route('/admin/posts/delete/{id}', name: 'admin_post_delete')]
-    #[IsGranted('ROLE_ADMIN')]
+    // #[IsGranted('ROLE_ADMIN')]
     public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
-        if(!$entityManager->getRepository(Post::class)->find($id)) {
+        if(!$post = $entityManager->getRepository(Post::class)->find($id)) {
             throw $this->createNotFoundException('Post not found');
         }
-        return $this->deleteItem($id, $entityManager, Post::class, 'admin_post_list');
+
+        if($post->getStatus() !== Post::STATUS_TRASH) {
+            $post->setStatus(Post::STATUS_TRASH);
+            $entityManager->flush();
+            return $this->redirectToRoute('admin_post_list');
+        }
+
+        return $this->deleteItem(
+            $id, 
+            $entityManager, 
+            Post::class, 
+            'admin_post_list'
+        );
     }
 
     #[Route('/admin/posts', name: 'admin_post_list')]
     #[IsGranted('ROLE_ADMIN')]
     public function list(Request $request, PostRepository $postRepository): Response
     {
+        if(!$request->query->get('status')) {
+            $request->query->set('status', Post::STATUS_PUBLISH);
+        }
+
         $fields = [];
         if($search = $request->query->get('s')) {
             $fields['title'] = ['value' => '%' . $search . '%', 'operator' => 'LIKE'];
@@ -64,6 +80,7 @@ class AdminPostController extends AdminItemController
         if($status = $request->query->get('status')) {
             $fields['status'] = ['value' => $status];
         }
+        
         return $this->renderList(
             $postRepository->findByFields($fields, 'ASC'), 
             Post::class, 

@@ -10,8 +10,6 @@
 			</div>
 			<div class="admin-list__table__header-right">
 				<div class="admin-list__table__header-right__filters">
-					<a href="{{ path('admin_post_list', query|merge({'status': null})) }}">Tous</a>
-					|
 					<a href="{{ path('admin_post_list', query|merge({'status': 'publish'})) }}">Publié</a>
 					|
 					<a href="{{ path('admin_post_list', query|merge({'status': 'draft'})) }}">Brouillon</a>
