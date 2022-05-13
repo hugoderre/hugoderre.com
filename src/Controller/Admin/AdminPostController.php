@@ -80,11 +80,12 @@ class AdminPostController extends AdminItemController
         if($status = $request->query->get('status')) {
             $fields['status'] = ['value' => $status];
         }
-        
+
         return $this->renderList(
             $postRepository->findByFields($fields, 'ASC'), 
             Post::class, 
-            $request
+            $request,
+            ['statuses' => Post::getStatusList()]
         );
     }
 }

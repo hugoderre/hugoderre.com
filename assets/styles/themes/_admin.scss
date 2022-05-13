@@ -51,6 +51,11 @@ p {
             gap: 25px;
             &__filters {
                 align-self: center;
+                &__filter {
+                    &.active {
+                        color: $tertiary;
+                    }
+                }
             }
         }
     }

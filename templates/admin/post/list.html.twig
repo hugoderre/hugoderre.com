@@ -10,11 +10,15 @@
 			</div>
 			<div class="admin-list__table__header-right">
 				<div class="admin-list__table__header-right__filters">
-					<a href="{{ path('admin_post_list', query|merge({'status': 'publish'})) }}">Publié</a>
-					|
-					<a href="{{ path('admin_post_list', query|merge({'status': 'draft'})) }}">Brouillon</a>
-					|
-					<a href="{{ path('admin_post_list', query|merge({'status': 'trash'})) }}">Corbeille</a>
+					{% for status_key, status_label in statuses %}
+						<a
+							href="{{ path('admin_post_list', query|merge({'status': status_key })) }}"
+							class="admin-list__table__header-right__filters__filter {{ query.status == status_key ? 'active' : '' }}"
+						>{{ status_label }}</a>
+						{% if not loop.last %}
+							|
+						{% endif %}
+					{% endfor %}
 				</div>
                 <div class="admin-list__table__header-right__search">
                     <form action="{{ path('admin_post_list') }}">
