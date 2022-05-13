@@ -233,4 +233,13 @@ class Post
 
         return $this;
     }
+
+    public static function getStatusList(): array
+    {
+        return [
+            self::STATUS_PUBLISH => 'Publié',
+            self::STATUS_DRAFT => 'Brouillon',
+            self::STATUS_TRASH => 'Corbeille',
+        ];
+    }
 }
