@@ -10,14 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 abstract class AdminItemController extends AbstractController
 {
-    public function deleteItem(int $id, EntityManagerInterface $entityManager, string $entityClass, string $redirectRouteName): Response
+    public function deleteItem(int $id, EntityManagerInterface $entityManager, string $entityClass, string $redirectRouteName, array $redirectParams = []): Response
     {
         $item = $entityManager->getRepository($entityClass)->find($id);
 
         $entityManager->remove($item);
         $entityManager->flush();
 
-        return $this->redirectToRoute($redirectRouteName);
+        return $this->redirectToRoute($redirectRouteName, $redirectParams);
     }
 
     public function renderList($items, string $entityClass, Request $request, $extraTwigParams = []): Response

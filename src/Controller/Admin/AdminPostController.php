@@ -61,7 +61,8 @@ class AdminPostController extends AdminItemController
             $id, 
             $entityManager, 
             Post::class, 
-            'admin_post_list'
+            'admin_post_list',
+            ['status' => 'trash']
         );
     }
 
