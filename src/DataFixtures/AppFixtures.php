@@ -78,6 +78,7 @@ class AppFixtures extends Fixture
         $this->userAdmin->setLastName('Derré');
         $this->userAdmin->setPassword($hash);
         $this->userAdmin->setRoles(['ROLE_ADMIN']);
+        $this->userAdmin->setIsVerified(true);
         $this->manager->persist($this->userAdmin);
 
         for ($i = 0; $i < 20; $i++) {
@@ -90,6 +91,7 @@ class AppFixtures extends Fixture
             $user->setFirstName($this->faker->firstName());
             $user->setLastName($this->faker->lastName());
             $user->setPassword($hash);
+            $user->setIsVerified(true);
             $this->manager->persist($user);
         }
     }
