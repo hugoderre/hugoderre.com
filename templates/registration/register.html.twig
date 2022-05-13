@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}S'inscrire{% endblock %}
 
 {% block content %}
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="notice notice-error">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <h1>S'inscrire</h1>
     {{ form_start(registrationForm) }}
     {{ form_widget(registrationForm) }}
     {{ form_end(registrationForm) }}
