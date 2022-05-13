@@ -1,6 +1,15 @@
 {% extends 'admin/body.html.twig' %}
 
 {% block content %}
+
+	{% for flash_error in app.flashes('admin_post_list_error') %}
+		<div class="notice notice-error">{{ flash_error }}</div>
+	{% endfor %}
+	
+	{% for flash_success in app.flashes('admin_post_list_success') %}
+		<div class="notice notice-success">{{ flash_success }}</div>
+	{% endfor %}
+	
 	<div class="admin-list__table">
 		<div class="admin-list__table__header">
 			<div class="admin-list__table__header-left">
@@ -56,15 +65,22 @@
 							<p>{{ item.createdAt|date('d/m/Y') }}</p>
 						</td>
 						<td class="admin-list__table__actions">
-							<a href="{{ path('post_view', {'slug': item.slug }) }}" title="Voir" target="_blank">
-								<i class="fa-solid fa-arrow-right-from-bracket"></i>
-							</a>
-							<a href="" title="Modifier">
-								<i class="fa-solid fa-file-pen"></i>
-							</a>
-							<a href="{{ path('admin_post_delete', {'id': item.id }) }}" title="Supprimer">
-								<i class="fa-solid fa-trash"></i>
-							</a>
+							{% if query.status == 'trash' %}
+								<a href="{{ path('admin_post_restore', {'id': item.id }) }}" title="Rétablir">
+									<i class="fa-solid fa-trash-arrow-up"></i>
+									<span>Rétablir</span>
+								</a>
+							{% else %}
+								<a href="{{ path('post_view', {'slug': item.slug }) }}" title="Voir" target="_blank">
+									<i class="fa-solid fa-arrow-right-from-bracket"></i>
+								</a>
+								<a href="" title="Modifier">
+									<i class="fa-solid fa-file-pen"></i>
+								</a>
+								<a href="{{ path('admin_post_delete', {'id': item.id }) }}" title="Supprimer">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+							{% endif %}
 						</td>
 					</tr>
 				{% endfor %}

@@ -44,7 +44,7 @@ class AdminPostController extends AdminItemController
     }
 
     #[Route('/admin/posts/delete/{id}', name: 'admin_post_delete')]
-    // #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
         if(!$post = $entityManager->getRepository(Post::class)->find($id)) {
@@ -64,6 +64,26 @@ class AdminPostController extends AdminItemController
             'admin_post_list',
             ['status' => 'trash']
         );
+    }
+
+    #[Route('/admin/posts/restore/{id}', name: 'admin_post_restore')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function restore(int $id, EntityManagerInterface $entityManager): Response
+    {
+        if(!$post = $entityManager->getRepository(Post::class)->find($id)) {
+            throw $this->createNotFoundException('Post not found');
+        }
+
+        if($post->getStatus() !== Post::STATUS_TRASH) {
+            $this->addFlash('admin_post_list_error', 'Post is not in trash');
+            return $this->redirectToRoute('admin_post_list');
+        }
+
+        // Draft is a safe status to restore a post to
+        $post->setStatus(Post::STATUS_DRAFT);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_post_list', ['status' => 'trash']);
     }
 
     #[Route('/admin/posts', name: 'admin_post_list')]
