@@ -75,18 +75,19 @@ class RegistrationType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'J\'accepte les conditions d\'utilisation.', 
-                'mapped' => false,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
+                'mapped' => false,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
                 'attr'  => [
                     'class' => 'btn btn-primary',
                 ],
+                'mapped' => false,
             ]);
         ;
     }

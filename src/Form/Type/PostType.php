@@ -49,6 +49,7 @@ class PostType extends AbstractType
             'attr'  => [
                 'class' => 'btn btn-primary',
             ],
+            'mapped' => false,
         ]);
     }
 }
