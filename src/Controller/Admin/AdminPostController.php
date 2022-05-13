@@ -47,6 +47,9 @@ class AdminPostController extends AdminItemController
     #[IsGranted('ROLE_ADMIN')]
     public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
+        if(!$entityManager->getRepository(Post::class)->find($id)) {
+            throw $this->createNotFoundException('Post not found');
+        }
         return $this->deleteItem($id, $entityManager, Post::class, 'admin_post_list');
     }
 
