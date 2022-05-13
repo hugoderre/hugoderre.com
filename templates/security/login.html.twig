@@ -5,11 +5,14 @@
 {% block content %}
 <div class="container">
     <h1>Connexion</h1>
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error.message }}
-        </div>
-    {% endif %}
+    
+    {% for flash_success in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ flash_success }}</div>
+    {% endfor %}
+
+    {% for flash_error in app.flashes('error') %}
+        <div class="alert alert-error" role="alert">{{ flash_error }}</div>
+    {% endfor %}
     
     {{ form_start(formView) }}
     {{ form_widget(formView) }}

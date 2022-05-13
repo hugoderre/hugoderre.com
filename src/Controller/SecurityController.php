@@ -14,10 +14,13 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $utils): Response
     {
         $form = $this->createForm(LoginType::class);
+
+        if($lastAuthenticationError = $utils->getLastAuthenticationError()){
+            $this->addFlash('error', $lastAuthenticationError->getMessage());
+        }
      
         return $this->render('security/login.html.twig', [
             'formView' => $form->createView(),
-            'error' => $utils->getLastAuthenticationError(),
             'page' => 'security-login',
         ]);
     }

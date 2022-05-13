@@ -50,10 +50,14 @@ class SecurityAuthenticator extends AbstractAuthenticator
             }),
             new CustomCredentials(function($credentials, User $user) {
                 // Check if valid user password
-                $isValid = $this->encoder->isPasswordValid($user, $credentials);
+                $isPasswordValid = $this->encoder->isPasswordValid($user, $credentials);
                 
-                if(!$isValid) {
+                if(!$isPasswordValid) {
                     throw new AuthenticationException('Mot de passe incorrect.');
+                }
+
+                if(!$user->isVerified()) {
+                    throw new AuthenticationException('Votre compte n\'est pas activé. Veuillez vérifier votre boîte mail.');
                 }
                 
                 return true;
