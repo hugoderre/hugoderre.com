@@ -37,7 +37,6 @@ class LoginType extends AbstractType {
                 'attr'  => [
                     'class' => 'btn btn-primary',
                 ],
-                'mapped' => false,
             ]);
     }
 }
