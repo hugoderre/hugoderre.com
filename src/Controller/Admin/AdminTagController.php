@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class AdminTagController extends AdminItemController
+class AdminTagController extends AbstractAdminItemController
 {
 
     #[Route('/admin/tags/create', name: 'admin_tag_create')]

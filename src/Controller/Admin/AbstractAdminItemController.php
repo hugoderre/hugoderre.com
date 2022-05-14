@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 
-abstract class AdminItemController extends AbstractController
+abstract class AbstractAdminItemController extends AbstractController
 {
     public function deleteItem(int $id, EntityManagerInterface $entityManager, string $entityClass, string $redirectRouteName, array $redirectParams = []): Response
     {

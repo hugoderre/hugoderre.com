@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormFactoryInterface;
 
-class AdminPostController extends AdminItemController
+class AdminPostController extends AbstractAdminItemController
 {
     #[Route('/admin/posts/create', name: 'admin_post_create')]
     #[IsGranted('ROLE_ADMIN')]
