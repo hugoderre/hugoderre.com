@@ -21,10 +21,7 @@ class PostCrudController extends AbstractCrudController
         return [
             TextField::new('title'),
             TextEditorField::new('content'),
-            ChoiceField::new('status')->setChoices([
-                'draft' => 'Draft',
-                'published' => 'Published',
-            ]),
+            ChoiceField::new('status')->setChoices(array_flip(Post::getStatusList())),
         ];
     }
 }

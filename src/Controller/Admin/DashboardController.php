@@ -21,7 +21,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('HugoderreV2');
+            ->setTitle('Hugo Derré');
     }
 
     public function configureMenuItems(): iterable
@@ -29,6 +29,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Posts', 'fa fa-pencil', Post::class);
         yield MenuItem::linkToCrud('Users', 'fa fa-users', User::class);
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
