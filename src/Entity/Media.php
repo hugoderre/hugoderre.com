@@ -23,30 +23,30 @@ class Media
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="media", fileNameProperty="imageFileName", size="imageSize")
+     * @Vich\UploadableField(mapping="media", fileNameProperty="fileName", size="size")
      * 
      * @var File|null
      */
-    private $imageFile;
+    private $file;
 
     /**
      * @ORM\Column(type="string")
      *
      * @var string|null
      */
-    private $imageFileName;
+    private $fileName;
 
     /**
      * @ORM\Column(type="integer")
      *
      * @var int|null
      */
-    private $imageSize;
+    private $size;
 
     /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
-    private $imageUploadedAt;
+    private $uploadedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="media")
@@ -59,9 +59,9 @@ class Media
         return $this->id;
     }
 
-    public function getImageFile(): ?File
+    public function getFile(): ?File
     {
-        return $this->imageFile;
+        return $this->file;
     }
 
     /**
@@ -71,51 +71,51 @@ class Media
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $file
      */
-    public function setImageFile(?File $imageFile = null): void
+    public function setFile(?File $file = null): void
     {
-        $this->imageFile = $imageFile;
+        $this->file = $file;
 
-        if (null !== $imageFile) {
+        if (null !== $file) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
 
-    public function getImageFileName(): ?string
+    public function getFileName(): ?string
     {
-        return $this->imageFileName;
+        return $this->fileName;
     }
 
-    public function setImageFileName(?string $imageFileName): self
+    public function setFileName(?string $fileName): self
     {
-        $this->imageFileName = $imageFileName;
+        $this->fileName = $fileName;
 
         return $this;
     }
     
-    public function getImageSize(): ?int
+    public function getSize(): ?int
     {
-        return $this->imageSize;
+        return $this->size;
     }
 
-    public function setImageSize(?int $imageSize): self
+    public function setSize(?int $size): self
     {
-        $this->imageSize = $imageSize;
+        $this->size = $size;
 
         return $this;
     }
 
-    public function getImageUploadedAt(): ?\DateTimeImmutable
+    public function getUploadedAt(): ?\DateTimeImmutable
     {
-        return $this->imageUploadedAt;
+        return $this->uploadedAt;
     }
 
-    public function setImageUploadedAt(\DateTimeImmutable $publishedAt): self
+    public function setUploadedAt(\DateTimeImmutable $publishedAt): self
     {
-        $this->imageUploadedAt = $publishedAt;
+        $this->uploadedAt = $publishedAt;
 
         return $this;
     }

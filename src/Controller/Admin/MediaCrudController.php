@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Media;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -22,12 +23,12 @@ class MediaCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            ImageField::new('imageFileName')->setBasePath('/uploads/')->setLabel('Image')->onlyOnIndex(),
-            TextField::new('imageFile')->setFormType(VichFileType::class)->onlyWhenCreating(),
-            TextField::new('imageFileName')->hideOnForm()->setLabel('Nom du fichier'),
-            NumberField::new('imageSize')->hideOnForm()->setLabel('Taille'),
-            DateTimeField::new('ImageUploadedAt')->hideOnForm()->setLabel('Uploadée le'),
-            // TextField::new('author')->hideOnForm()->setLabel('Auteur')
+            ImageField::new('fileName')->setBasePath('/uploads/')->setLabel('Fichier')->onlyOnIndex(),
+            TextField::new('file')->setFormType(VichFileType::class)->onlyWhenCreating(),
+            TextField::new('fileName')->hideOnForm()->setLabel('Nom du fichier'),
+            NumberField::new('size')->hideOnForm()->setLabel('Taille'),
+            DateTimeField::new('uploadedAt')->hideOnForm()->setLabel('Créé le'),
+            AssociationField::new('author')->hideOnForm()->setLabel('Auteur')
         ];
     }
 }
