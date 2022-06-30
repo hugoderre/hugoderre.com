@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Media;
 use App\Entity\Post;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -28,6 +29,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Posts', 'fa fa-pencil', Post::class);
+        yield MenuItem::linkToCrud('Medias', 'fa fa-image', Media::class);
         yield MenuItem::linkToCrud('Users', 'fa fa-users', User::class);
     }
 }
