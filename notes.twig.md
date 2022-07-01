@@ -12,3 +12,12 @@ loop.parent	    The parent context
 {% for user in users %}
     {{ loop.index }} - {{ user.username }}
 {% endfor %}
+
+# Insert higlighted code
+
+<pre class="pre-hljs"><code class="language-js">export default class extends Controller {
+    connect() {
+        this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
+    }
+}
+</code></pre>

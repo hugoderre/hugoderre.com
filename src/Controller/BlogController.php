@@ -17,7 +17,7 @@ class BlogController extends AbstractController
     // #[ParamConverter('post')]
     public function all(PostRepository $postRepository): Response
     {
-        $posts = $postRepository->findAll();
+        $posts = $postRepository->findBy( ['status' => 'publish'] );
         
         return $this->render('blog/blog.html.twig', [
             'posts' => $posts,
@@ -27,9 +27,12 @@ class BlogController extends AbstractController
     }
 
     #[Route('/blog/{slug}', name: 'post_view')]
-    // #[ParamConverter('post')]
     public function post($slug, Post $post, EventDispatcherInterface $dispatcher): Response
     {
+        if($post->getStatus() !== 'publish') {
+            throw $this->createNotFoundException('Post not found');
+        }
+
         $postViewEvent = new PostViewEvent($post);
         $dispatcher->dispatch($postViewEvent, 'post.view');
 

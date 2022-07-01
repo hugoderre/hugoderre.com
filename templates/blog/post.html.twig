@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{% block title %}{{ post.title }}{% endblock %}
+
 {% block content %}
     <div class="shape-divider">
         <div class="shape-divider__top"></div>
@@ -10,17 +12,9 @@
 		<h1>{{ post.title }}</h1>
         <p class="post__date">Publié le {{ post.createdAt|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</p>
 		<div class="row post__content">
-            <h2>Lorem Ipsum</h2>
 			<div>
-				{{ post.content }}
+				{{ post.content|raw }}
 			</div><br>
-			<pre class="pre-hljs"><code class="language-js">export default class extends Controller {
-    connect() {
-        this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
-    }
-}
-	</code></pre>
 		</div>
-		<div data-controller="hello"></div>
 	</div>
 {% endblock %}
