@@ -4,9 +4,9 @@
 	</div>
 	<nav class="topbar__nav">
 		<ul>
-			<li><a href="{{ path('blog') }}"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+			<li><a href="{{ path('blog') }}" class="{{ page == 'blog' ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
 			<li><a href="#"><i class="fa-solid fa-diagram-project"></i> Projets</a></li>
-			<li><a href="{{ path('home') }}"><i class="fa-solid fa-face-smile"></i> Kisouij</a></li>
+			<li><a href="{{ path('home') }}" class="{{ page == 'home' ? 'active' : '' }}"><i class="fa-solid fa-face-smile"></i> Kisouij</a></li>
 		</ul>
 	</nav>
 	<div class="topbar__login">

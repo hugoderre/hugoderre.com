@@ -24,7 +24,7 @@ header {
                     height: 100%;
                     padding: 20px;
                     box-sizing: border-box;
-                    &:hover {
+                    &:hover, &.active {
                         background-color: $quaternary;
                         color: $tertiary;
                         transition: 0.5s;
