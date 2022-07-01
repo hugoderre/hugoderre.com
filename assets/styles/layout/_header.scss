@@ -1,5 +1,5 @@
 header {
-    border-bottom: 1px solid $tertiary;
+    background-color: $primary;
     grid-column: 1 / span 3;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
@@ -39,5 +39,11 @@ header {
         justify-content: center;
         align-items: center;
         gap: 10px;
+    }
+    hr {
+        width: 95%;
+        background-color: $tertiary; height: 1px; border: 0;
+        grid-column: 1 / -1;
+        margin: 0;
     }
 }
