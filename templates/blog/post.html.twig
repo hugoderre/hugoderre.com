@@ -16,6 +16,6 @@
 				{{ post.content|raw }}
 			</div>
 		</div>
-		{{ include("partials/block/comments.html.twig", {'post' : post}) }}
+		{{ include("partials/block/comments.html.twig", { 'comment' : comment }) }}
 	</div>
 {% endblock %}

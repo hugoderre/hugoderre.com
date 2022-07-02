@@ -1,2 +1,5 @@
 <div class="comments__container">
+    {% for comment in comments %}
+        {{ comment.content }}
+    {% endfor %}
 </div>

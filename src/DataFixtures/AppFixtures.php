@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Tag;
 use App\Entity\User;
@@ -27,7 +28,7 @@ class AppFixtures extends Fixture
         $this->manager = $manager;
         $this->users();
         $this->tags();
-        $this->posts();
+        $this->postsAndComments();
         $this->manager->flush();
     }
 
@@ -48,7 +49,7 @@ class AppFixtures extends Fixture
         $this->manager->persist($this->symfonyTag);
     }
 
-    private function posts()
+    private function postsAndComments()
     {
         for ($i = 0; $i < 20; $i++) {
             $post = new Post();
@@ -61,6 +62,19 @@ class AppFixtures extends Fixture
             $post->addTag($this->symfonyTag);
             $post->setStatus(Post::STATUS_PUBLISH);
             $post->setAuthor($this->userAdmin);
+
+            for ($j = 0; $j < rand(3, 5); $j++) {
+                $comment = new Comment();
+                $comment->setContent(loremizer::getPhrase(5));
+                $comment->setAuthorName($this->faker->name);
+                $comment->setAuthorEmail($this->faker->email);
+                $comment->setAuthorWebsite($this->faker->url);
+                $comment->setStatus(Comment::STATUS_APPROVED);
+                $comment->setCreatedAt(new DateTimeImmutable());
+                $this->manager->persist($comment);
+                $post->addComment($comment);
+            }
+
             $this->manager->persist($post);
         }
     }

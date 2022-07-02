@@ -38,13 +38,44 @@ class Comment
     private $spamScore;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255)
      */
-    private $isVisible;
+    private $status;
+
+    const STATUS_PENDING = 'pending';
+    const STATUS_APPROVED = 'approved';
+    const STATUS_REJECTED = 'rejected';
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Post::class, inversedBy="comments")
+     */
+    private $post;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $authorWebsite;
+
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $createdAt;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getPost(): ?Post
+    {
+        return $this->post;
+    }
+
+    public function setPost(?Post $post): self
+    {
+        $this->post = $post;
+
+        return $this;
     }
 
     public function getContent(): ?string
@@ -83,6 +114,18 @@ class Comment
         return $this;
     }
 
+    public function getAuthorWebsite(): ?string
+    {
+        return $this->authorWebsite;
+    }
+
+    public function setAuthorWebsite(?string $authorWebsite): self
+    {
+        $this->authorWebsite = $authorWebsite;
+
+        return $this;
+    }
+
     public function getSpamScore(): ?int
     {
         return $this->spamScore;
@@ -95,14 +138,39 @@ class Comment
         return $this;
     }
 
-    public function isIsVisible(): ?bool
+    public function getStatus(): string
     {
-        return $this->isVisible;
+        return $this->status;
     }
 
-    public function setIsVisible(bool $isVisible): self
+    public static function getStatusList(): array
     {
-        $this->isVisible = $isVisible;
+        return [
+            self::STATUS_PENDING => 'En attente',
+            self::STATUS_APPROVED => 'Approuvé',
+            self::STATUS_REJECTED => 'Rejeté',
+        ];
+    }
+
+    public function setStatus(string $status): self
+    {
+        if (!in_array($status, array_keys(self::getStatusList()))) {
+            throw new \InvalidArgumentException(sprintf('Invalid status "%s".', $status));
+        }
+        
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
