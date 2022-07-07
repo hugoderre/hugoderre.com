@@ -1,5 +1,13 @@
-<div class="comments__container">
+<div class="comments">
+    <h3>Commentaires</h3>
     {% for comment in comments %}
-        {{ comment.content }}
+    <section class="comment">
+        <div class="comment__header-info">
+            <h5>{{ comment.authorName }}</h5>
+            <span>—</span>
+            <div class="comment__created-at">{{ comment.createdAt|date() }}</div>
+        </div>
+        <div class="comment__content">{{ comment.content }}</div>
+    </section>
     {% endfor %}
 </div>

@@ -1,5 +1,20 @@
 .comments {
-    &__container {
-        color: $primary;
+    color: $primary;
+    line-height: 1.6;
+    h3 {
+        margin: 20px 0;
+    }
+    .comment {
+        margin-bottom: 20px;
+
+        h5 {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        &__header-info {
+            display: flex;
+            gap: 10px;
+        }
     }
 }

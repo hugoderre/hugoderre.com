@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Event\PostViewEvent;
+use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -27,7 +28,7 @@ class BlogController extends AbstractController
     }
 
     #[Route('/blog/{slug}', name: 'post_view')]
-    public function post($slug, Post $post, EventDispatcherInterface $dispatcher): Response
+    public function post($slug, Post $post, CommentRepository $commentRepository, EventDispatcherInterface $dispatcher): Response
     {
         if($post->getStatus() !== 'publish') {
             throw $this->createNotFoundException('Post not found');
@@ -36,9 +37,12 @@ class BlogController extends AbstractController
         $postViewEvent = new PostViewEvent($post);
         $dispatcher->dispatch($postViewEvent, 'post.view');
 
+        $comments = $commentRepository->findBy( ['post' => $post] );
+
         return $this->render('blog/post.html.twig', [
-            'post' => $post,
-            'page' => 'post'
+            'post'      => $post,
+            'comments'  => $comments,
+            'page'      => 'post',
         ]);
     }
 }

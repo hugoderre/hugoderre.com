@@ -61,6 +61,11 @@ class Comment
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ip;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +176,18 @@ class Comment
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getIp(): ?string
+    {
+        return $this->ip;
+    }
+
+    public function setIp(string $ip): self
+    {
+        $this->ip = $ip;
 
         return $this;
     }
