@@ -64,7 +64,12 @@ class Comment
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ip;
+    private $userIp;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $userAgent;
 
     public function getId(): ?int
     {
@@ -180,14 +185,26 @@ class Comment
         return $this;
     }
 
-    public function getIp(): ?string
+    public function getUserIp(): ?string
     {
-        return $this->ip;
+        return $this->userIp;
     }
 
-    public function setIp(string $ip): self
+    public function setUserIp(string $userIp): self
     {
-        $this->ip = $ip;
+        $this->userIp = $userIp;
+
+        return $this;
+    }
+
+    public function getUserAgent(): ?string
+    {
+        return $this->userAgent;
+    }
+
+    public function setUserAgent(string $userAgent): self
+    {
+        $this->userAgent = $userAgent;
 
         return $this;
     }
