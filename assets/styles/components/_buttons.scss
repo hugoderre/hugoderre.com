@@ -1,8 +1,9 @@
 .btn {
-    display: inline-block;
-    color: $secondary;
-    background-color: $tertiary;
-    border: 1px solid $tertiary;
-    border-radius: $global-radius;
-    padding: 10px;
+	display: inline-block;
+	color: $secondary;
+	background-color: $tertiary;
+	border: 1px solid $tertiary;
+	border-radius: $global-radius;
+	padding: 10px;
+	cursor: pointer;
 }

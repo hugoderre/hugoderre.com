@@ -1,26 +1,44 @@
 body {
-    color:$secondary;
-    & > .container {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        grid-template-rows: 80px 1fr 80px;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        @media screen and (max-width: 1200px) {
-            grid-template-columns: 1fr 5fr 1fr;
-        }
-        @media screen and (max-width: 992px) {
-            grid-template-columns: 1fr 6fr 1fr;
-        }
-        @media screen and (max-width: 768px) {
-            grid-template-columns: 1fr 7fr 1fr;
-        }
-        & > .content {
-            grid-row-start: 2;
-            grid-column-start: 2;
-        }
-    }
-    h1 {
-        margin: 10px 0;
-    }
+	color: $secondary;
+
+	& > .container {
+		display: grid;
+		grid-template-columns: 1fr 3fr 1fr;
+		grid-template-rows: 80px 1fr 80px;
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+		@media screen and (max-width: 1200px) {
+			grid-template-columns: 1fr 5fr 1fr;
+		}
+		@media screen and (max-width: 992px) {
+			grid-template-columns: 1fr 6fr 1fr;
+		}
+		@media screen and (max-width: 768px) {
+			grid-template-columns: 1fr 7fr 1fr;
+		}
+		& > .content {
+			grid-row-start: 2;
+			grid-column-start: 2;
+		}
+	}
+}
+
+h1 {
+	margin: 10px 0;
+}
+
+textarea {
+	padding: 10px;
+}
+
+label.required:after {
+	content: " *";
+}
+
+/* Honeypot */
+.form-group.form-check-country {
+	height: 0;
+	width: 0;
+	border: none;
+	text-decoration: none;
 }

@@ -1,6 +1,9 @@
 <div class="comments">
     <h3>Commentaires</h3>
-    {% for comment in comments %}
+	<div class="comments__form">
+		{{ form(comments.form) }}
+	</div>
+    {% for comment in comments.posted %}
     <section class="comment">
         <div class="comment__header-info">
             <h5>{{ comment.authorName }}</h5>

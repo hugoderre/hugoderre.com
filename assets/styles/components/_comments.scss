@@ -1,20 +1,23 @@
 .comments {
-    color: $primary;
-    line-height: 1.6;
-    h3 {
-        margin: 20px 0;
-    }
-    .comment {
-        margin-bottom: 20px;
+	color: $primary;
+	line-height: 1.6;
+	h3 {
+		margin: 20px 0;
+	}
+	&__form {
+		margin-bottom: 20px;
+	}
+	.comment {
+		margin-bottom: 20px;
 
-        h5 {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+		h5 {
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
 
-        &__header-info {
-            display: flex;
-            gap: 10px;
-        }
-    }
+		&__header-info {
+			display: flex;
+			gap: 10px;
+		}
+	}
 }

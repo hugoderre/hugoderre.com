@@ -64,7 +64,7 @@ class Comment
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $userIp;
+    private $clientIp;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -185,14 +185,14 @@ class Comment
         return $this;
     }
 
-    public function getUserIp(): ?string
+    public function getClientIp(): ?string
     {
-        return $this->userIp;
+        return $this->clientIp;
     }
 
-    public function setUserIp(string $userIp): self
+    public function setClientIp(string $clientIp): self
     {
-        $this->userIp = $userIp;
+        $this->clientIp = $clientIp;
 
         return $this;
     }

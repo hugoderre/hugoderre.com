@@ -1,36 +1,50 @@
 // @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap");
 
 html {
-    font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 }
 
 h1 {
-    font-size: 52px;
-    line-height: 1.2;
+	font-size: 52px;
+	line-height: 1.2;
 }
 
 h2 {
-    font-size: 40px;
-    line-height: 1.2;
+	font-size: 40px;
+	line-height: 1.2;
 }
 
 h3 {
-    font-size: 32px;
-    line-height: 1.2;
+	font-size: 32px;
+	line-height: 1.2;
 }
 
 a {
-    color: $secondary;
-    text-decoration: none;
-    &:hover:not(.btn) {
-        color: $tertiary;
-    }
+	color: $secondary;
+	text-decoration: none;
+	&:hover:not(.btn) {
+		color: $tertiary;
+	}
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+input,
+textarea {
+	font-size: 16px;
+	font-family: "Inter", sans-serif;
 }
 
 *::selection {
-    background-color : $tertiary;
+	background-color: $tertiary;
 }
-*::-moz-selection{
-    background-color : $tertiary;
+*::-moz-selection {
+	background-color: $tertiary;
 }
