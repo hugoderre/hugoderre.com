@@ -71,6 +71,7 @@ class AppFixtures extends Fixture
                 $comment->setAuthorWebsite($this->faker->url);
                 $comment->setStatus(Comment::STATUS_APPROVED);
                 $comment->setCreatedAt(new DateTimeImmutable());
+				$comment->setSpamScore(rand(0, 1));
                 $comment->setClientIp($this->faker->ipv4);
                 $comment->setUserAgent($this->faker->userAgent);
                 $this->manager->persist($comment);

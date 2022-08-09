@@ -90,7 +90,7 @@ class BlogController extends AbstractController
         return $this->render('blog/post.html.twig', [
             'post'      => $post,
             'comments'  => [
-				'posted' => $commentRepository->findBy(['post' => $post]),
+				'posted' => $commentRepository->findBy(['post' => $post, 'status' => Comment::STATUS_APPROVED]),
 				'form'   => $commentForm->createView(),
 			],
             'page'      => 'post',
