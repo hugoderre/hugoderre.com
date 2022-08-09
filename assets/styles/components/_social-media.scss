@@ -1,0 +1,37 @@
+.social-icon {
+	display: flex;
+	border-radius: 50%;
+	box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
+	transition: 0.6s;
+	text-decoration: none;
+	width: 60px;
+	height: 60px;
+
+	@media (max-width: 500px) {
+		width: 35px;
+		height: 35px;
+	}
+
+	background-color: white;
+
+	&.github-link:hover {
+		transform: translate(0, -10%);
+		background-color: #333;
+	}
+
+	& > i {
+		color: black;
+		padding: 17px 16px;
+		font-size: 28px;
+
+		@media (max-width: 500px) {
+			padding: 8px 8px;
+			font-size: 20px;
+		}
+
+		&:hover {
+			transition: 0.6s;
+			color: white;
+		}
+	}
+}
