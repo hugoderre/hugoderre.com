@@ -15,8 +15,8 @@ class MediaListener
 
     public function prePersist(Media $media)
     {
-        if(empty($media->getImageUploadedAt())) {
-            $media->setImageUploadedAt(new DateTimeImmutable());
+        if(empty($media->getUploadedAt())) {
+            $media->setUploadedAt(new DateTimeImmutable());
         }
 
         if(empty($media->getAuthor())) {

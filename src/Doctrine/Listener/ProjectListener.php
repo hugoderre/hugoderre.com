@@ -2,12 +2,12 @@
 
 namespace App\Doctrine\Listener;
 
-use App\Entity\Post;
+use App\Entity\Project;
 use DateTimeImmutable;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-class PostListener
+class ProjectListener
 {
 
     private $slugger;
@@ -18,19 +18,15 @@ class PostListener
         $this->security = $security;
     }
 
-    public function prePersist(Post $post)
+    public function prePersist(Project $project)
     {
-        if(empty($post->getSlug()) && $title = $post->getTitle()) {
+        if(empty($project->getSlug()) && $title = $project->getName()) {
             $slug = strtolower($this->slugger->slug($title));
-            $post->setSlug($slug);
+            $project->setSlug($slug);
         }
 
-        if(empty($post->getCreatedAt())) {
-            $post->setCreatedAt(new DateTimeImmutable());
-        }
-
-        if(empty($post->getAuthor())) {
-            $post->setAuthor($this->security->getUser());
+        if(empty($project->getCreatedAt())) {
+            $project->setCreatedAt(new DateTimeImmutable());
         }
     }
 }

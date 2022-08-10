@@ -59,18 +59,22 @@ class Project
      */
     private $status;
 
+	const STATUS_PUBLISH = 'publish';
+    const STATUS_DRAFT = 'draft';
+    const STATUS_TRASH = 'trash';
+
     /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $publishedAt;
 

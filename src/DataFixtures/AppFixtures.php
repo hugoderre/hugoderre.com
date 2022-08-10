@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Comment;
+use App\Entity\Media;
 use App\Entity\Post;
+use App\Entity\Project;
 use App\Entity\Tag;
 use App\Entity\User;
 use DateTimeImmutable;
@@ -11,6 +13,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Loremizer\loremizer;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -28,8 +31,40 @@ class AppFixtures extends Fixture
         $this->manager = $manager;
         $this->users();
         $this->tags();
+		$this->medias();
         $this->postsAndComments();
+		$this->projects();
         $this->manager->flush();
+    }
+
+    private function users()
+    {
+        $this->userAdmin = new User();
+
+        $hash = $this->hasher->hashPassword($this->userAdmin, 'password');
+
+        $this->userAdmin->setUsername('admin');
+        $this->userAdmin->setEmail($this->faker->email());
+        $this->userAdmin->setFirstName('Hugo');
+        $this->userAdmin->setLastName('Derré');
+        $this->userAdmin->setPassword($hash);
+        $this->userAdmin->setRoles(['ROLE_ADMIN']);
+        $this->userAdmin->setIsVerified(true);
+        $this->manager->persist($this->userAdmin);
+
+        for ($i = 0; $i < 20; $i++) {
+            $user = new User();
+
+            $hash = $this->hasher->hashPassword($user, 'password');
+
+            $user->setUsername($this->faker->userName());
+            $user->setEmail($this->faker->email());
+            $user->setFirstName($this->faker->firstName());
+            $user->setLastName($this->faker->lastName());
+            $user->setPassword($hash);
+            $user->setIsVerified(true);
+            $this->manager->persist($user);
+        }
     }
 
     private function tags() {
@@ -48,6 +83,25 @@ class AppFixtures extends Fixture
         $this->symfonyTag->setColor('#FFF');
         $this->manager->persist($this->symfonyTag);
     }
+
+	private function medias() {
+		$this->media = new Media();
+		$this->media->setTitle('media1');
+		$uploadedFile = new UploadedFile(
+			'/var/www/src/DataFixtures/test.jpg',
+			'test.jpg',
+			'image/jpeg',
+			null,
+			true
+		);
+		$this->media->setFile($uploadedFile);
+		$this->media->setFileName('test.jpg');
+		$this->media->setSize($uploadedFile->getSize());
+		$this->media->setAlt('alt');
+		$this->media->setAuthor($this->userAdmin);
+		$this->media->setUploadedAt(new DateTimeImmutable());
+		$this->manager->persist($this->media);
+	}
 
     private function postsAndComments()
     {
@@ -81,33 +135,14 @@ class AppFixtures extends Fixture
         }
     }
 
-    private function users()
-    {
-        $this->userAdmin = new User();
-
-        $hash = $this->hasher->hashPassword($this->userAdmin, 'password');
-
-        $this->userAdmin->setUsername('admin');
-        $this->userAdmin->setEmail($this->faker->email());
-        $this->userAdmin->setFirstName('Hugo');
-        $this->userAdmin->setLastName('Derré');
-        $this->userAdmin->setPassword($hash);
-        $this->userAdmin->setRoles(['ROLE_ADMIN']);
-        $this->userAdmin->setIsVerified(true);
-        $this->manager->persist($this->userAdmin);
-
-        for ($i = 0; $i < 20; $i++) {
-            $user = new User();
-
-            $hash = $this->hasher->hashPassword($user, 'password');
-
-            $user->setUsername($this->faker->userName());
-            $user->setEmail($this->faker->email());
-            $user->setFirstName($this->faker->firstName());
-            $user->setLastName($this->faker->lastName());
-            $user->setPassword($hash);
-            $user->setIsVerified(true);
-            $this->manager->persist($user);
-        }
-    }
+	private function projects() {
+		$this->project = new Project();
+		$this->project->setName($this->faker->title);
+		$this->project->setSlug($this->faker->title);
+		$this->project->setThumbnail($this->media);
+		$this->project->setDescription(loremizer::getPhrase(5));
+		$this->project->setStatus(Project::STATUS_PUBLISH);
+		$this->project->addGallery($this->media);
+		$this->manager->persist($this->project);
+	}
 }
