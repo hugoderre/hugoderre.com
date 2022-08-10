@@ -36,12 +36,12 @@ class BlogController extends AbstractController
     #[Route('/blog/{slug}', name: 'post_view')]
     public function post(
 		Request $request, 
-		$slug, Post $post, 
+		Post $post, 
 		CommentRepository $commentRepository, 
 		EventDispatcherInterface $dispatcher,
-		string $akismetKey, 
 		HttpClientInterface $httpClient,
 		LoggerInterface $logger,
+		string $akismetKey, 
 	): Response
     {
         if($post->getStatus() !== 'publish') {

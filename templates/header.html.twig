@@ -4,18 +4,19 @@
 	</div>
 	<nav class="topbar__nav">
 		<ul>
+			<li><a href="{{ path('homepage') }}" class="{{ page == 'home' ? 'active' : '' }}"><i class="fa-solid fa-home"></i> Home</a></li>
 			<li><a href="{{ path('blog') }}" class="{{ page == 'blog' ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
-			<li><a href="#"><i class="fa-solid fa-diagram-project"></i> Projets</a></li>
-			<li><a href="{{ path('home') }}" class="{{ page == 'home' ? 'active' : '' }}"><i class="fa-solid fa-face-smile"></i> Kisouij</a></li>
+			<li><a href="{{ path('projects') }}" class="{{ page == 'projects' ? 'active' : '' }}"><i class="fa-solid fa-diagram-project"></i> Projets</a></li>
+			<li><a href="{{ path('contact') }}" class="{{ page == 'contact' ? 'active' : '' }}"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
 		</ul>
 	</nav>
 	<div class="topbar__login">
-		{% if app.user %}
+		{# {% if app.user %}
 			<a class="btn" href="{{ path('logout') }}">Deconnexion</a>
 		{% else %}
 			<a class="btn" href="{{ path('register') }}">S'inscrire</a>
 			<a class="btn" href="{{ path('login') }}">Se connecter</a>
-		{% endif %}
+		{% endif %} #}
 	</div>
 	<hr>
 </header>

@@ -54,7 +54,6 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 20; $i++) {
             $post = new Post();
             $post->setTitle(loremizer::getTitle());
-            $post->setThumbnail('https://picsum.photos/id/' . intval($i + 20) . '/800/500');
             $post->setContent(loremizer::getPhrase(5));
             $post->setExcerpt(loremizer::getPhrase(2));
             $post->addTag($this->wordpressTag);

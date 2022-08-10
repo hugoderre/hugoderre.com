@@ -31,7 +31,7 @@ class Post
     private $slug;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity=Media::class)
      */
     private $thumbnail;
 
@@ -120,12 +120,12 @@ class Post
         return $this;
     }
 
-    public function getThumbnail(): ?string
+    public function getThumbnail(): ?Media
     {
         return $this->thumbnail;
     }
 
-    public function setThumbnail(string $thumbnail): self
+    public function setThumbnail(?Media $thumbnail): self
     {
         $this->thumbnail = $thumbnail;
 
