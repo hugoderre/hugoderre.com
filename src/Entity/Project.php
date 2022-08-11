@@ -10,29 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  */
-class Project
+class Project extends AbstractPost
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $slug;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Media::class)
-     */
-    private $thumbnail;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -54,30 +37,6 @@ class Project
      */
     private $gallery;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $status;
-
-	const STATUS_PUBLISH = 'publish';
-    const STATUS_DRAFT = 'draft';
-    const STATUS_TRASH = 'trash';
-
-    /**
-     * @ORM\Column(type="datetime_immutable")
-     */
-    private $createdAt;
-
-    /**
-     * @ORM\Column(type="datetime_immutable", nullable=true)
-     */
-    private $updatedAt;
-
-    /**
-     * @ORM\Column(type="datetime_immutable", nullable=true)
-     */
-    private $publishedAt;
-
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
@@ -96,30 +55,6 @@ class Project
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getThumbnail(): ?Media
-    {
-        return $this->thumbnail;
-    }
-
-    public function setThumbnail(?Media $thumbnail): self
-    {
-        $this->thumbnail = $thumbnail;
 
         return $this;
     }
@@ -180,63 +115,6 @@ class Project
     public function removeGallery(Media $gallery): self
     {
         $this->gallery->removeElement($gallery);
-
-        return $this;
-    }
-
-    public function getStatus(): ?string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    public static function getStatusList(): array
-    {
-        return [
-            self::STATUS_PUBLISH => 'Publié',
-            self::STATUS_DRAFT => 'Brouillon',
-            self::STATUS_TRASH => 'Corbeille',
-        ];
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    public function getPublishedAt(): ?\DateTimeImmutable
-    {
-        return $this->publishedAt;
-    }
-
-    public function setPublishedAt(\DateTimeImmutable $publishedAt): self
-    {
-        $this->publishedAt = $publishedAt;
 
         return $this;
     }
