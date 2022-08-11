@@ -2,6 +2,23 @@
 
 {% block title %}Hugo Derré | Projets{% endblock %}
 
-{% block body %}
-
+{% block content %}
+    <div class="projects-container">
+        <section class="row projects-list">
+            {% for project in projects %}
+                <div class="col-md-4">
+                    <div class="project-item">
+                        <div class="project-item-img">
+                            <img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}">
+                        </div>
+                        <div class="project-item-content">
+                            <h3>{{ project.name }}</h3>
+                            <p>{{ project.description }}</p>
+                            <a href="{{ path('project_view', {'slug': project.slug}) }}" class="btn btn-primary">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </div>
 {% endblock %}
