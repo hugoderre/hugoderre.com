@@ -85,22 +85,26 @@ class AppFixtures extends Fixture
     }
 
 	private function medias() {
-		$this->media = new Media();
-		$this->media->setTitle('media1');
-		$uploadedFile = new UploadedFile(
-			'/var/www/src/DataFixtures/test.jpg',
-			'test.jpg',
-			'image/jpeg',
-			null,
-			true
-		);
-		$this->media->setFile($uploadedFile);
-		$this->media->setFileName('test.jpg');
-		$this->media->setSize($uploadedFile->getSize());
-		$this->media->setAlt('alt');
-		$this->media->setAuthor($this->userAdmin);
-		$this->media->setUploadedAt(new DateTimeImmutable());
-		$this->manager->persist($this->media);
+        $this->media = [];
+        for ($i=0; $i < 3; $i++) { 
+            $mediaName = 'media' . $i;
+            $this->media[$i] = new Media();
+            $this->media[$i]->setTitle($mediaName);
+            $uploadedFile = new UploadedFile(
+                '/var/www/src/DataFixtures/fixture-medias/' . $mediaName . '.jpg',
+                $mediaName . '.jpg',
+                'image/jpeg',
+                null,
+                true
+            );
+            $this->media[$i]->setFile($uploadedFile);
+            $this->media[$i]->setFileName($mediaName . '.jpg');
+            $this->media[$i]->setSize($uploadedFile->getSize());
+            $this->media[$i]->setAlt('alt');
+            $this->media[$i]->setAuthor($this->userAdmin);
+            $this->media[$i]->setUploadedAt(new DateTimeImmutable());
+            $this->manager->persist($this->media[$i]);
+        }
 	}
 
     private function postsAndComments()
@@ -136,13 +140,17 @@ class AppFixtures extends Fixture
     }
 
 	private function projects() {
-		$this->project = new Project();
-		$this->project->setName($this->faker->title);
-		$this->project->setSlug($this->faker->title);
-		$this->project->setThumbnail($this->media);
-		$this->project->setDescription(loremizer::getPhrase(5));
-		$this->project->setStatus(Project::STATUS_PUBLISH);
-		$this->project->addGallery($this->media);
-		$this->manager->persist($this->project);
+        for ($i=0; $i < 3; $i++) { 
+            $this->project = new Project();
+            $this->project->setName($this->faker->name);
+            $this->project->setSlug($this->faker->title);
+            $this->project->setThumbnail($this->media[$i]);
+            $this->project->setDescription(loremizer::getPhrase(5));
+            $this->project->setStatus(Project::STATUS_PUBLISH);
+            $this->project->addGallery($this->media[0]);
+            $this->project->addGallery($this->media[1]);
+            $this->project->addGallery($this->media[2]);
+            $this->manager->persist($this->project);
+        }
 	}
 }

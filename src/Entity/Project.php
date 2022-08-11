@@ -196,6 +196,15 @@ class Project
         return $this;
     }
 
+    public static function getStatusList(): array
+    {
+        return [
+            self::STATUS_PUBLISH => 'Publié',
+            self::STATUS_DRAFT => 'Brouillon',
+            self::STATUS_TRASH => 'Corbeille',
+        ];
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
