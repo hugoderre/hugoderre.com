@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles
-{% endblock %}
+{% block title %}Articles | Hugo Derré{% endblock %}
 
 {% block content %}
 
 	<div class="blog-container">
-
 		<section class="row blog-list">
+			<h1>Articles</h1>
 			{% for post in posts %}
 				<article class="col-6">
 					<div class="card">

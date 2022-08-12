@@ -42,6 +42,7 @@ class ProjectCrudController extends AbstractCrudController
             TextField::new('githubUrl')->onlyOnForms(),
             TextField::new('websiteUrl')->onlyOnForms(),
             AssociationField::new('gallery')->autocomplete(true),
+            AssociationField::new('tags')->autocomplete(true),
             ChoiceField::new('status')->setChoices(array_flip(Project::getStatusList())),
             DateTimeField::new('createdAt')->hideOnForm(),
         ];

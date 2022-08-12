@@ -1,23 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hugo Derré | Projets{% endblock %}
+{% block title %}Projets | Hugo Derré{% endblock %}
 
 {% block content %}
     <div class="projects-container">
-        <section class="row projects-list">
+        <h1>Projets</h1>
+        <section class="projects">
             {% for project in projects %}
-                <div class="col-md-4">
-                    <div class="project-item">
-                        <div class="project-item-img">
-                            <img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}">
-                        </div>
-                        <div class="project-item-content">
-                            <h3>{{ project.name }}</h3>
-                            <p>{{ project.description }}</p>
-                            <a href="{{ path('project_view', {'slug': project.slug}) }}" class="btn btn-primary">Voir le projet</a>
-                        </div>
+                <article class="project">
+                    <div class="project__img">
+                        <img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}" width="400" height="250">
                     </div>
-                </div>
+                    <div class="project__content">
+                        <h2 class="product__name">
+                            <a href="{{ path('project_view', {'slug': project.slug}) }}">{{ project.name }}</a>
+                        </h2>
+                        {# <p>{{ project.description|raw }}</p> #}
+                        {# <p><a href="{{ path('project_view', {'slug': project.slug}) }}" class="btn btn-primary">Voir le projet</a></p> #}
+                    </div>
+                </article>
             {% endfor %}
         </section>
     </div>

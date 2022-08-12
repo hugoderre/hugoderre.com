@@ -39,9 +39,15 @@ class Tag
      */
     private $posts;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="tags")
+     */
+    private $projects;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,5 +116,37 @@ class Tag
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeTag($this);
+        }
+        
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

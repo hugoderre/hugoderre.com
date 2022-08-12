@@ -1,5 +1,5 @@
 body {
-	color: $secondary;
+	color: $primary;
 
 	& > .container {
 		display: grid;
@@ -19,12 +19,13 @@ body {
 		& > .content {
 			grid-row-start: 2;
 			grid-column-start: 2;
+			margin-top: 20px;
 		}
 	}
 }
 
 h1 {
-	margin: 10px 0;
+	margin: 20px 0;
 }
 
 textarea {

@@ -37,9 +37,15 @@ class Project extends AbstractPost
      */
     private $gallery;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="projects")
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,5 +123,34 @@ class Project extends AbstractPost
         $this->gallery->removeElement($gallery);
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

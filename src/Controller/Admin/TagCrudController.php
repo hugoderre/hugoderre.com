@@ -2,21 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Post;
-use App\Entity\User;
-use DateTimeImmutable;
+use App\Entity\Tag;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
-class PostCrudController extends AbstractCrudController
+class TagCrudController extends AbstractCrudController
 {
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -25,7 +19,7 @@ class PostCrudController extends AbstractCrudController
 
     public static function getEntityFqcn(): string
     {
-        return Post::class;
+        return Tag::class;
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -38,12 +32,11 @@ class PostCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            TextEditorField::new('content', 'Contenu')->setFormType(CKEditorType::class),
-            AssociationField::new('tags')->autocomplete(true),
-            AssociationField::new('author')->autocomplete(true),
-            ChoiceField::new('status')->setChoices(array_flip(Post::getStatusList())),
-            DateTimeField::new('createdAt')->hideOnForm(),
+            TextField::new('name'),
+            TextField::new('slug')->hideOnForm(),
+            TextField::new('color'),
+            AssociationField::new('posts')->autocomplete(true)->setFormTypeOption('disabled', true),
+            AssociationField::new('projects')->autocomplete(true)->setFormTypeOption('disabled', true),
         ];
     }
 }

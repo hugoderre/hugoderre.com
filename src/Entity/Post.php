@@ -166,4 +166,9 @@ class Post extends AbstractPost
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
 }

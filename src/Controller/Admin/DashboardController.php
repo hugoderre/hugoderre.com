@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Media;
 use App\Entity\Post;
 use App\Entity\Project;
+use App\Entity\Tag;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -33,6 +34,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Articles', 'fa fa-pencil', Post::class);
         yield MenuItem::linkToCrud('Commentaires', 'fa fa-comment', Comment::class);
         yield MenuItem::linkToCrud('Project', 'fa fa-diagram-project', Project::class);
+        yield MenuItem::linkToCrud('Tag', 'fa fa-tags', Tag::class);
         yield MenuItem::linkToCrud('Medias', 'fa fa-image', Media::class);
         yield MenuItem::linkToCrud('Comptes', 'fa fa-users', User::class);
     }
