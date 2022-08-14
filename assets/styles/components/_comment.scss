@@ -3,6 +3,7 @@
 .comments {
 	color: $primary;
 	line-height: 1.6;
+	margin-top: 80px;
 	h3 {
 		margin: 20px 0;
 	}
@@ -10,16 +11,28 @@
 		margin-bottom: 20px;
 	}
 	.comment {
-		margin-bottom: 20px;
+		margin: 45px 0;
 
-		h5 {
-			font-weight: bold;
-			margin-bottom: 5px;
-		}
-
-		&__header-info {
+		&__header {
 			display: flex;
-			gap: 10px;
+			align-items: center;
+			margin-bottom: 16px;
+			&__avatar {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				margin-right: 10px;
+			}
+			&__info {
+				h5 {
+					font-weight: bold;
+				}
+				&__created-at {
+					font-size: 14px;
+					color: $quinary;
+					opacity: 0.8;
+				}
+			}
 		}
 	}
 }

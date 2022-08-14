@@ -1,14 +1,19 @@
 <div class="comments">
-    <h3>Commentaires</h3>
+    <h3>{{ comments.posted|length }} commentaires</h3>
 	<div class="comments__form">
 		{{ form(comments.form) }}
 	</div>
     {% for comment in comments.posted %}
     <section class="comment">
-        <div class="comment__header-info">
-            <h5>{{ comment.authorName }}</h5>
-            <span>—</span>
-            <div class="comment__created-at">{{ comment.createdAt|format_datetime(locale='fr') }}</div>
+        <div class="comment__header">
+			<div class="comment__header__avatar">
+				<img src="{{ asset('assets/blank-avatar.jpg') }}" alt="">
+			</div>
+			<div class="comment__header__info">
+				<h5>{{ comment.authorName }}</h5>
+				<div class="comment__header__info__created-at">{{ comment.createdAt|format_datetime(locale='fr') }}</div>
+			</div>
+            
         </div>
         <div class="comment__content">{{ comment.content }}</div>
     </section>
