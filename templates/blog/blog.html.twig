@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles | Hugo Derré{% endblock %}
+{% block title %}Blog | Hugo Derré{% endblock %}
 
 {% block content %}
 
 	<div class="blog-container">
+		<div class="page-title">
+			<i class="fa-solid fa-newspaper"></i>
+			<h1>Blog</h1>
+		</div>
 		<section class="row blog-list">
-			<h1>Articles</h1>
 			{% for post in posts %}
 				<article class="col-6">
 					<div class="card">
@@ -28,17 +31,21 @@
 									{% endfor %}
 								</ul>
 								<ul class="card__footer__socials">
-									<li class="card__footer__socials__likes">
+									{# <li class="card__footer__socials__likes">
 										<i class="fa-solid fa-heart"></i>
 										<span>0</span>
 									</li>
 									<li class="card__footer__socials__shares">
 										<i class="fa-solid fa-share"></i>
 										<span>0</span>
-									</li>
+									</li> #}
+									{# <li class="card__footer__socials__views">
+										<i class="fa-solid fa-eye"></i>
+										<span>0</span>
+									</li> #}
 									<li class="card__footer__socials__comments">
 										<i class="fa-solid fa-comments"></i>
-										<span>0</span>
+										<span>{{ post.comments|length }}</span>
 									</li>
 								</ul>
 							</div>

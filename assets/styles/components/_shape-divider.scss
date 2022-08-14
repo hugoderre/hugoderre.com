@@ -1,25 +1,27 @@
+@import "./../abstracts/variables";
+
 .shape-divider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow-x: hidden;
-    line-height: 0;
-    z-index: -1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	overflow-x: hidden;
+	line-height: 0;
+	z-index: -1;
 }
 
 .shape-divider__top {
-    height: 250px;
-    width: 100%;
-    background-color: $primary;
+	height: 271px;
+	width: 100%;
+	background-color: $primary;
 }
 
 .shape-divider svg {
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 62px;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 62px;
 }
 
 .shape-divider .shape-fill {
-    fill: $primary;
+	fill: $primary;
 }

@@ -70,17 +70,17 @@ class AppFixtures extends Fixture
     private function tags() {
         $this->wordpressTag = new Tag();
         $this->wordpressTag->setName('WordPress');
-        $this->wordpressTag->setColor('#00749C');
+        $this->wordpressTag->setColor('#21759b');
         $this->manager->persist($this->wordpressTag);
 
         $this->phpTag = new Tag();
         $this->phpTag->setName('PHP');
-        $this->phpTag->setColor('#474A8A');
+        $this->phpTag->setColor('#B0B3D6');
         $this->manager->persist($this->phpTag);
 
         $this->symfonyTag = new Tag();
         $this->symfonyTag->setName('Symfony');
-        $this->symfonyTag->setColor('#FFF');
+        $this->symfonyTag->setColor('#B0B3D6');
         $this->manager->persist($this->symfonyTag);
     }
 
@@ -140,13 +140,21 @@ class AppFixtures extends Fixture
     }
 
 	private function projects() {
+		$titles = [
+			'Un sudoku classique mais efficace !',
+			'Graphiques de séquences célèbres',
+			'Space Invaders revisité en Javascript',
+		];
         for ($i=0; $i < 3; $i++) { 
             $this->project = new Project();
-            $this->project->setName($this->faker->name);
-            $this->project->setSlug($this->faker->title);
+            $this->project->setName($titles[$i]);
+            $this->project->setSlug($this->slugger->slug($titles[$i]));
             $this->project->setThumbnail($this->media[$i]);
             $this->project->setDescription(loremizer::getPhrase(5));
             $this->project->setStatus(Project::STATUS_PUBLISH);
+			$this->project->addTag($this->wordpressTag);
+			$this->project->addTag($this->phpTag);
+			$this->project->addTag($this->symfonyTag);
             $this->project->addGallery($this->media[0]);
             $this->project->addGallery($this->media[1]);
             $this->project->addGallery($this->media[2]);

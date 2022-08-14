@@ -4,17 +4,28 @@
 
 {% block content %}
     <div class="projects-container">
-        <h1>Projets</h1>
+		<div class="page-title">
+			<i class="fa-solid fa-diagram-project"></i>
+			<h1>Projets</h1>
+		</div>
         <section class="projects">
             {% for project in projects %}
                 <article class="project">
                     <div class="project__img">
-                        <img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}" width="400" height="250">
+                        <img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}">
                     </div>
                     <div class="project__content">
-                        <h2 class="product__name">
+                        <h2>
                             <a href="{{ path('project_view', {'slug': project.slug}) }}">{{ project.name }}</a>
                         </h2>
+						<div class="project__content__tags-container">
+							<p>Technologies :</p>
+							<ul>
+							{% for tag in project.tags %}
+								<li class="badge" style="background-color: {{ tag.color }}">{{ tag.name }}</li>
+							{% endfor %}
+							</ul>
+						</div>
                         {# <p>{{ project.description|raw }}</p> #}
                         {# <p><a href="{{ path('project_view', {'slug': project.slug}) }}" class="btn btn-primary">Voir le projet</a></p> #}
                     </div>

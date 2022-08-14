@@ -8,7 +8,7 @@
         <div class="comment__header-info">
             <h5>{{ comment.authorName }}</h5>
             <span>—</span>
-            <div class="comment__created-at">{{ comment.createdAt|date() }}</div>
+            <div class="comment__created-at">{{ comment.createdAt|format_datetime(locale='fr') }}</div>
         </div>
         <div class="comment__content">{{ comment.content }}</div>
     </section>

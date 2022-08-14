@@ -3,17 +3,18 @@
 @import "base/reset";
 @import "~highlight.js/scss/codepen-embed";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css";
-@import 'base/typography';
+@import "base/typography";
 
 @import "layout/header";
 @import "layout/footer";
 
-@import "components/buttons";
+@import "components/button";
 @import "components/card";
 @import "components/form";
 @import "components/notice";
 @import "components/highlightjs";
-@import "components/comments";
+@import "components/comment";
+@import "components/badge";
 
 @import "themes/theme";
 
@@ -21,4 +22,3 @@
 @import "pages/post";
 @import "pages/project";
 @import "pages/login";
-

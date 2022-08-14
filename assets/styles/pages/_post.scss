@@ -1,27 +1,28 @@
+@use "./../components/shape-divider";
+@use "./../components/comment.scss";
+
 .post {
+	background-color: $secondary;
 
-    background-color: $secondary;
+	h1 {
+		color: $secondary;
+		margin-top: 50px;
+	}
 
-    h1 {
-        color: $secondary;
-        margin-top: 50px;
-    }
+	.content {
+		min-width: 0;
+	}
 
-    .content {
-        min-width: 0;
-    }
+	&__date {
+		font-size: 18px;
+		margin-top: 14px;
+		color: $secondary;
+		opacity: 0.8;
+	}
 
-    &__date {
-        font-size: 14px;
-        opacity: 0.8;
-    }
-
-    &__content {
-        color: $primary;
-        margin-top: 150px;
-        line-height: 1.6;
-    }
-
-    @import "../components/shape-divider";
-    @import "../components/comments.scss";
+	&__content {
+		color: $primary;
+		margin-top: 100px;
+		line-height: 1.6;
+	}
 }

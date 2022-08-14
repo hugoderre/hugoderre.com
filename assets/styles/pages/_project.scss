@@ -1,15 +1,47 @@
-.project {
-    display: flex;
-    gap: 20px;
-    &__content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 20px;
-    }
-    img {
-        max-width: 300px;
-        height: auto;
-    }
+@use "../components/badge";
+.projects-container {
+	.page-title {
+		margin-bottom: 53px;
+	}
+}
+.projects {
+	.project {
+		display: flex;
+		gap: 20px;
+		margin-bottom: 60px;
+		@media screen and (max-width: 637px) {
+			flex-direction: column;
+		}
+		&__content {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			justify-content: space-between;
+			h2 {
+				font-size: 34px;
+				a {
+					text-decoration-line: underline;
+					text-decoration-color: $tertiary;
+				}
+			}
+			&__tags-container {
+				p {
+					margin-bottom: 8px;
+					font-style: italic;
+				}
+				ul {
+					display: flex;
+					gap: 10px;
+				}
+			}
+		}
+		img {
+			max-width: 300px;
+			height: auto;
+			@media screen and (max-width: 637px) {
+				max-width: 100%;
+			}
+		}
+	}
 }

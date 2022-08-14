@@ -1,55 +1,56 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    background-color: $secondary;
-    padding: 18px;
-    text-align: left;
-    color: $primary;
-    border-radius: $global-radius;
-    &__header {
-        h2 a {
-            color: $primary;
-            font-size: 38px;
-            &:hover {
-                color: $tertiary;
-            }
-        }
-    }
-    &__body {
-        margin-top: 16px;
-        &-date {
-            color: $primary;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        &-excerpt {
-            margin-top:20px;
-        }
-    }
-    &__footer {
-        margin-top: 20px;
-        &-wrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        &__tags {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 12px;
-            &-tag {
-                background-color: $secondary;
-                color: $primary;
-                padding: 5px;
-                border-radius: $global-radius;
-            }
-        }
-        &__socials {
-            display: flex;
-            gap: 12px;
-        }
-    }
+	display: flex;
+	flex-direction: column;
+	background-color: $secondary;
+	padding: 18px;
+	text-align: left;
+	color: $primary;
+	border-radius: $global-radius;
+	box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px;
+	&__header {
+		h2 a {
+			color: $primary;
+			font-size: 38px;
+			&:hover {
+				color: $tertiary;
+			}
+		}
+	}
+	&__body {
+		margin-top: 16px;
+		&-date {
+			color: $primary;
+			font-size: 12px;
+			font-weight: 600;
+			margin-bottom: 8px;
+		}
+		&-excerpt {
+			margin-top: 20px;
+		}
+	}
+	&__footer {
+		margin-top: 20px;
+		&-wrapper {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 20px;
+		}
+		&__tags {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 12px;
+			&-tag {
+				background-color: $secondary;
+				color: $primary;
+				padding: 5px;
+				border-radius: $global-radius;
+			}
+		}
+		&__socials {
+			display: flex;
+			gap: 12px;
+		}
+	}
 }
