@@ -7,7 +7,12 @@
     <section class="comment">
         <div class="comment__header">
 			<div class="comment__header__avatar">
-				<img src="{{ asset('assets/blank-avatar.jpg') }}" alt="">
+				<img 
+					src="{{ gravatar_exists(comment.authorEmail) ? gravatar(comment.authorEmail) : asset('assets/blank-avatar.jpg') }}" 
+					alt="Avatar de l'auteur du commentaire" 
+					width="50"
+					height="50"
+				/>
 			</div>
 			<div class="comment__header__info">
 				<h5>{{ comment.authorName }}</h5>

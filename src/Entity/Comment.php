@@ -33,6 +33,11 @@ class Comment
     private $authorEmail;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $authorWebsite;
+
+    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $spamScore;
@@ -50,11 +55,6 @@ class Comment
      * @ORM\ManyToOne(targetEntity=Post::class, inversedBy="comments")
      */
     private $post;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $authorWebsite;
 
     /**
      * @ORM\Column(type="datetime_immutable")

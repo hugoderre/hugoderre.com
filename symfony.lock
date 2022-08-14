@@ -267,6 +267,9 @@
     "psr/log": {
         "version": "2.0.0"
     },
+    "pyrrah/gravatar-bundle": {
+        "version": "v1.2.0"
+    },
     "sebastian/cli-parser": {
         "version": "1.0.1"
     },

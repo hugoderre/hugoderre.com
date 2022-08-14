@@ -33,19 +33,3 @@ body {
 		font-size: 44px;
 	}
 }
-
-textarea {
-	padding: 10px;
-}
-
-label.required:after {
-	content: " *";
-}
-
-/* Honeypot */
-.form-group.form-check-country {
-	height: 0;
-	width: 0;
-	border: none;
-	text-decoration: none;
-}

@@ -16,7 +16,7 @@ class CommentType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, [
+            ->add('authorName', TextType::class, [
                 'label' => 'Nom d\'utilisateur',
                 'attr'  => [
                     'placeholder' => '',
@@ -26,7 +26,7 @@ class CommentType extends AbstractType {
                     'class' => 'form-group',
                 ],
             ])
-            ->add('email', EmailType::class, [
+            ->add('authorEmail', EmailType::class, [
                 'label' => 'Email',
                 'attr'  => [
                     'placeholder' => '',
@@ -36,7 +36,7 @@ class CommentType extends AbstractType {
                     'class' => 'form-group',
                 ],
             ])
-			->add('website', UrlType::class, [
+			->add('authorWebsite', UrlType::class, [
                 'label' => 'Site web',
                 'attr'  => [
                     'placeholder' => '',
@@ -57,6 +57,7 @@ class CommentType extends AbstractType {
 				'row_attr' => [
 					'class' => 'form-group form-check-country',
 				],
+				'mapped' => false,
 				'required' => false,
 			])
             ->add('content', TextareaType::class, [

@@ -1,11 +1,35 @@
 .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
 }
+
 input {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ced4da;
-    border-radius: $global-radius;
+	padding: 10px;
+	margin-top: 5px;
+	border: 1px solid #ced4da;
+	border-radius: $global-radius;
+}
+
+textarea {
+	border: 1px solid #ced4da;
+	border-radius: $global-radius;
+	padding: 10px;
+}
+
+label.required:after {
+	content: " *";
+}
+
+/* Honeypot */
+.form-group.form-check-country {
+	height: 0;
+	width: 0;
+	border: none;
+	text-decoration: none;
+}
+
+button[type="submit"] {
+	padding: 13px 25px;
+	margin-top: 12px;
 }

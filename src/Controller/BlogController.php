@@ -57,7 +57,7 @@ class BlogController extends AbstractController
 			$commentFormData = $commentForm->getData();
 
 			// Honneypot check
-			if($commentFormData['country']) {
+			if(!empty($commentFormData['country'])) {
 				$logger->info(sprintf('Honneypot caught from %s', $request->getClientIp()), $commentForm->getData());
 				throw new \RuntimeException('Blatant spam, go away!');
 			}
@@ -67,9 +67,9 @@ class BlogController extends AbstractController
 			$comment->setCreatedAt(new \DateTimeImmutable());
 			$comment->setClientIp($request->getClientIp());
 			$comment->setUserAgent($request->headers->get('User-Agent'));
-			$comment->setAuthorName($commentFormData['username']);
-			$comment->setAuthorEmail($commentFormData['email']);
-			$comment->setAuthorWebsite($commentFormData['website']);
+			$comment->setAuthorName($commentFormData['authorName']);
+			$comment->setAuthorEmail($commentFormData['authorEmail']);
+			$comment->setAuthorWebsite($commentFormData['authorWebsite']);
 			$comment->setContent($commentFormData['content']);
 			
 			$spamChecker = new SpamChecker($httpClient, $akismetKey);
@@ -84,7 +84,8 @@ class BlogController extends AbstractController
 			$comment->setStatus($spamScore > 0 ? Comment::STATUS_PENDING : Comment::STATUS_APPROVED);
 
 			$commentRepository->add($comment, true);
-			$commentForm = $this->createForm(CommentType::class);
+
+			return $this->redirect($request->getUri());
 		}
 
         return $this->render('blog/post.html.twig', [

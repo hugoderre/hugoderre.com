@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38fe42233c302f51e6ef80902096434d",
+    "content-hash": "a9bff373b8375b843fe7650b2698f0dd",
     "packages": [
         {
             "name": "amphp/amp",
@@ -3800,6 +3800,82 @@
                 "source": "https://github.com/php-fig/log/tree/2.0.0"
             },
             "time": "2021-07-14T16:41:46+00:00"
+        },
+        {
+            "name": "pyrrah/gravatar-bundle",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Pyrrah/GravatarBundle.git",
+                "reference": "f42900265918974d94973e6aa956851c64603189"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Pyrrah/GravatarBundle/zipball/f42900265918974d94973e6aa956851c64603189",
+                "reference": "f42900265918974d94973e6aa956851c64603189",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.8",
+                "symfony/framework-bundle": "^3.4.26|^4.1.12|^4.2.7|^5.0|^6.0",
+                "symfony/templating": "^3.4|^4.0|^5.0|^6.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.12"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^4.3|^5.0|^6.0",
+                "twig/extensions": "1.0.*"
+            },
+            "suggest": {
+                "twig/twig": "For gravatar twig extension usage"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "v1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pyrrah\\GravatarBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com"
+                },
+                {
+                    "name": "Henrik Bjørnskov",
+                    "email": "henrik@bjrnskov.dk"
+                },
+                {
+                    "name": "Pierre-Yves Dick",
+                    "email": "hello@pierreyvesdick.fr",
+                    "homepage": "https://github.com/Pyrrah"
+                }
+            ],
+            "description": "The simple way to use Gravatar API for Symfony 3.4 to 6.",
+            "homepage": "https://github.com/Pyrrah/GravatarBundle",
+            "keywords": [
+                "gravatar",
+                "gravatar symfony3",
+                "gravatar symfony4",
+                "gravatar symfony5",
+                "gravatar symfony6",
+                "picture gravatar",
+                "pyrrah"
+            ],
+            "support": {
+                "issues": "https://github.com/Pyrrah/GravatarBundle/issues",
+                "source": "https://github.com/Pyrrah/GravatarBundle/tree/v1.2.0"
+            },
+            "time": "2021-12-29T02:20:25+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -8359,6 +8435,74 @@
                 }
             ],
             "time": "2022-07-24T16:15:25+00:00"
+        },
+        {
+            "name": "symfony/templating",
+            "version": "v5.4.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/templating.git",
+                "reference": "3933eaad08c7f83672c53f635d7c3988252a658a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/templating/zipball/3933eaad08c7f83672c53f635d7c3988252a658a",
+                "reference": "3933eaad08c7f83672c53f635d7c3988252a658a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "require-dev": {
+                "psr/log": "^1|^2|^3"
+            },
+            "suggest": {
+                "psr/log-implementation": "For using debug logging in loaders"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Templating\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides all the tools needed to build any kind of template system",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/templating/tree/v5.4.11"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-06-27T16:58:25+00:00"
         },
         {
             "name": "symfony/translation",
