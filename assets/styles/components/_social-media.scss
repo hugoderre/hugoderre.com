@@ -14,7 +14,7 @@
 
 	background-color: white;
 
-	&.github-link:hover {
+	&:hover {
 		transform: translate(0, -10%);
 		background-color: #333;
 	}

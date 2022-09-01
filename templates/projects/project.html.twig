@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ project.name }}
+	| Hugo Derré
+{% endblock %}
+
+{% block content %}
+	<div class="project-container">
+		<div class="project">
+			<div class="left">
+				<div class="project__img">
+					<img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}">
+				</div>
+			</div>
+			<div class="right">
+				<div class="project__name page-title">
+					<i class="fa-solid fa-diagram-project"></i>
+					<h1>{{ project.name }}</h1>
+				</div>
+				<div class="project__description">
+					{{ project.description|raw }}
+				</div>
+				<div class="project__tags-container ">
+					<ul>
+					{% for tag in project.tags %}
+						<li class="badge">{{ tag.name }}</li>
+					{% endfor %}
+					</ul>
+				</div>
+				<div class="project__links">
+					<div class="project__links__website">
+						<a href="{{ project.websiteUrl }}" target="_blank" rel="noopener noreferrer" title="Site Web" class="website-link"><i class="fa-solid fa-globe"></i><span>Voir le site</span></a>
+					</div>
+					<div class="project__links__github">
+						<a href="{{ project.githubUrl }}" target="_blank" rel="noopener noreferrer" title="Github" class="github-link"><i class="fa-brands fa-github"></i><span>Voir le github du projet</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

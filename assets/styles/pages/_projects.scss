@@ -1,0 +1,42 @@
+@use "../components/badge";
+.projects-container {
+	.page-title {
+		margin-bottom: 53px;
+	}
+	.project {
+		display: flex;
+		gap: 26px;
+		margin-bottom: 60px;
+		@media screen and (max-width: 673px) {
+			flex-direction: column;
+		}
+		&__content {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			justify-content: flex-start;
+			h2 {
+				font-size: 34px;
+				a {
+					text-decoration-line: underline;
+					text-decoration-color: $tertiary;
+					text-underline-offset: 4px;
+				}
+			}
+			&__tags-container {
+				ul {
+					display: flex;
+					gap: 10px;
+				}
+			}
+		}
+		img {
+			max-width: 300px;
+			height: auto;
+			@media screen and (max-width: 673px) {
+				max-width: 100%;
+			}
+		}
+	}
+}
