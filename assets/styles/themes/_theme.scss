@@ -23,6 +23,7 @@ body {
 		}
 		@media screen and (max-width: 992px) {
 			grid-template-columns: 1fr 6fr 1fr;
+			grid-template-rows: 80px 1fr 150px;
 		}
 		@media screen and (max-width: 768px) {
 			grid-template-columns: 1fr 7fr 1fr;
