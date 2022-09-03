@@ -16,7 +16,11 @@
 	&__header {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		gap: 30px;
+		@media screen and (max-width: 768px) {
+			flex-direction: column-reverse;
+		}
 		&__img-me {
 			max-width: 300px;
 			.img-me__wrapper {
