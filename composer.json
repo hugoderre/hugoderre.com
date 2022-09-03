@@ -16,6 +16,7 @@
         "doctrine/orm": "^2.10",
         "easycorp/easyadmin-bundle": "^4.3",
         "friendsofsymfony/ckeditor-bundle": "^2.4",
+        "mailchimp/marketing": "^3.0",
         "phpdocumentor/reflection-docblock": "^5.3",
         "pyrrah/gravatar-bundle": "^1.2",
         "sensio/framework-extra-bundle": "^6.2",

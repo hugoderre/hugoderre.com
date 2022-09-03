@@ -3,6 +3,7 @@
 {% block title %}Hugo Derré | Home{% endblock %}
 
 {% block content %}
+
 	<div class="home__header">
 		<figure class="home__header__img-me">
 			<div class="img-me__wrapper">
@@ -17,13 +18,13 @@
 	<hr>
 	<div class="home__content">
 		<p>
-		J'ai toujours voulu écrire un blog. <strong>Partager des connaissances</strong> peut être un exercice réelement enrichissant et exaltant. Seulement, je n'avais aucune matière pertinente à rédiger.<br>
+		J'ai toujours voulu écrire un blog. <strong>Partager des connaissances</strong> peut être un exercice réelement enrichissant et exaltant. Seulement, je n'avais aucun contenu réelement pertinent à rédiger.<br>
 			C'est après quelques 4 années d'expérience dans un domaine fabuleux que s'est révélée l'évidence : la création d'un blog autour du <strong>dévelopement web</strong>.
 		</p>
 		<h2>Mais alors quel contenu sur ce blog ?</h2>
 		<ul class="home__content__list">
-			<li class="home__content__list__blog-item">Des <a href="{{ path('blog') }}">articles de blog</a> autour du développement web.</li>
-			<li class="home__content__list__project-item">Mes <a href="{{ path('projects') }}">créations personnelles et side projects</a> du moment.</li>
+			<li class="home__content__list__blog-item">Des <a href="{{ path('blog') }}"><strong>articles de blog</strong></a> autour du développement web.</li>
+			<li class="home__content__list__project-item">Mes <a href="{{ path('projects') }}"><strong>créations personnelles et side projects</strong></a> du moment.</li>
 		</ul>
 	</div>
 	<div class="home__footer">
@@ -32,12 +33,9 @@
 			<p>
 			Si le contenu te plaît et que tu ne souhaites rien raté, tu peux t'inscrire à la <strong>newsletter</strong> !<br>
 				Rentre ton <b>email</b> juste ici et tu seras <b>notifié à chaque nouvelle parution</b>.<br>
-				Garantie sans spam, ni partage d'email à des tiers. <b>RGPD POWER ! 🦸‍♂️</b>
+				Garantie sans spam et sans partage d'email à des tiers. <b>RGPD POWER 🦸‍♂️</b>
 			</p>
-			<div class="home__footer__newsletter__form">
-				<input type="email" name="newsletter" placeholder="Email">
-				<button class="btn">Valider</button>
-			</div>
+			{{ form(newsletterForm) }}
 		</div>
 	</div>
 {% endblock %}

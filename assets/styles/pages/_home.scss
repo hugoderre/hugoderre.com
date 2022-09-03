@@ -15,6 +15,7 @@
 	}
 	&__header {
 		display: flex;
+		justify-content: center;
 		gap: 30px;
 		&__img-me {
 			max-width: 300px;
@@ -28,6 +29,8 @@
 			}
 			figcaption {
 				margin-top: 5px;
+				font-size: 16px;
+				color: #606060;
 				font-style: italic;
 				text-align: center;
 			}
@@ -58,19 +61,25 @@
 		}
 	}
 	&__footer {
-		&__newsletter {
-			&__form {
-				display: flex;
-				gap: 7px;
-				margin-top: 12px;
-				input {
-					margin-top: 0;
-				}
-				button {
-					border: 0;
-					padding: 10px 20px;
-					font-size: 16px;
-				}
+		#newsletter {
+			display: flex;
+			align-items: flex-start;
+			gap: 7px;
+			margin-top: 12px;
+			height: 42px;
+			& > div {
+				height: 100%;
+			}
+			.form-group {
+				margin-bottom: 0;
+			}
+			input {
+				margin-top: 0;
+			}
+			button {
+				padding: 10px 20px;
+				font-size: 16px;
+				height: 100%;
 			}
 		}
 	}

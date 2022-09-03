@@ -10,10 +10,10 @@ class SpamChecker
     private $client;
     private $endpoint;
 
-    public function __construct(HttpClientInterface $client, string $akismetKey)
+    public function __construct(HttpClientInterface $client, string $ASKIMET_KEY)
     {
         $this->client = $client;
-        $this->endpoint = sprintf('https://%s.rest.akismet.com/1.1/comment-check', $akismetKey);
+        $this->endpoint = sprintf('https://%s.rest.akismet.com/1.1/comment-check', $ASKIMET_KEY);
     }
 
     /**

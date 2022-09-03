@@ -41,7 +41,7 @@ class BlogController extends AbstractController
 		EventDispatcherInterface $dispatcher,
 		HttpClientInterface $httpClient,
 		LoggerInterface $logger,
-		string $akismetKey, 
+		string $ASKIMET_KEY, 
 	): Response
     {
         if($post->getStatus() !== 'publish') {
@@ -72,7 +72,7 @@ class BlogController extends AbstractController
 			$comment->setAuthorWebsite($commentFormData['authorWebsite']);
 			$comment->setContent($commentFormData['content']);
 			
-			$spamChecker = new SpamChecker($httpClient, $akismetKey);
+			$spamChecker = new SpamChecker($httpClient, $ASKIMET_KEY);
 			$spamScore = $spamChecker->getSpamScore($comment, [
 				'user_ip' => $request->getClientIp(),
 				'user_agent' => $request->headers->get('User-Agent'),
