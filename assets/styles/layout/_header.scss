@@ -1,12 +1,20 @@
-header {
+.topbar {
 	background-color: $primary;
 	grid-column: 1 / span 3;
 	display: grid;
-	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-columns: 2fr 1fr 2fr;
 	grid-template-rows: 1fr;
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
-	.topbar__nav {
+	&__logo {
+		color: $tertiary;
+		display: flex;
+		padding: 0 30px;
+		align-items: center;
+		font-size: 22px;
+		letter-spacing: 0.1rem;
+	}
+	&__nav {
 		grid-column-start: 2;
 		ul {
 			display: flex;
@@ -34,7 +42,7 @@ header {
 			}
 		}
 	}
-	.topbar__login {
+	&__login {
 		grid-column-start: 3;
 		display: flex;
 		justify-content: center;
