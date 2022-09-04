@@ -8,14 +8,13 @@ use App\Event\PostViewEvent;
 use App\Form\Type\Post\CommentType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
-use App\Security\SpamChecker;
+use App\Security\SpamCheckerService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class BlogController extends AbstractController
 {
@@ -39,9 +38,8 @@ class BlogController extends AbstractController
 		Post $post, 
 		CommentRepository $commentRepository, 
 		EventDispatcherInterface $dispatcher,
-		HttpClientInterface $httpClient,
 		LoggerInterface $logger,
-		string $ASKIMET_KEY, 
+		SpamCheckerService $spamChecker
 	): Response
     {
         if($post->getStatus() !== 'publish') {
@@ -72,7 +70,6 @@ class BlogController extends AbstractController
 			$comment->setAuthorWebsite($commentFormData['authorWebsite']);
 			$comment->setContent($commentFormData['content']);
 			
-			$spamChecker = new SpamChecker($httpClient, $ASKIMET_KEY);
 			$spamScore = $spamChecker->getSpamScore($comment, [
 				'user_ip' => $request->getClientIp(),
 				'user_agent' => $request->headers->get('User-Agent'),

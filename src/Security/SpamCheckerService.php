@@ -5,7 +5,7 @@ namespace App\Security;
 use App\Entity\Comment;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class SpamChecker
+class SpamCheckerService
 {
     private $client;
     private $endpoint;
