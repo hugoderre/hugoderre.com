@@ -1,3 +1,5 @@
+@import "./../layout/grid-columns";
+
 html {
 	width: 100%;
 	height: 100%;
@@ -13,22 +15,18 @@ body {
 
 	& > .container {
 		height: 100%;
-		display: grid;
-		grid-template-columns: 1fr 3fr 1fr;
+
+		@include global-grid-columns-template;
 		grid-template-rows: 80px 1fr 100px;
 		grid-column-gap: 0px;
 		grid-row-gap: 0px;
-		@media screen and (max-width: 1200px) {
-			grid-template-columns: 1fr 5fr 1fr;
-		}
 		@media screen and (max-width: 992px) {
-			grid-template-columns: 1fr 6fr 1fr;
 			grid-template-rows: 80px 1fr 150px;
 		}
 		@media screen and (max-width: 768px) {
-			grid-template-columns: 1fr 7fr 1fr;
 			grid-template-rows: 150px 1fr 150px;
 		}
+
 		& > .content {
 			grid-row-start: 2;
 			grid-column-start: 2;

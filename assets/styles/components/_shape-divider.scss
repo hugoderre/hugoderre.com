@@ -1,27 +1,31 @@
 @import "./../abstracts/variables";
+@import "./../layout/grid-columns";
 
 .shape-divider {
 	position: absolute;
-	top: 0;
 	left: 0;
 	width: 100%;
 	overflow-x: hidden;
 	line-height: 0;
 	z-index: -1;
-}
-
-.shape-divider__top {
-	height: 271px;
-	width: 100%;
-	background-color: $primary;
-}
-
-.shape-divider svg {
-	display: block;
-	width: calc(100% + 1.3px);
-	height: 62px;
-}
-
-.shape-divider .shape-fill {
-	fill: $primary;
+	&__top {
+		@include global-grid-columns-template;
+		width: 100%;
+		background-color: $primary;
+		// @media screen and (max-width: 992px) {
+		// 	height: 400px;
+		// }
+		& > div {
+			grid-column-start: 2;
+			margin: 50px 0;
+		}
+	}
+	svg {
+		display: block;
+		width: calc(100% + 1.3px);
+		height: 62px;
+	}
+	.shape-fill {
+		fill: $primary;
+	}
 }

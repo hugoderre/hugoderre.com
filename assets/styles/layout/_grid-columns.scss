@@ -1,0 +1,13 @@
+@mixin global-grid-columns-template {
+	display: grid;
+	grid-template-columns: 1fr 1100px 1fr;
+	@media screen and (max-width: 1200px) {
+		grid-template-columns: 1fr 7fr 1fr;
+	}
+	@media screen and (max-width: 992px) {
+		grid-template-columns: 1fr 7fr 1fr;
+	}
+	@media screen and (max-width: 768px) {
+		grid-template-columns: 1fr 7fr 1fr;
+	}
+}
