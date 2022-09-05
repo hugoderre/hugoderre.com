@@ -12,7 +12,7 @@ footer {
 		grid-template-columns: 1fr 1fr 1fr;
 
 		@media (max-width: 768px) {
-			grid-template-columns: 2fr 1fr 2fr;
+			grid-template-columns: 2fr 0fr 2fr;
 		}
 
 		grid-template-rows: 1fr;
@@ -69,6 +69,9 @@ footer {
 			align-items: start;
 			justify-content: center;
 			gap: 8px;
+			@media screen and (max-width: 768px) {
+				font-size: 16px;
+			}
 			a {
 				color: $primary;
 				text-decoration: underline;

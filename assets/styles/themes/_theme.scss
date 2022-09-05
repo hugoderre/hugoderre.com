@@ -27,6 +27,7 @@ body {
 		}
 		@media screen and (max-width: 768px) {
 			grid-template-columns: 1fr 7fr 1fr;
+			grid-template-rows: 150px 1fr 150px;
 		}
 		& > .content {
 			grid-row-start: 2;

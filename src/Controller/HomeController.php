@@ -53,12 +53,12 @@ class HomeController extends AbstractController
 				$responseBodyAsString = $response->getBody()->getContents();
 				$decoded = json_decode($responseBodyAsString);
 				if($decoded->status == 400) {
-					$this->addFlash('error', 'L\'adresse email est déjà inscrite à la newsletter.');
+					$this->addFlash('error', 'Vous êtes déjà inscrit à la newsletter !');
 				} else {
 					$this->addFlash('error', 'Oups ! Une erreur est survenue lors de votre inscription à la newsletter.');
 				}
 			} catch (ConnectException $e) {
-				$this->addFlash('error', 'Oups ! Une erreur est survenue lors de votre inscription à la newsletter.');
+				$this->addFlash('error', 'L\'inscription à la newsletter rencontre un petit problême... Veuillez réessayer plus tard.');
 			}
 
 			return $this->redirectToRoute('home');
