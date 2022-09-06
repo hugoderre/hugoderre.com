@@ -65,7 +65,7 @@ DirectoryIndex index.php
     </IfModule>
 </IfModule>
 
-AuthUserFile /app/.htpasswd
+AuthUserFile /app/www/.htpasswd
 AuthType Basic
 AuthName "Restricted Access"
 Require valid-user
