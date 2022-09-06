@@ -63,4 +63,4 @@ DirectoryIndex index.php
         RedirectMatch 307 ^/$ /index.php/
         # RedirectTemp cannot be used instead
     </IfModule>
-</IfModule>
+</IfModule> 
