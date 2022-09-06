@@ -64,8 +64,3 @@ DirectoryIndex index.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
-
-# AuthUserFile /app/www/.htpasswd
-AuthType Basic
-AuthName "Restricted Access"
-Require valid-user
