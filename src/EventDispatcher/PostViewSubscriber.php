@@ -23,14 +23,14 @@ class PostViewSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            // 'post.view' => 'sendMailToAdmin'
+            'post.view' => 'sendMailToAdmin'
         ];
     }
 
     public function sendMailToAdmin(PostViewEvent $post)
     {
         $email = new TemplatedEmail();
-        $email->from(new Address('hdv2symfapp@yopmail.com', 'Hugo Derre Info'))
+        $email->from(new Address('contact@hugoderre.fr', 'Hugo Derre Info'))
             ->to('hugo.d83@outlook.fr')
             ->text("Un visiteur est en train de voir la page '" . $post->getPost()->getTitle() . "'")
             ->htmlTemplate('mails/post-view.html.twig')
