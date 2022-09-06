@@ -31,7 +31,7 @@ class AppFixtures extends Fixture
         $this->manager = $manager;
         $this->users();
         $this->tags();
-		// $this->medias();
+		$this->medias();
         $this->postsAndComments();
 		$this->projects();
         $this->manager->flush();
@@ -155,9 +155,9 @@ class AppFixtures extends Fixture
 			$this->project->addTag($this->wordpressTag);
 			$this->project->addTag($this->phpTag);
 			$this->project->addTag($this->symfonyTag);
-            // $this->project->addGallery($this->media[0]);
-            // $this->project->addGallery($this->media[1]);
-            // $this->project->addGallery($this->media[2]);
+            $this->project->addGallery($this->media[0]);
+            $this->project->addGallery($this->media[1]);
+            $this->project->addGallery($this->media[2]);
             $this->manager->persist($this->project);
         }
 	}
