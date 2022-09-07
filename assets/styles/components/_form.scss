@@ -27,6 +27,9 @@ label.required:after {
 	width: 0;
 	border: none;
 	text-decoration: none;
+	input {
+		visibility: hidden;
+	}
 }
 
 button[type="submit"] {
