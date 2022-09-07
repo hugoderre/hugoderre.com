@@ -6,9 +6,10 @@
 		&#8250;
 	</button>
 	<ul class="slides-container" id="slides-container">
-		<li class="slide"></li>
-		<li class="slide"></li>
-		<li class="slide"></li>
-		<li class="slide"></li>
+		{% for image in images %}
+			<li class="slide">
+				<img src="{{ asset('uploads/' ~ image.fileName) }}" alt="">
+			</li>	
+		{% endfor %}
 	</ul>
 </section>
