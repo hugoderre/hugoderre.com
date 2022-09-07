@@ -5,12 +5,8 @@
 	width: 100vw;
 	position: relative;
 	left: 50%;
-	right: 50%;
 	margin-left: -50vw;
-	margin-right: -50vw;
-	overflow-x: hidden;
 	line-height: 0;
-	z-index: -1;
 	&__top {
 		@include global-grid-columns-template;
 		width: 100%;
