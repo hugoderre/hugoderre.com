@@ -10,7 +10,7 @@
 		}
 		h2 {
 			color: $tertiary;
-			margin: 35px 0 30px 0;
+			margin: 45px 0 30px 0;
 		}
 	}
 	&__header {
@@ -49,22 +49,22 @@
 		}
 	}
 	&__content {
-		&__list {
-			list-style: none;
-			&__blog-item::before {
-				content: "💻 ";
+		&__blog-summary {
+			&__list {
+				list-style: none;
+				&__blog-item::before {
+					content: "💻 ";
+				}
+				&__project-item::before {
+					content: "🚧 ";
+				}
 			}
-			&__project-item::before {
-				content: "🚧 ";
+			a {
+				text-decoration: underline;
+				text-decoration-color: $tertiary;
+				text-underline-offset: 2px;
 			}
 		}
-		a {
-			text-decoration: underline;
-			text-decoration-color: $tertiary;
-			text-underline-offset: 2px;
-		}
-	}
-	&__footer {
 		#newsletter {
 			display: flex;
 			align-items: flex-start;
