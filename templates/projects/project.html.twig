@@ -10,6 +10,7 @@
 		<div class="left">
 			<div class="project__container__img">
 				<img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}">
+				{{ include( "partials/block/slides.html.twig" ) }}
 			</div>
 		</div>
 		<div class="right">
