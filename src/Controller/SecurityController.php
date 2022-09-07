@@ -10,9 +10,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/login', name: 'login', priority:1)]
-    public function login(AuthenticationUtils $utils): Response
+    #[Route('/login-{psw}', name: 'login', priority:1)]
+    public function login(AuthenticationUtils $utils, string $psw, string $LOGIN_PATH_SECURITY_CHECK): Response
     {
+		if($psw !== $LOGIN_PATH_SECURITY_CHECK) {
+			throw $this->createNotFoundException('Page not found');
+		}
+
         $form = $this->createForm(LoginType::class);
 
         if($lastAuthenticationError = $utils->getLastAuthenticationError()){

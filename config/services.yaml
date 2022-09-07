@@ -61,3 +61,7 @@ services:
                 entity: App\Entity\Media
             }
         ]
+    
+    App\Controller\SecurityController:
+        bind: 
+            $LOGIN_PATH_SECURITY_CHECK: "%env(LOGIN_PATH_SECURITY_CHECK)%"
