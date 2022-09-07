@@ -64,7 +64,7 @@ class HomeController extends AbstractController
 			return $this->redirectToRoute('home');
 		}
 		
-        return $this->render('static-pages/home.html.twig', [
+        return $this->render('home/home.html.twig', [
             'page' => 'home',
 			'newsletterForm' => $newsletterForm->createView()
         ]);
