@@ -4,7 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    env: '%kernel.environment%'
+    uploads_base_prod: 'https://%env(AWS_S3_BUCKET_NAME)%.s3.eu-west-3.amazonaws.com'
+    uploads_base_dev: '/uploads'
+    
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -65,3 +68,12 @@ services:
     App\Controller\SecurityController:
         bind: 
             $LOGIN_PATH_SECURITY_CHECK: "%env(LOGIN_PATH_SECURITY_CHECK)%"
+
+    Aws\S3\S3Client:
+      arguments:
+        -
+          version: 'latest'
+          region: "eu-west-3"
+          credentials:
+              key: '%env(AWS_S3_ACCESS_ID)%'
+              secret: '%env(AWS_S3_ACCESS_SECRET)%'

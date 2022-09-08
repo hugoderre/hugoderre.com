@@ -8,7 +8,7 @@
 	<ul class="slides-container" id="slides-container">
 		{% for image in images %}
 			<li class="slide">
-				<img src="{{ asset('uploads/' ~ image.fileName) }}" alt="">
+				<img src="{{ uploadsBasePath ~ image.fileName }}" alt="">
 			</li>	
 		{% endfor %}
 	</ul>

@@ -12,7 +12,7 @@
             {% for project in projects %}
                 <article class="project">
                     <div class="project__img">
-                        <img src="{{ asset('uploads/' ~ project.thumbnail.fileName) }}" alt="{{ project.name }}">
+                        <img src="{{ uploadsBasePath ~ project.thumbnail.fileName }}" alt="{{ project.name }}">
                     </div>
                     <div class="project__content">
                         <h2>

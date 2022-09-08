@@ -1,6 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     strict_variables: false
+    globals:
+      uploads_base_prod: '%uploads_base_prod%'
+      uploads_base_dev: '%uploads_base_dev%'
 when@test:
     twig:
         strict_variables: true

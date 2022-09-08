@@ -19,4 +19,5 @@ return [
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     Pyrrah\GravatarBundle\PyrrahGravatarBundle::class => ['all' => true],
+    League\FlysystemBundle\FlysystemBundle::class => ['all' => true],
 ];

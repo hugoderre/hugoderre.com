@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Media;
+use App\Helpers\UploadsHelperService;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -14,6 +15,13 @@ use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class MediaCrudController extends AbstractCrudController
 {
+	protected $uploadHelper;
+
+	public function __construct(UploadsHelperService $uploadsHelper)
+	{
+		$this->uploadsHelper = $uploadsHelper;
+	}
+
     public static function getEntityFqcn(): string
     {
         return Media::class;
@@ -23,7 +31,7 @@ class MediaCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            ImageField::new('fileName')->setBasePath('/uploads/')->setLabel('Fichier')->onlyOnIndex(),
+            ImageField::new('fileName')->setBasePath($this->uploadsHelper->getUploadsBasePath('/media/'))->setLabel('Fichier')->onlyOnIndex(),
             TextField::new('file')->setFormType(VichFileType::class)->onlyWhenCreating(),
             TextField::new('fileName')->hideOnForm()->setLabel('Nom du fichier'),
             NumberField::new('size')->hideOnForm()->setLabel('Taille'),
