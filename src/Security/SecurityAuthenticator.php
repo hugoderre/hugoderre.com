@@ -22,7 +22,9 @@ use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 class SecurityAuthenticator extends AbstractAuthenticator
 {
 
-    public function __construct(protected UserRepository $userRepository, protected UserPasswordHasherInterface $encoder) {}
+    public function __construct(protected UserRepository $userRepository, protected UserPasswordHasherInterface $encoder, string $LOGIN_PATH_SECURITY_CHECK) {
+		$this->loginRouteEndpoint = 'login-' . $LOGIN_PATH_SECURITY_CHECK;
+	}
 
     public function supports(Request $request): ?bool
     {
@@ -81,7 +83,7 @@ class SecurityAuthenticator extends AbstractAuthenticator
     {
         $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
         $request->getSession()->set(Security::LAST_USERNAME, $request->get('login')['username']);
-        return new RedirectResponse('/login');
+        return new RedirectResponse('/' . $this->loginRouteEndpoint);
     }
 
     public function start() {}
