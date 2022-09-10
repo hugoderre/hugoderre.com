@@ -91,7 +91,8 @@ class AppFixtures extends Fixture
             $this->media[$i] = new Media();
             $this->media[$i]->setTitle($mediaName);
             $uploadedFile = new UploadedFile(
-                '/var/www/src/DataFixtures/fixture-medias/' . $mediaName . '.jpg',
+                // '/var/www/src/DataFixtures/fixture-medias/' . $mediaName . '.jpg',
+                '/app/src/DataFixtures/fixture-medias/' . $mediaName . '.jpg',
                 $mediaName . '.jpg',
                 'image/jpeg',
                 null,
