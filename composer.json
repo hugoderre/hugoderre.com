@@ -104,7 +104,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install public": "symfony-cmd",
-            "ckeditor:install": "symfony-cmd"
+            "ckeditor:install": "symfony-cmd" 
         },
 		"database-setup": [
 			"php bin/console doctrine:migrations:migrate --no-interaction"
