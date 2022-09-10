@@ -6,9 +6,11 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Event\PostViewEvent;
 use App\Form\Type\Post\CommentType;
+use App\Helpers\PostHelpers;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use App\Security\SpamCheckerService;
+use App\Trait\PostTypeTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -18,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
+	use PostTypeTrait;
 
     #[Route('/blog', name: 'blog')]
     // #[ParamConverter('post')]
@@ -39,12 +42,12 @@ class BlogController extends AbstractController
 		CommentRepository $commentRepository, 
 		EventDispatcherInterface $dispatcher,
 		LoggerInterface $logger,
-		SpamCheckerService $spamChecker
+		SpamCheckerService $spamChecker,
 	): Response
     {
-        if($post->getStatus() !== 'publish') {
-            throw $this->createNotFoundException('Post not found');
-        }
+        if(!$this->canUserView($post)) {
+			throw $this->createNotFoundException('Post not found');
+		}
 
         $postViewEvent = new PostViewEvent($post);
         $dispatcher->dispatch($postViewEvent, 'post.view');

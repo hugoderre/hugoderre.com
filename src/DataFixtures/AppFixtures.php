@@ -158,6 +158,7 @@ class AppFixtures extends Fixture
             $this->project->addGallery($this->media[0]);
             $this->project->addGallery($this->media[1]);
             $this->project->addGallery($this->media[2]);
+			$this->project->setAuthor($this->userAdmin);
             $this->manager->persist($this->project);
         }
 	}

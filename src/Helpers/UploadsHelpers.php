@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class UploadsHelperService
+class UploadsHelpers
 {
 	public $env;
 	public $uploadsBasePath;

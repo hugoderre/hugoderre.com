@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-abstract class AbstractPost
+abstract class AbstractPostType
 {
     /**
      * @ORM\Id
@@ -34,6 +34,12 @@ abstract class AbstractPost
 	const STATUS_PUBLISH = 'publish';
     const STATUS_DRAFT = 'draft';
     const STATUS_TRASH = 'trash';
+
+	/**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $author;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -98,6 +104,18 @@ abstract class AbstractPost
             self::STATUS_DRAFT => 'Brouillon',
             self::STATUS_TRASH => 'Corbeille',
         ];
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable

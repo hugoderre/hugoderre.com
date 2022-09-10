@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Media;
-use App\Helpers\UploadsHelperService;
+use App\Helpers\UploadsHelpers;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -17,7 +17,7 @@ class MediaCrudController extends AbstractCrudController
 {
 	protected $uploadHelper;
 
-	public function __construct(UploadsHelperService $uploadsHelper)
+	public function __construct(UploadsHelpers $uploadsHelper)
 	{
 		$this->uploadsHelper = $uploadsHelper;
 	}

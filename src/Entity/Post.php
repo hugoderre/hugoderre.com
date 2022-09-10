@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
  */
-class Post extends AbstractPost
+class Post extends AbstractPostType
 {
     /**
      * @ORM\Column(type="string", length=255)
@@ -36,12 +36,6 @@ class Post extends AbstractPost
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="post")
      */
     private $comments;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    protected $author;
 
     const STATUS_PUBLISH = 'publish';
     const STATUS_DRAFT = 'draft';
@@ -151,18 +145,6 @@ class Post extends AbstractPost
                 $comment->setPost(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getAuthor(): ?User
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?User $author): self
-    {
-        $this->author = $author;
 
         return $this;
     }
