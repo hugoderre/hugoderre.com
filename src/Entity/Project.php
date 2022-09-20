@@ -42,6 +42,11 @@ class Project extends AbstractPostType
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $listOrder;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
@@ -152,5 +157,17 @@ class Project extends AbstractPostType
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getListOrder(): ?int
+    {
+        return $this->listOrder;
+    }
+
+    public function setListOrder(int $listOrder): self
+    {
+        $this->listOrder = $listOrder;
+
+        return $this;
     }
 }

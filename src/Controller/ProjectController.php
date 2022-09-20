@@ -18,6 +18,10 @@ class ProjectController extends AbstractController
     public function projects(ProjectRepository $projectRepository, UploadsHelpers $uploadsHelper): Response
     {
         $projects = $projectRepository->findBy( ['status' => 'publish'] );
+
+		usort($projects, function($a, $b) {
+			return $a->getListOrder() <=> $b->getListOrder();
+		});
         
         return $this->render('projects/projects.html.twig', [
             'projects' => $projects,
