@@ -6,7 +6,7 @@ use App\Entity\Comment;
 use App\Entity\Post;
 use App\Event\PostViewEvent;
 use App\Form\Type\Post\CommentType;
-use App\Helpers\PostHelpers;
+use App\Helpers\UploadsHelpers;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use App\Security\SpamCheckerService;
@@ -43,6 +43,7 @@ class BlogController extends AbstractController
 		EventDispatcherInterface $dispatcher,
 		LoggerInterface $logger,
 		SpamCheckerService $spamChecker,
+		UploadsHelpers $uploadsHelper
 	): Response
     {
         if(!$this->canUserView($post)) {
@@ -95,6 +96,7 @@ class BlogController extends AbstractController
 				'form'   => $commentForm->createView(),
 			],
             'page'      => 'post',
+			'uploadsBasePath' => $uploadsHelper->getUploadsBasePath('/media/')
         ]);
     }
 }

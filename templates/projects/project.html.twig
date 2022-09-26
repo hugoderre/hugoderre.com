@@ -1,9 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	{{ project.name }}
-	| Hugo Derré
+{% block meta_description -%}
+	{% if project.metaDescription %}
+		{{- project.metaDescription -}}
+	{% else %}
+		{{- project.description|striptags|u.truncate(160, '...', false) -}}
+	{%- endif %}
 {% endblock %}
+
+{% block meta_image -%}
+	{% if project.metaImage %}
+		{{- url('homepage')|trim('/') ~ uploadsBasePath ~ project.metaImage.fileName -}}
+	{% elseif project.thumbnail %}
+		{{- url('homepage')|trim('/') ~ uploadsBasePath ~ project.thumbnail.fileName -}}
+	{% else %}
+		{{- parent() -}}
+	{%- endif %}
+{% endblock %}
+
+{% block title %}{{ project.name }} | Hugo Derré{% endblock %}
 
 {% block content %}
 	<div class="project__container">

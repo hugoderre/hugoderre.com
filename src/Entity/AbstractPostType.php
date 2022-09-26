@@ -26,6 +26,17 @@ abstract class AbstractPostType
      */
     protected $thumbnail;
 
+	/**
+	 * @ORM\Column(type="text", nullable=true)
+	 */
+	protected $metaDescription;
+
+	/**
+     * @ORM\ManyToOne(targetEntity=Media::class)
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $metaImage;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -81,6 +92,30 @@ abstract class AbstractPostType
     public function setThumbnail(?Media $thumbnail): self
     {
         $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+	public function getMetaDescription(): ?string
+    {
+        return $this->metaDescription;
+    }
+
+    public function setMetaDescription(?string $metaDescription): self
+    {
+        $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+	public function getMetaImage(): ?Media
+    {
+        return $this->metaImage;
+    }
+
+    public function setMetaImage(?Media $metaImage): self
+    {
+        $this->metaImage = $metaImage;
 
         return $this;
     }

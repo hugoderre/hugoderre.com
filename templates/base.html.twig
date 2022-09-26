@@ -3,12 +3,36 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/x-icon">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
+
+		<meta name="description" content="{% block meta_description %}Moi c'est Hugo Derré, et j'ai créé ce blog de développeur fait pour les développeurs ! Articles de blog autour du développement web, créations personnelles et side projects du moment.{% endblock %}" />
+
+		{# Facebook #}
+		<meta property="og:image" content="{% block meta_image %}{{ url('homepage')|trim('/') ~ asset('assets/meta-img.png') }}{% endblock %}" />
+		<meta property="og:title" content="{% block title %}Hugo Derré - Développeur Web Fullstack{% endblock %}" />
+		<meta property="og:description" content="{{ block('meta_description') }}" />
+		<meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}" />
+		<meta property="og:type" content="website" />
+
+		{# Twitter #}
+		<meta name="twitter:image" content="{{ block('meta_image') }}" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="{{ block('title') }}" />
+		<meta name="twitter:description" content="{{ block('meta_description') }}" />
+		<meta name="twitter:creator" content="@devgohu" />
+
+		{# Global site tag (gtag.js) - Google Analytics #}
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137430884-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-137430884-2');
+		</script>
+
+
+		<link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/x-icon" />
+		<title>{{ block('title') }}</title>
 		{# Run `composer require symfony/webpack-encore-bundle`
 						           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
