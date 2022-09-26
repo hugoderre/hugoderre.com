@@ -10,9 +10,9 @@
 
 {% block meta_image -%}
 	{% if post.metaImage %}
-		{{- url('homepage')|trim('/') ~ uploadsBasePath ~ post.metaImage.fileName -}}
+		{{- uploadsBasePath ~ post.metaImage.fileName -}}
 	{% elseif post.thumbnail %}
-		{{- url('homepage')|trim('/') ~ uploadsBasePath ~ post.thumbnail.fileName -}}
+		{{- uploadsBasePath ~ post.thumbnail.fileName -}}
 	{% else %}
 		{{- parent() -}}
 	{%- endif %}
