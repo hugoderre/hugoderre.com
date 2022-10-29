@@ -17,7 +17,7 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
-        "easycorp/easyadmin-bundle": "^4.4",
+        "easycorp/easyadmin-bundle": "4.4.0",
         "friendsofsymfony/ckeditor-bundle": "^2.4",
         "league/flysystem-aws-s3-v3": "^3.2",
         "league/flysystem-bundle": "^2.3",
