@@ -20,7 +20,6 @@ DirectoryIndex index.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
 	
-	RewriteCond %{HTTP_HOST} ^hugoderre.fr [NC]
 	RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
 	RewriteCond %{HTTP:X-Forwarded-Proto} =""
 	RewriteCond %{HTTPS} !=on
