@@ -154,20 +154,20 @@ class Project extends AbstractPostType
         return $this;
     }
 
+	public function getListOrder(): ?int
+	{
+		return $this->listOrder;
+	}
+
+	public function setListOrder(int $listOrder): self
+	{
+		$this->listOrder = $listOrder;
+
+		return $this;
+	}
+	
     public function __toString()
     {
         return $this->name;
-    }
-
-    public function getListOrder(): ?int
-    {
-        return $this->listOrder;
-    }
-
-    public function setListOrder(int $listOrder): self
-    {
-        $this->listOrder = $listOrder;
-
-        return $this;
     }
 }

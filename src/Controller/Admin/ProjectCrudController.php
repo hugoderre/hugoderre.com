@@ -46,7 +46,7 @@ class ProjectCrudController extends AbstractCrudController
             AssociationField::new('gallery')->autocomplete(true),
             AssociationField::new('tags')->autocomplete(true),
 			AssociationField::new('author')->autocomplete(true),
-			NumberField::new('list_order')->onlyOnForms(),
+			NumberField::new('listOrder')->onlyOnForms(),
 			TextareaField::new('metaDescription')->onlyOnForms(),
 			AssociationField::new('metaImage')->autocomplete(true)->onlyOnForms(),
             ChoiceField::new('status')->setChoices(array_flip(Project::getStatusList())),
