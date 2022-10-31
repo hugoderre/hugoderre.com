@@ -24,6 +24,7 @@ DirectoryIndex index.php
 	RewriteCond %{HTTP:X-Forwarded-Proto} =""
 	RewriteCond %{HTTPS} !=on
 	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteCond ^ https://hugoderre.fr%{REQUEST_URI} [L,R=301]
 	RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE,QSA]
 	# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 	
