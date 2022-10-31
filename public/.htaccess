@@ -20,10 +20,14 @@ DirectoryIndex index.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
 	
-	RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
-	RewriteCond %{HTTP:X-Forwarded-Proto} =""
-	RewriteCond %{HTTPS} !=on
-	RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	# RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+	# RewriteCond %{HTTP:X-Forwarded-Proto} =""
+	# RewriteCond %{HTTPS} !=on
+	# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	RewriteCond "%{HTTP_HOST}" "!^www\." [NC]
+	RewriteCond "%{HTTP_HOST}" "!^$"
+	RewriteRule "^/?(.*)" "https://www.%{HTTP_HOST}/$1" [L,R,NE]
 	
 	# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE,QSA]
 
