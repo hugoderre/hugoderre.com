@@ -1,0 +1,17 @@
+.error-page {
+	text-align: center;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	h1 {
+		font-size: 104px;
+		color: #ff6b08;
+	}
+	&__top-label {
+		font-weight: 600;
+		font-size: 28px;
+	}
+	&__bottom-label {
+		margin-top: 12px;
+	}
+}
