@@ -23,7 +23,10 @@ DirectoryIndex index.php
 	# RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
 	# RewriteCond %{HTTP:X-Forwarded-Proto} =""
 	# RewriteCond %{HTTPS} !=on
-	RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+	RewriteCond %{HTTP_HOST} !^www\.
+	RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE,QSA]
 
 	# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE,QSA]
 
