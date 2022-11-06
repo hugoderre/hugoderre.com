@@ -34,6 +34,7 @@ class Project extends AbstractPostType
 
     /**
      * @ORM\ManyToMany(targetEntity=Media::class)
+	 * @ORM\OrderBy({"fileName" = "ASC"})
      */
     private $gallery;
 
