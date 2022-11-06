@@ -28,5 +28,9 @@ class ProjectListener
         if(empty($project->getCreatedAt())) {
             $project->setCreatedAt(new DateTimeImmutable());
         }
+
+		if(empty($project->getAuthor())) {
+            $project->setAuthor($this->security->getUser());
+        }
     }
 }
