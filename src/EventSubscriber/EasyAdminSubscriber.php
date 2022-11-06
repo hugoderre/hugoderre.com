@@ -39,9 +39,6 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $slug = $this->slugger->slug($entity->getTitle());
-        $entity->setSlug($slug);
-
         $entity->setUpdatedAt(new DateTimeImmutable());
     }
 
