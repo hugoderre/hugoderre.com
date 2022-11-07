@@ -2,6 +2,7 @@
 fos_ck_editor:
     configs:
         main_config:
+            allowedContent: true
             toolbar: 
                 - {
                     name: "styles",
