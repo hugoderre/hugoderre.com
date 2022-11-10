@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'home')]
+    #[Route('/home', name: 'home',  options: ['sitemap' => true])]
     public function index(
 		Request $request, 
 		ValidatorInterface $validator,

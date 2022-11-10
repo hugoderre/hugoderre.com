@@ -24,6 +24,7 @@
         "league/mime-type-detection": "^1.11",
         "mailchimp/marketing": "^3.0",
         "phpdocumentor/reflection-docblock": "^5.3",
+        "presta/sitemap-bundle": "^3.3",
         "pyrrah/gravatar-bundle": "^1.2",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/apache-pack": "^1.0",

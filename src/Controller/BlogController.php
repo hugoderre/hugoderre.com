@@ -22,7 +22,7 @@ class BlogController extends AbstractController
 {
 	use PostTypeTrait;
 
-    #[Route('/blog', name: 'blog')]
+    #[Route('/blog', name: 'blog', options: ['sitemap' => true])]
     // #[ParamConverter('post')]
     public function all(PostRepository $postRepository): Response
     {

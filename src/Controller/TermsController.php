@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TermsController extends AbstractController
 {
-	#[Route('/privacy', name: 'privacy')]
+	#[Route('/privacy', name: 'privacy', options: ['sitemap' => false])]
 	public function privacy(): Response
 	{
 		return $this->render('terms/privacy.html.twig', [

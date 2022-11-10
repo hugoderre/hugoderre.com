@@ -6,6 +6,7 @@ use App\Entity\Project;
 use App\Helpers\UploadsHelpers;
 use App\Repository\ProjectRepository;
 use App\Trait\PostTypeTrait;
+use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +15,7 @@ class ProjectController extends AbstractController
 {
 	use PostTypeTrait;
 
-    #[Route('/projets', name: 'projects')]
+    #[Route('/projets', name: 'projects', options: ['sitemap' => true])]
     public function projects(ProjectRepository $projectRepository, UploadsHelpers $uploadsHelper): Response
     {
         $projects = $projectRepository->findBy( ['status' => 'publish'] );
