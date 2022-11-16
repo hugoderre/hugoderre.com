@@ -1,11 +1,13 @@
 # Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
 fos_ck_editor:
+    base_path: "bundles/ckeditor"
+    js_path:   "bundles/ckeditor/ckeditor.js"
     configs:
         main_config:
             allowedContent: true
             height: 850
             width: 1000
-            toolbar: 
+            toolbar:
                 - {
                     name: "styles",
                     items: 
@@ -14,6 +16,8 @@ fos_ck_editor:
                         "Italic",
                         "Underline",
                         "Strike",
+                        "CodeSnippet",
+                        "Code",
                         "Blockquote",
                         "-",
                         "Link",
