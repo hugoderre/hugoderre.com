@@ -3,6 +3,8 @@ fos_ck_editor:
     configs:
         main_config:
             allowedContent: true
+            height: 850
+            width: 1000
             toolbar: 
                 - {
                     name: "styles",
