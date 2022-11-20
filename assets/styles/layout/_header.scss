@@ -6,16 +6,20 @@
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
 	@media screen and (max-width: 768px) {
-		grid-template-rows: 1fr 1fr;
+		grid-template-rows: 3fr 2fr;
 	}
 	&__logo {
 		color: $tertiary;
 		display: flex;
+		gap: 15px;
 		padding: 0 30px;
 		align-items: center;
 		justify-content: center;
 		font-size: 22px;
 		letter-spacing: 0.1rem;
+		strong {
+			color: #ecf0f1;
+		}
 	}
 	&__nav {
 		grid-column-start: 2;
