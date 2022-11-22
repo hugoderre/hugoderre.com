@@ -16,6 +16,13 @@
 	/* your custom style here */
 }
 
+.hljs-ln td:nth-child(1) {
+	padding-right: 10px !important;
+}
+.hljs-ln td:nth-child(2) {
+	padding-left: 10px !important;
+}
+
 pre {
 	moz-tab-size: 2;
 	tab-size: 2;
@@ -26,6 +33,7 @@ pre {
 	padding: 20px;
 	font-weight: bold;
 	font-size: 12px;
+	white-space: pre-wrap;
 
 	code.hljs {
 		padding: 0.5em;
