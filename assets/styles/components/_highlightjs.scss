@@ -16,9 +16,11 @@
 	/* your custom style here */
 }
 
-/* for block of code */
-.hljs-ln td {
-	padding: 0 10px !important;
+.hljs-ln td:nth-child(1) {
+	padding-right: 10px !important;
+}
+.hljs-ln td:nth-child(2) {
+	padding-left: 10px !important;
 }
 
 pre {
