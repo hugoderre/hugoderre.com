@@ -16,6 +16,12 @@
 	/* your custom style here */
 }
 
+.hljs-ln td {
+	@media (max-width: 576px) {
+		font-size: 13px;
+	}
+}
+
 .hljs-ln td:nth-child(1) {
 	padding-right: 10px !important;
 }
