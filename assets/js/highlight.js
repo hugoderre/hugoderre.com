@@ -3,7 +3,7 @@ const hljs = require( 'highlight.js' );
 
 window.hljs = hljs;
 
-require( 'highlightjs-line-numbers.js' );
+// require( 'highlightjs-line-numbers.js' );
 
 hljs.highlightAll();
-hljs.initLineNumbersOnLoad();
+// hljs.initLineNumbersOnLoad();
