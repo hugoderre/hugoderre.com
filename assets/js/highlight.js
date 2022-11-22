@@ -1,6 +1,9 @@
-import hljs from 'highlight.js';
+// Use CommonJS instead of ES6 modules for theses packages due to async behavior that causes errors 
+const hljs = require( 'highlight.js' );
 
-// document.querySelectorAll( "code" ).forEach( function ( element ) {
-// element.innerHTML = element.innerHTML.replace( /&/g, "&amp;" ).replace( /</g, "&lt;" ).replace( />/g, "&gt;" ).replace( /"/g, "&quot;" ).replace( /'/g, "&#039;" );
-// } );
+window.hljs = hljs;
+
+require( 'highlightjs-line-numbers.js' );
+
 hljs.highlightAll();
+hljs.initLineNumbersOnLoad();
