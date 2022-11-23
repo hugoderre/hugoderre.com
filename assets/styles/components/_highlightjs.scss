@@ -32,8 +32,11 @@ pre {
 	box-shadow: inset 0px 0px 5px 3px rgba(0, 0, 0, 0.7);
 	padding: 20px;
 	font-weight: bold;
-	font-size: 12px;
 	white-space: pre-wrap;
+
+	@media (max-width: 768px) {
+		font-size: 12px;
+	}
 
 	code.hljs {
 		padding: 0.5em;
