@@ -7,6 +7,7 @@ parameters:
     env: '%kernel.environment%'
     uploads_base_prod: 'https://%env(AWS_S3_BUCKET_NAME)%.s3.eu-west-3.amazonaws.com'
     uploads_base_dev: '/uploads'
+    timezone: '%env(APP_TIMEZONE)%'
     
 services:
     # default configuration for services in *this* file
