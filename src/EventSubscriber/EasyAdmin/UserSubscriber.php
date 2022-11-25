@@ -1,45 +1,29 @@
 <?php
 
-namespace App\EventSubscriber;
+namespace App\EventSubscriber\EasyAdmin;
 
-use App\Entity\Post;
 use App\Entity\User;
-use DateTimeImmutable;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
-class EasyAdminSubscriber implements EventSubscriberInterface
+class UserSubscriber implements EventSubscriberInterface
 {
-    private $slugger;
+	private $hasher;
 
-    public function __construct(SluggerInterface $slugger, UserPasswordHasherInterface $hasher)
+    public function __construct(UserPasswordHasherInterface $hasher)
 	{
 		$this->hasher = $hasher;
-        $this->slugger = $slugger;
     }
 
     public static function getSubscribedEvents()
     {
         return [
             BeforeEntityUpdatedEvent::class => [
-				['preUpdatePost'], 
 				['preUpdateUser']
 			]
         ];
-    }
-
-    public function preUpdatePost(BeforeEntityUpdatedEvent $event)
-    {
-        $entity = $event->getEntityInstance();
-
-        if (!($entity instanceof Post)) {
-            return;
-        }
-
-        $entity->setUpdatedAt(new DateTimeImmutable());
     }
 
     public function preUpdateUser(BeforeEntityUpdatedEvent $event)

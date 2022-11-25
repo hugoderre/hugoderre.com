@@ -29,6 +29,10 @@ class PostListener
             $post->setCreatedAt(new DateTimeImmutable());
         }
 
+		if($post->getStatus() === 'publish') {
+			$post->setPublishedAt(new DateTimeImmutable());
+		}
+
         if(empty($post->getAuthor())) {
             $post->setAuthor($this->security->getUser());
         }

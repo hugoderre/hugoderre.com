@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Project;
-use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -15,17 +14,26 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Security\Core\Security;
 
 class ProjectCrudController extends AbstractCrudController
 {
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(Security $security)
     {
-        $this->entityManager = $entityManager;
+		$this->security = $security;
     }
 
     public static function getEntityFqcn(): string
     {
         return Project::class;
+    }
+
+	public function createEntity(string $entityFqcn) {
+        $entity = new $entityFqcn();
+		$entity->setAuthor($this->security->getUser());
+        $entity->setStatus($entityFqcn::STATUS_DRAFT);
+		$entity->setListOrder(0);
+        return $entity;
     }
 
     public function configureCrud(Crud $crud): Crud
