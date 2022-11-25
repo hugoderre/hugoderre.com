@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Post;
-use App\Event\PostViewEvent;
 use App\Form\Type\Post\CommentType;
 use App\Helpers\UploadsHelpers;
 use App\Repository\CommentRepository;
@@ -13,7 +12,6 @@ use App\Security\SpamCheckerService;
 use App\Trait\PostTypeTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,7 +38,6 @@ class BlogController extends AbstractController
 		Request $request, 
 		Post $post, 
 		CommentRepository $commentRepository, 
-		EventDispatcherInterface $dispatcher,
 		LoggerInterface $logger,
 		SpamCheckerService $spamChecker,
 		UploadsHelpers $uploadsHelper
@@ -49,9 +46,6 @@ class BlogController extends AbstractController
         if(!$this->canUserView($post)) {
 			throw $this->createNotFoundException('Post not found');
 		}
-
-        $postViewEvent = new PostViewEvent($post);
-        $dispatcher->dispatch($postViewEvent, 'post.view');
 		
 		$commentForm = $this->createForm(CommentType::class);
 		$commentForm->handleRequest($request);
