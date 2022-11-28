@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Crud\PostType;
 
 use App\Entity\Project;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -14,33 +12,18 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
-use Symfony\Component\Security\Core\Security;
 
-class ProjectCrudController extends AbstractCrudController
+class ProjectCrudController extends AbstractPostTypeCrudController
 {
-    public function __construct(Security $security)
-    {
-		$this->security = $security;
-    }
-
     public static function getEntityFqcn(): string
     {
         return Project::class;
     }
 
-	public function createEntity(string $entityFqcn) {
-        $entity = new $entityFqcn();
-		$entity->setAuthor($this->security->getUser());
-        $entity->setStatus($entityFqcn::STATUS_DRAFT);
-		$entity->setListOrder(0);
-        return $entity;
-    }
-
-    public function configureCrud(Crud $crud): Crud
-    {
-        return $crud
-            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
-    }
+	public static function getViewRouteName(): string
+	{
+		return 'project_view';
+	}
 
     public function configureFields(string $pageName): iterable
     {
