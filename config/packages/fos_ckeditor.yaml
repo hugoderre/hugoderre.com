@@ -3,6 +3,45 @@ fos_ck_editor:
     base_path: "bundles/ckeditor"
     js_path:   "bundles/ckeditor/ckeditor.js"
     configs:
-        main_config: 
-            toolbar: standard
-            
+        main_config:
+            allowedContent: true
+            height: 850
+            width: 1000
+            toolbar:
+                - {
+                    name: "styles",
+                    items: 
+                      [
+                        "Bold",
+                        "Italic",
+                        "Underline",
+                        "Strike",
+                        "CodeSnippet",
+                        "Code",
+                        "Blockquote",
+                        "-",
+                        "Link",
+                        "-",
+                        "RemoveFormat",
+                        "NumberedList",
+                        "BulletedList",
+                        "-",
+                        "Outdent",
+                        "Indent",
+                        "-",
+                        "-",
+                        "JustifyLeft",
+                        "JustifyCenter",
+                        "JustifyRight",
+                        "JustifyBlock",
+                        "-",
+                        "Image",
+                        "Table",
+                        "-",
+                        "TextColor",
+                        "BGColor",
+                        "HorizontalRule",
+                        "/",
+                        "Styles", "Format", "Font", "FontSize", "Source",
+                      ]
+                  }
