@@ -6,6 +6,7 @@ hljs.registerLanguage( 'css', require( 'highlight.js/lib/languages/css' ) );
 hljs.registerLanguage( 'javascript', require( 'highlight.js/lib/languages/javascript' ) );
 hljs.registerLanguage( 'php', require( 'highlight.js/lib/languages/php' ) );
 hljs.registerLanguage( 'shell', require( 'highlight.js/lib/languages/shell' ) );
+hljs.registerLanguage( 'yaml', require( 'highlight.js/lib/languages/yaml' ) );
 
 window.hljs = hljs;
 
