@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('hljs') }}
+{% endblock %}
+
 {% block meta_description -%}
 	{% if post.metaDescription %}
 		{{- post.metaDescription -}}
