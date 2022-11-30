@@ -1,1 +1,6 @@
 php_value upload_max_filesize 50M
+
+<IfModule mod_deflate.c>
+	SetOutputFilter DEFLATE
+	DeflateCompressionLevel 9
+</IfModule>
