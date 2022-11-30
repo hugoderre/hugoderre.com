@@ -76,7 +76,7 @@ class SecurityAuthenticator extends AbstractAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        return new RedirectResponse('/');
+        return new RedirectResponse('/admin');
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
