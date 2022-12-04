@@ -2,9 +2,9 @@
 @import "./../layout/grid-columns";
 
 .shape-divider {
-	width: calc(100vw - 13px);
+	width: 100vw;
 	position: relative;
-	left: 50.4%;
+	left: 50%;
 	margin-left: -50vw;
 	line-height: 0;
 	&__top {

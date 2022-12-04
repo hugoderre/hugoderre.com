@@ -2,6 +2,7 @@
 @use "./../components/comment.scss";
 
 .post {
+	overflow-x: hidden;
 	h1 {
 		color: $secondary;
 		@media screen and (max-width: 768px) {
