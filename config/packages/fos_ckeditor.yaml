@@ -7,6 +7,19 @@ fos_ck_editor:
             allowedContent: true
             height: 850
             width: 1000
+            codeSnippet_theme: 'monokai_sublime'
+            codeSnippet_languages:
+                {
+                  html: 'HTML',
+                  css: 'CSS',
+                  javascript: 'Javascript',
+                  php: 'PHP',
+                  sql: 'SQL',
+                  xml: 'XML',
+                  yaml: 'YAML',
+                  bash: 'Bash',
+                  shell: 'Shell'
+                }
             toolbar:
                 - {
                     name: "styles",
