@@ -8,7 +8,7 @@
 	<ul class="slides-container" id="slides-container">
 		{% for image in images %}
 			<li class="slide">
-				<img src="{{ uploadsBasePath ~ image.fileName }}" alt="">
+				<img src="{{ vich_uploader_asset(image) }}" alt="">
 			</li>	
 		{% endfor %}
 	</ul>

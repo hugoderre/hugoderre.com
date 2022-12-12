@@ -15,9 +15,9 @@
 
 {% block meta_image -%}
 	{% if post.metaImage %}
-		{{- uploadsBasePath ~ post.metaImage.fileName -}}
+		{{- vich_uploader_asset(post.metaImage) -}}
 	{% elseif post.thumbnail %}
-		{{- uploadsBasePath ~ post.thumbnail.fileName -}}
+		{{- vich_uploader_asset(post.thumbnail) -}}
 	{% else %}
 		{{- parent() -}}
 	{%- endif %}

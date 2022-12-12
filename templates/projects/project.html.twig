@@ -15,9 +15,9 @@
 
 {% block meta_image -%}
 	{% if project.metaImage %}
-		{{- uploadsBasePath ~ project.metaImage.fileName -}}
+		{{- vich_uploader_asset(project.metaImage) -}}
 	{% elseif project.thumbnail %}
-		{{- uploadsBasePath ~ project.thumbnail.fileName -}}
+		{{- vich_uploader_asset(project.thumbnail) -}}
 	{% else %}
 		{{- parent() -}}
 	{%- endif %}
@@ -32,7 +32,7 @@
 			{% if project.gallery|length > 0 %}
 				{% include "partials/block/slides.html.twig" with {'images': project.gallery} %}
 			{% elseif project.thumbnail is not null  %}
-				<img src="{{ uploadsBasePath ~ project.thumbnail.fileName }}" alt="{{ project.name }}">
+				<img src="{{ vich_uploader_asset(project.thumbnail) }}" alt="{{ project.name }}">
 			{% endif %}
 			</div>
 		</div>

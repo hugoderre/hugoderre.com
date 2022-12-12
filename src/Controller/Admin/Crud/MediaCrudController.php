@@ -31,7 +31,7 @@ class MediaCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            ImageField::new('fileName')->setBasePath($this->uploadsHelper->getUploadsBasePath('/media/'))->setLabel('Fichier')->onlyOnIndex(),
+            ImageField::new('fileName')->setBasePath($this->uploadsHelper->getUploadsURIPrefix('/media/'))->setLabel('Fichier')->onlyOnIndex(),
             TextField::new('file')->setFormType(VichFileType::class)->onlyWhenCreating(),
             TextField::new('fileName')->hideOnForm()->setLabel('Nom du fichier'),
             NumberField::new('size')->hideOnForm()->setLabel('Taille'),

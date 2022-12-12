@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Project;
-use App\Helpers\UploadsHelpers;
 use App\Repository\ProjectRepository;
 use App\Trait\PostTypeTrait;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
@@ -16,7 +15,7 @@ class ProjectController extends AbstractController
 	use PostTypeTrait;
 
     #[Route('/projets', name: 'projects', options: ['sitemap' => true])]
-    public function projects(ProjectRepository $projectRepository, UploadsHelpers $uploadsHelper): Response
+    public function projects(ProjectRepository $projectRepository): Response
     {
         $projects = $projectRepository->findBy( ['status' => 'publish'] );
 
@@ -26,14 +25,13 @@ class ProjectController extends AbstractController
         
         return $this->render('projects/projects.html.twig', [
             'projects' => $projects,
-            'page'  => 'projects',
-			'uploadsBasePath' => $uploadsHelper->getUploadsBasePath('/media/')
+            'page'  => 'projects'
         ]);
         
     }
 
     #[Route('/projets/{slug}', name: 'project_view')]
-    public function project(Project $project, UploadsHelpers $uploadsHelper): Response
+    public function project(Project $project): Response
     {
 		if(!$this->canUserView($project)) {
 			throw $this->createNotFoundException('Project not found');
@@ -41,8 +39,7 @@ class ProjectController extends AbstractController
 		
         return $this->render('projects/project.html.twig', [
             'project'      => $project,
-            'page'      => 'project',
-			'uploadsBasePath' => $uploadsHelper->getUploadsBasePath('/media/')
+            'page'      => 'project'
         ]);
     }
 }

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Form\Type\Post\CommentType;
-use App\Helpers\UploadsHelpers;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use App\Security\SpamCheckerService;
@@ -39,8 +38,7 @@ class BlogController extends AbstractController
 		Post $post, 
 		CommentRepository $commentRepository, 
 		LoggerInterface $logger,
-		SpamCheckerService $spamChecker,
-		UploadsHelpers $uploadsHelper
+		SpamCheckerService $spamChecker
 	): Response
     {
         if(!$this->canUserView($post)) {
@@ -89,8 +87,7 @@ class BlogController extends AbstractController
 				'posted' => $commentRepository->findBy(['post' => $post, 'status' => Comment::STATUS_APPROVED]),
 				'form'   => $commentForm->createView(),
 			],
-            'page'      => 'post',
-			'uploadsBasePath' => $uploadsHelper->getUploadsBasePath('/media/')
+            'page'      => 'post'
         ]);
     }
 }

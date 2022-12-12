@@ -7,16 +7,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class UploadsHelpers
 {
 	public $env;
-	public $uploadsBasePath;
+	public $uploadsURIPrefix;
 
 	public function __construct(ContainerInterface $container)
 	{
 		$this->env = $container->getParameter('kernel.environment');
-		$this->uploadsBasePath = $container->getParameter('uploads_base_' . $this->env);
+		$this->uploadsURIPrefix = $container->getParameter('uploads_uri_prefix_' . $this->env);
 	}
 
-	public function getUploadsBasePath($subDir = '')
+	public function getUploadsURIPrefix($subDir = '')
 	{
-		return $this->uploadsBasePath . $subDir;
+		return $this->uploadsURIPrefix . $subDir;
 	}
 }
