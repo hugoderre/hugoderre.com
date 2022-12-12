@@ -32,7 +32,7 @@
 			{% if project.gallery|length > 0 %}
 				{% include "partials/block/slides.html.twig" with {'images': project.gallery} %}
 			{% elseif project.thumbnail is not null  %}
-				<img src="{{ vich_uploader_asset(project.thumbnail) }}" alt="{{ project.name }}">
+				<img src="{{ uploadsBasePath ~ project.thumbnail.fileName }}" alt="{{ project.name }}">
 			{% endif %}
 			</div>
 		</div>
