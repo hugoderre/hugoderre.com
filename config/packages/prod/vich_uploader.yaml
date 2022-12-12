@@ -4,5 +4,5 @@ vich_uploader:
     mappings:
         media:
             upload_destination: 'media.storage.aws'
-            uri_prefix: "%uploads_uri_prefix_prod%"
+            uri_prefix: "%uploads_uri_prefix_prod%/media"
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
