@@ -13,6 +13,7 @@ fos_ck_editor:
                   html: 'HTML',
                   css: 'CSS',
                   javascript: 'Javascript',
+                  json: 'JSON',
                   php: 'PHP',
                   sql: 'SQL',
                   xml: 'XML',
