@@ -41,21 +41,21 @@ html {
 	// https://github.com/necolas/normalize.css/issues/665 (Peut-être un jour)
 	// font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-family: "Inter", sans-serif;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 h1 {
-	font-size: 52px;
+	font-size: 46px;
 	line-height: 1.2;
 }
 
 h2 {
-	font-size: 40px;
+	font-size: 32px;
 	line-height: 1.2;
 }
 
 h3 {
-	font-size: 32px;
+	font-size: 26px;
 	line-height: 1.2;
 }
 
@@ -69,6 +69,7 @@ h6 {
 }
 
 ul,
+ol,
 p {
 	line-height: 1.6;
 }
