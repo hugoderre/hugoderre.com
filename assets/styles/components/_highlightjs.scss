@@ -17,16 +17,10 @@
 }
 
 .hljs-ln td:nth-child(1) {
-	padding-right: 10px !important;
-	@media (max-width: 768px) {
-		font-size: 12px !important;
-	}
+	padding-right: 10px;
 }
 .hljs-ln td:nth-child(2) {
-	padding-left: 10px !important;
-	@media (max-width: 768px) {
-		font-size: 12px !important;
-	}
+	padding-left: 10px;
 }
 
 pre {
@@ -41,7 +35,7 @@ pre {
 	// white-space: pre-wrap;
 
 	@media (max-width: 768px) {
-		font-size: 12px !important;
+		font-size: 12px;
 	}
 
 	code {
