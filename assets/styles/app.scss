@@ -16,8 +16,7 @@
 @import "components/comment";
 @import "components/badge";
 @import "components/code";
-
-@import "themes/theme";
+@import "components/dark-mode-switch";
 
 @import "pages/home";
 @import "pages/blog";
@@ -27,3 +26,7 @@
 @import "pages/privacy";
 @import "pages/login";
 @import "pages/errors";
+
+@import "themes/theme";
+
+@import "themes/dark";
