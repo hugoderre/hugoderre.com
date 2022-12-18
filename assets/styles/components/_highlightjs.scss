@@ -18,9 +18,15 @@
 
 .hljs-ln td:nth-child(1) {
 	padding-right: 10px !important;
+	@media (max-width: 768px) {
+		font-size: 12px !important;
+	}
 }
 .hljs-ln td:nth-child(2) {
 	padding-left: 10px !important;
+	@media (max-width: 768px) {
+		font-size: 12px !important;
+	}
 }
 
 pre {
@@ -34,9 +40,9 @@ pre {
 	font-weight: bold;
 	// white-space: pre-wrap;
 
-	// @media (max-width: 768px) {
-	font-size: 12px !important;
-	// }
+	@media (max-width: 768px) {
+		font-size: 12px !important;
+	}
 
 	code {
 		background: #222;
