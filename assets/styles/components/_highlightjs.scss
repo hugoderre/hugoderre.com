@@ -34,8 +34,8 @@ pre {
 	font-weight: bold;
 	// white-space: pre-wrap;
 
-	@media screen and (max-width: 768px) {
-		font-size: 12px;
+	@media (max-width: 768px) {
+		font-size: 12px !important;
 	}
 
 	code {
