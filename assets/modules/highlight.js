@@ -15,6 +15,10 @@ hljs.registerLanguage( 'sql', require( 'highlight.js/lib/languages/sql' ) );
 window.hljs = hljs;
 
 require( 'highlightjs-line-numbers.js' );
+const CopyButtonPlugin = require( './highlightjs-copy' );
 
+hljs.addPlugin( new CopyButtonPlugin( {
+	lang: "fr",
+} ) );
 hljs.highlightAll();
 hljs.initLineNumbersOnLoad();
