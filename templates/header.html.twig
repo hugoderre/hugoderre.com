@@ -1,15 +1,34 @@
-<header class="topbar">
-	<div class="topbar__logo">
-		<img src="{{ asset('assets/logo.svg') }}" alt="" width="58">
-		{# <strong>HUGO DERRE</strong> #}
+<header>
+	<div class="topbar">
+		<div class="topbar__logo">
+			<img src="{{ asset('assets/logo.svg') }}" alt="" width="58">
+		</div>
+		<nav class="topbar__nav">
+			<ul>
+				<li><a href="{{ path('homepage') }}"class="{{ page == 'home' ? 'active' : '' }}"><i class="fa-solid fa-home"></i>Home</a></li>
+				<li><a href="{{ path('blog') }}"class="{{ page == 'blog' or page == 'post' ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i>Blog</a></li>
+				<li><a href="{{ path('projects') }}"class="{{ page == 'projects' or page == 'project' ? 'active' : '' }}"><i class="fa-solid fa-diagram-project"></i>Projets</a></li>
+				<li><a href="mailto:contact@hugoderre.fr"class="{{ page == 'contact' ? 'active' : '' }}"><i class="fa-solid fa-paper-plane"></i>Contact</a></li>
+			</ul>
+		</nav>
+		<hr>
 	</div>
-	<nav class="topbar__nav">
-		<ul>
-			<li><a href="{{ path('homepage') }}" class="{{ page == 'home' ? 'active' : '' }}"><i class="fa-solid fa-home"></i> Home</a></li>
-			<li><a href="{{ path('blog') }}" class="{{ page == 'blog' or page == 'post' ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
-			<li><a href="{{ path('projects') }}" class="{{ page == 'projects' or page == 'project' ? 'active' : '' }}"><i class="fa-solid fa-diagram-project"></i> Projets</a></li>
-			<li><a href="mailto:contact@hugoderre.fr" class="{{ page == 'contact' ? 'active' : '' }}"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
-		</ul>
-	</nav>
-	<hr>
+	{# <div class="dark-mode-button" {{ stimulus_controller('dark-mode-button') }}>
+		<div class="dark-mode-button__container">
+			<div class="dark-mode-button__container__toggle-wrapper">
+				<input 
+					type="checkbox" 
+					id="dark-mode-switch" 
+					aria-label="dark mode toggle" 
+					class="dark-mode-button__container__toggle-checkbox"
+					checked
+					{{ stimulus_action('dark-mode-button', 'toggleDarkMode') }}
+				/>
+				<div class="dark-mode-button__container__toggle-circle"></div>
+				<i class="icon icon_moon fa-solid fa-moon"></i>
+				<i class="icon icon_sun fa-solid fa-sun"></i>
+			</div>
+		</div>
+	</div> #}
 </header>
+
