@@ -4,7 +4,7 @@ body[data-color-scheme='dark'] {
     --secondary-rgb-color: 19, 15, 14;
     background-color: var(--dark-global-bg-color);
 
-    h1, h3, h4, h5, h6 {
+    h1 {
         color: var(--primary-color);
     }
     
