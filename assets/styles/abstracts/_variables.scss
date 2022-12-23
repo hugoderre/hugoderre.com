@@ -1,9 +1,13 @@
-$primary: #0d1318;
-$secondary: #ECF0F1;
-$tertiary: #ff6b08;
-$quaternary: #FBD8C2;
-$quinary: #3a4148;
-$success-color: #00C851;
-$error-color: #FD1F08;
-$warning-color: #FF9F1A;
-$global-radius: 0.25rem;
+:root {
+    --primary-color: #0d1318;
+    --secondary-color: #ECF0F1;
+    --tertiary-color: #ff6b08;
+    --quaternary-color: #FBD8C2;
+    --quinary-color: #3a4148;
+    --header-bg-color: #131c23;
+    --dark-global-bg-color: #11283e;
+    --success-color: #00C851;
+    --error-color: #FD1F08;
+    --warning-color: #FF9F1A;
+    --global-radius: 0.25rem;
+}

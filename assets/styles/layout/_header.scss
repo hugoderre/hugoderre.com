@@ -1,5 +1,5 @@
 header {
-	background-color: $primary;
+	background-color: var(--header-bg-color);
 	grid-column: 1 / span 3;
 	.topbar {
 		display: grid;
@@ -11,7 +11,7 @@ header {
 			grid-template-rows: 3fr 2fr;
 		}
 		&__logo {
-			color: $tertiary;
+			color: var(--tertiary-color);
 			display: flex;
 			gap: 15px;
 			padding: 0 30px;
@@ -35,6 +35,9 @@ header {
 				justify-content: center;
 				align-items: center;
 				height: 100%;
+				@media screen and (min-width: 768px) and (max-width: 992px) {
+					justify-content: left;
+				}
 				@media screen and (max-width: 380px) {
 					justify-content: flex-start;
 				}
@@ -48,7 +51,7 @@ header {
 						width: 100px;
 					}
 					a {
-						color: $tertiary;
+						color: var(--tertiary-color);
 						display: flex;
 						justify-content: center;
 						align-items: center;
@@ -62,8 +65,8 @@ header {
 						}
 						&:hover,
 						&.active {
-							background-color: $quaternary;
-							color: $tertiary;
+							background-color: var(--quaternary-color);
+							color: var(--tertiary-color);
 							transition: 0.5s;
 						}
 					}
@@ -80,7 +83,7 @@ header {
 		}
 	}
 	hr {
-		background-color: $tertiary;
+		background-color: var(--tertiary-color);
 		height: 1px;
 		border: 0;
 		grid-column: 1 / span 2;

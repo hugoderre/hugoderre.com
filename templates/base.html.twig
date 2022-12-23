@@ -51,7 +51,7 @@
 		{% endblock %}
 
 	</head>
-	<body class="{{ page }}">
+	<body class="{{ page }}" data-color-scheme="{{ app.request.cookies.get('darkMode') ?? 'light' }}">
 		<div class="container">
 			{% block header %}
 				{% include "header.html.twig" %}

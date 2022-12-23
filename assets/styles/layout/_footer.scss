@@ -1,7 +1,7 @@
 footer {
 	grid-row-start: 3;
 	grid-column: 1/-1;
-	color: $primary;
+	color: var(--primary-color);
 	display: grid;
 	grid-template-columns: 1fr 8fr 1fr;
 	border-top: 1px solid #d0d1d2;
@@ -46,7 +46,7 @@ footer {
 				li {
 					height: 100%;
 					a {
-						color: $primary;
+						color: var(--primary-color);
 						display: flex;
 						align-items: center;
 						gap: 5px;
@@ -55,8 +55,8 @@ footer {
 						padding: 20px;
 						box-sizing: border-box;
 						&:hover {
-							background-color: $quaternary;
-							color: $primary;
+							background-color: var(--quaternary-color);
+							color: var(--primary-color);
 							transition: 0.5s;
 						}
 					}
@@ -73,10 +73,10 @@ footer {
 				font-size: 16px;
 			}
 			a {
-				color: $primary;
+				color: var(--primary-color);
 				text-decoration: underline;
 				&:hover {
-					color: $tertiary;
+					color: var(--tertiary-color);
 					transition: 0.3s;
 				}
 			}

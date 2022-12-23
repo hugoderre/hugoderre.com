@@ -23,6 +23,7 @@
         "global": "^4.4.0",
         "highlight.js": "^11.3.1",
         "highlightjs-copy": "^1.0.3",
-        "highlightjs-line-numbers.js": "^2.8.0"
+        "highlightjs-line-numbers.js": "^2.8.0",
+        "js-cookie": "^3.0.1"
     }
 }

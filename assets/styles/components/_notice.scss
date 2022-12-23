@@ -5,17 +5,17 @@
     margin: 20px 0;  
     border-bottom-width: 4px;
     border-bottom-style: solid;
-    border-bottom-color: $secondary;
+    border-bottom-color: var(--secondary-color);
 
     &-success {
-        border-bottom-color: $success-color;
+        border-bottom-color: var(--success-color);
     }
 
     &-error {
-        border-bottom-color: $error-color;
+        border-bottom-color: var(--error-color);
     }
 
     &-warning {
-        border-bottom-color: $warning-color;
+        border-bottom-color: var(--warning-color);
     }
 }

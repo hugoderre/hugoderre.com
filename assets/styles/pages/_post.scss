@@ -4,7 +4,7 @@
 .post {
 	overflow-x: hidden;
 	h1 {
-		color: $secondary;
+		color: var(--secondary-color);
 		@media screen and (max-width: 768px) {
 			font-size: 46px;
 		}
@@ -14,7 +14,7 @@
 	}
 
 	h2 {
-		color: $tertiary;
+		color: var(--tertiary-color);
 	}
 
 	.container > .content {
@@ -27,12 +27,12 @@
 	&__date {
 		font-size: 18px;
 		margin-top: 14px;
-		color: $secondary;
+		color: var(--secondary-color);
 		opacity: 0.8;
 	}
 
 	&__content {
-		color: $primary;
+		color: var(--primary-color);
 		line-height: 1.6;
 		margin-top: 50px;
 	}

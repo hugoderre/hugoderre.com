@@ -10,7 +10,7 @@
 	&__top {
 		@include global-grid-columns-template;
 		width: 100%;
-		background-color: $primary;
+		background-color: var(--header-bg-color);
 		& > div {
 			grid-column-start: 2;
 			margin: 50px 0;
@@ -23,6 +23,6 @@
 		margin-top: -1px;
 	}
 	.shape-fill {
-		fill: $primary;
+		fill: var(--header-bg-color);
 	}
 }

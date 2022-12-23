@@ -1,25 +1,25 @@
 .card {
 	display: flex;
 	flex-direction: column;
-	background-color: $secondary;
+	background-color: var(--secondary-color);
 	padding: 18px;
 	text-align: left;
-	color: $primary;
-	border-radius: $global-radius;
+	color: var(--primary-color);
+	border-radius: var(--global-radius);
 	box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px;
 	&__header {
 		h2 a {
-			color: $primary;
+			color: var(--primary-color);
 			font-size: 32px;
 			&:hover {
-				color: $tertiary;
+				color: var(--tertiary-color);
 			}
 		}
 	}
 	&__body {
 		margin-top: 16px;
 		&-date {
-			color: $primary;
+			color: var(--primary-color);
 			font-size: 12px;
 			font-weight: 600;
 			margin-bottom: 8px;
@@ -42,10 +42,10 @@
 			flex-wrap: wrap;
 			gap: 12px;
 			&-tag {
-				background-color: $secondary;
-				color: $primary;
+				background-color: var(--secondary-color);
+				color: var(--primary-color);
 				padding: 5px;
-				border-radius: $global-radius;
+				border-radius: var(--global-radius);
 			}
 		}
 		&__socials {

@@ -47,6 +47,7 @@ html {
 h1 {
 	font-size: 46px;
 	line-height: 1.2;
+	color: var(--primary-color);
 }
 
 h2 {
@@ -57,6 +58,14 @@ h2 {
 h3 {
 	font-size: 26px;
 	line-height: 1.2;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--secondary-color);
 }
 
 h1,
@@ -75,10 +84,10 @@ p {
 }
 
 a {
-	color: $primary;
+	color: var(--primary-color);
 	text-decoration: none;
 	&:hover:not(.btn) {
-		color: $tertiary;
+		color: var(--tertiary-color);
 	}
 }
 
@@ -97,9 +106,9 @@ textarea {
 }
 
 *::selection {
-	background-color: $tertiary;
+	background-color: var(--tertiary-color);
 }
 
 *::-moz-selection {
-	background-color: $tertiary;
+	background-color: var(--tertiary-color);
 }

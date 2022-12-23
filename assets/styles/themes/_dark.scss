@@ -1,0 +1,45 @@
+body[data-color-scheme='dark'] {
+	--primary-color: #f2ece7;
+    --secondary-color: #130f0e;
+    --secondary-rgb-color: 19, 15, 14;
+    background-color: var(--dark-global-bg-color);
+
+    h1, h3, h4, h5, h6 {
+        color: var(--primary-color);
+    }
+    
+    header {
+        // background-color: var(--secondary-color);
+    }
+    
+    &.post {
+        .shape-divider__top,
+        .shape-divider .shape-fill {
+            color: var(--primary-color)!important;
+            // background-color: var(--secondary-color);
+            // fill: var(--secondary-color);
+        } 
+        & p.post__date {
+            color: var(--primary-color)!important;
+        }
+    }
+
+    &.blog {
+        .card {
+            background-color: rgba(var(--secondary-rgb-color), 0.2);
+            &__footer {
+                &__tags-tag {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    button {
+        color: var(--primary-color);
+    }
+
+    code:not(.hljs) {
+        background-color: rgba(gainsboro, 0.2);
+    }
+}

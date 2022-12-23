@@ -5,11 +5,11 @@
 			width: 50%;
 			height: 1px;
 			margin: 50px auto;
-			background-color: $tertiary;
+			background-color: var(--tertiary-color);
 			border: 0;
 		}
 		h2 {
-			color: $tertiary;
+			color: var(--tertiary-color);
 			margin: 45px 0 30px 0;
 		}
 	}
@@ -34,16 +34,16 @@
 			figcaption {
 				margin-top: 5px;
 				font-size: 16px;
-				color: $primary;
+				color: var(--primary-color);
 				font-style: italic;
 				text-align: center;
 			}
 		}
 		&__title {
 			h1 {
-				color: $primary;
+				color: var(--primary-color);
 				text-decoration: underline;
-				text-decoration-color: $tertiary;
+				text-decoration-color: var(--tertiary-color);
 				text-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 			}
 		}
@@ -61,7 +61,7 @@
 			}
 			a {
 				text-decoration: underline;
-				text-decoration-color: $tertiary;
+				text-decoration-color: var(--tertiary-color);
 				text-underline-offset: 2px;
 			}
 		}

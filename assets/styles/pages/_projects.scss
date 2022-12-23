@@ -20,7 +20,7 @@
 				font-size: 34px;
 				a {
 					text-decoration-line: underline;
-					text-decoration-color: $tertiary;
+					text-decoration-color: var(--tertiary-color);
 					text-underline-offset: 4px;
 				}
 			}

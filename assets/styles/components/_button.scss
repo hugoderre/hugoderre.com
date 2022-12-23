@@ -1,9 +1,9 @@
 .btn {
 	display: inline-block;
-	color: $secondary;
-	background-color: $tertiary;
-	border: 1px solid $tertiary;
-	border-radius: $global-radius;
+	color: var(--secondary-color);
+	background-color: var(--tertiary-color);
+	border: 1px solid var(--tertiary-color);
+	border-radius: var(--global-radius);
 	padding: 10px;
 	cursor: pointer;
 }

@@ -1,7 +1,7 @@
 @import "./../abstracts/variables";
 
 .comments {
-	color: $primary;
+	color: var(--primary-color);
 	line-height: 1.6;
 	margin-top: 80px;
 	h3 {
@@ -30,7 +30,7 @@
 				}
 				&__created-at {
 					font-size: 14px;
-					color: $quinary;
+					color: var(--quinary-color);
 					opacity: 0.8;
 				}
 			}
