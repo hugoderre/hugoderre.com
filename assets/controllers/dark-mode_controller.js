@@ -5,6 +5,7 @@ export default class extends Controller {
 	connect() {
 		this.buttonElement = this.element.querySelector( '#dark-mode-switch' );
 		this.isDarkMode = this.getInitialDarkModeState();
+		this.buttonElement.checked = this.isDarkMode;
 		this.toggleDarkMode();
 	}
 

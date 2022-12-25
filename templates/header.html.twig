@@ -11,7 +11,7 @@
 				<li><a href="mailto:contact@hugoderre.fr"class="{{ page == 'contact' ? 'active' : '' }}"><i class="fa-solid fa-paper-plane"></i>Contact</a></li>
 			</ul>
 		</nav>
-		<div class="dark-mode-button" {{ stimulus_controller('dark-mode-button') }}>
+		<div class="dark-mode-button" {{ stimulus_controller('dark-mode') }}>
 			<div class="dark-mode-button__toggle-wrapper">
 				<input 
 					type="checkbox" 
@@ -19,7 +19,7 @@
 					aria-label="dark mode toggle" 
 					class="dark-mode-button__toggle-checkbox"
 					{{ app.request.cookies.get('darkMode') == 'dark' ? 'checked' : '' }}
-					{{ stimulus_action('dark-mode-button', 'darkModeInputEvent') }}
+					{{ stimulus_action('dark-mode', 'darkModeInputEvent') }}
 				/>
 				<div class="dark-mode-button__toggle-circle"></div>
 				<i class="icon icon_moon fa-solid fa-moon"></i>
