@@ -36,4 +36,23 @@
 		line-height: 1.6;
 		margin-top: 50px;
 	}
+
+	&__related {
+		margin-top: 30px;
+		&__posts {
+			margin-top: 30px;
+			display: flex;
+			gap: 10px;
+			article {
+				flex: 1;
+				h4 {
+					font-size: 32px;
+				}
+			}
+		}
+	}
+
+	.hr-post-end {
+		margin-top: 30px;
+	}
 }

@@ -13,47 +13,7 @@
 		</div>
 		<section class="row blog-list">
 			{% for post in posts %}
-				<article class="col-6">
-					<div class="card">
-						<div class="card__header">
-							<h2 class="card__header-title">
-								<a href="{{ path('post_view', {slug: post.slug}) }}" class="">{{ post.title }}</a>
-							</h2>
-						</div>
-						<div class="card__body">
-							<p class="card__body-date">{{ post.publishedAt|format_datetime(locale='fr',pattern="dd MMMM YYYY")|upper }}</p>
-							<p class="card__body-excerpt">{{ post.excerpt }}</p>
-						</div>
-						<div class="card__footer">
-							<hr>
-							<div class="card__footer-wrapper">
-								<ul class="card__footer__tags">
-									{% for tag in post.tags %}
-										<li class="card__footer__tags-tag">{{ tag.name }}</li>
-									{% endfor %}
-								</ul>
-								<ul class="card__footer__socials">
-									{# <li class="card__footer__socials__likes">
-										<i class="fa-solid fa-heart"></i>
-										<span>0</span>
-									</li>
-									<li class="card__footer__socials__shares">
-										<i class="fa-solid fa-share"></i>
-										<span>0</span>
-									</li> #}
-									{# <li class="card__footer__socials__views">
-										<i class="fa-solid fa-eye"></i>
-										<span>0</span>
-									</li> #}
-									<li class="card__footer__socials__comments">
-										<i class="fa-solid fa-comments"></i>
-										<span>{{ post.comments|length }}</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</article>
+				{% include "partials/block/post-card.html.twig" %}
 			{% endfor %}
 		</section>
 	</div>

@@ -87,6 +87,7 @@ class BlogController extends AbstractController
 				'posted' => $commentRepository->findBy(['post' => $post, 'status' => Comment::STATUS_APPROVED]),
 				'form'   => $commentForm->createView(),
 			],
+			'relatedPosts' => $post->getRelatedPosts(),
             'page'      => 'post'
         ]);
     }

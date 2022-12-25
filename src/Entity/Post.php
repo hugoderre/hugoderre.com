@@ -37,6 +37,11 @@ class Post extends AbstractPostType
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Post::class, inversedBy="relatedPosts")
+     */
+    private $relatedPosts;
+
     const STATUS_PUBLISH = 'publish';
     const STATUS_DRAFT = 'draft';
     const STATUS_TRASH = 'trash';
@@ -45,6 +50,7 @@ class Post extends AbstractPostType
     {
         $this->tags = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->relatedPosts = new ArrayCollection();
     }
 
     public function getTitle(): ?string
@@ -145,6 +151,30 @@ class Post extends AbstractPostType
                 $comment->setPost(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getRelatedPosts(): Collection
+    {
+        return $this->relatedPosts;
+    }
+
+    public function addRelatedPost(self $relatedPost): self
+    {
+        if (!$this->relatedPosts->contains($relatedPost)) {
+            $this->relatedPosts[] = $relatedPost;
+        }
+
+        return $this;
+    }
+
+    public function removeRelatedPost(self $relatedPost): self
+    {
+        $this->relatedPosts->removeElement($relatedPost);
 
         return $this;
     }

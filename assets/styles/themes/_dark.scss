@@ -24,13 +24,11 @@ body[data-color-scheme='dark'] {
         }
     }
 
-    &.blog {
-        .card {
-            background-color: rgba(var(--secondary-rgb-color), 0.2);
-            &__footer {
-                &__tags-tag {
-                    background-color: transparent;
-                }
+    .post-card {
+        background-color: rgba(var(--secondary-rgb-color), 0.2);
+        &__footer {
+            &__tags-tag {
+                background-color: transparent;
             }
         }
     }
