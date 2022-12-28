@@ -9,6 +9,7 @@
 		margin-bottom: 60px;
 		@media screen and (max-width: 673px) {
 			flex-direction: column;
+			gap: 14px;
 		}
 		&__content {
 			flex: 1;
