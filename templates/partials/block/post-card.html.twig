@@ -20,7 +20,7 @@
 			<ul class="post-card__footer__socials">
 				<li class="post-card__footer__socials__comments">
 					<i class="fa-solid fa-comments"></i>
-					<span>{{ post.comments|length }}</span>
+					<span>{{ post.comments|filter(c => c.status == 'approved')|length }}</span>
 				</li>
 			</ul>
 		</div>
