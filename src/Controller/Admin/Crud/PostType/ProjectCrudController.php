@@ -29,9 +29,9 @@ class ProjectCrudController extends AbstractPostTypeCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name'),
+            TextField::new('title'),
             AssociationField::new('thumbnail')->autocomplete(true),
-            TextEditorField::new('description', 'Description')->setFormType(CKEditorType::class),
+            TextEditorField::new('content', 'Description')->setFormType(CKEditorType::class),
             TextField::new('githubUrl')->onlyOnForms(),
             TextField::new('websiteUrl')->onlyOnForms(),
             AssociationField::new('gallery')->autocomplete(true),

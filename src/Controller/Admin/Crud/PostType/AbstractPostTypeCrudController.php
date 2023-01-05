@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin\Crud\PostType;
 
+use App\Entity\AbstractPostType;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -33,20 +35,14 @@ abstract class AbstractPostTypeCrudController extends AbstractCrudController imp
 
 	public function configureActions(Actions $actions): Actions
 	{
-		$viewPostAction = Action::new('view', 'Voir', 'fa-solid fa-arrow-up-right-from-square')
-			->linkToRoute(static::getViewRouteName(), function ($entity): array {
-				return [
-					'slug' => $entity->getSlug()
-				];
-			})
-			->setHtmlAttributes([
-				'target' => '_blank'
-			]);
+		$this->addDuplicateAction($actions);
+		$this->addViewAction($actions);
 
-		$actions->add(Crud::PAGE_INDEX, $viewPostAction);
-		$actions->add(Crud::PAGE_EDIT, $viewPostAction);
+		return $actions;
+	}
 
-		// Add duplicate action button
+	protected function addDuplicateAction(Actions &$actions)
+	{
 		$duplicatePostAction = Action::new('duplicate', 'Dupliquer', 'fa-solid fa-copy')
 			->linkToCrudAction('duplicate')
 			->addCssClass('btn btn-primary')
@@ -55,25 +51,44 @@ abstract class AbstractPostTypeCrudController extends AbstractCrudController imp
 			]);
 
 		$actions->add(Crud::PAGE_INDEX, $duplicatePostAction);
-
-		return $actions;
 	}
 
-	public function duplicate(AdminContext $context)
+	protected function addViewAction(Actions &$actions)
+	{
+		$viewAction = Action::new('view', 'Voir', 'fa-solid fa-arrow-up-right-from-square')
+		->linkToRoute(static::getViewRouteName(), function ($entity): array {
+			return [
+				'slug' => $entity->getSlug()
+			];
+		})
+		->setHtmlAttributes([
+			'target' => '_blank'
+		]);
+
+		$actions->add(Crud::PAGE_INDEX, $viewAction);
+		$actions->add(Crud::PAGE_EDIT, $viewAction);
+	}
+
+	public function duplicate(AdminContext $context, EntityManagerInterface $em)
 	{
 		$entity = $context->getEntity()->getInstance();
+
+		if(!$entity instanceof AbstractPostType) {
+			throw new \Exception('Entity must implement AbstractPostType');
+		}
+
+		$entity = clone $entity;
 		$entity->setTitle($entity->getTitle() . ' (copie)');
 		$entity->setSlug($entity->getSlug() . '-copie');
-		$entity->setStatus($entity->getStatus()::STATUS_DRAFT);
-		$entity->setPublishedAt(null);
-		$entity->setCreatedAt(new \DateTime());
+		$entity->setStatus($entity::STATUS_DRAFT);
+		$entity->setCreatedAt(new \DateTimeImmutable());
 		$entity->setAuthor($this->security->getUser());
+		
+		$em->persist($entity);
+		$em->flush();
 
-		// $this->em->persist($entity);
-		// $this->em->flush();
+		$this->addFlash('success', 'L\'élément a été dupliqué avec succès.');
 
-		// $this->addFlash('success', 'L\'article a été dupliqué avec succès.');
-
-		// return $this->redirectToReferrer();
+		return $this->redirect($context->getReferrer());
 	}
 }
