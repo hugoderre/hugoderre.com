@@ -172,9 +172,4 @@ class Post extends AbstractPostType
 
         return $this;
     }
-
-    public function __toString()
-    {
-        return $this->title;
-    }
 }
