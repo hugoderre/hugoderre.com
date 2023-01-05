@@ -4,6 +4,7 @@ twig:
     globals:
       uploads_uri_prefix_prod: '%uploads_uri_prefix_prod%'
       uploads_uri_prefix_dev: '%uploads_uri_prefix_dev%'
+      locales: '%app_locales%'
 when@test:
     twig:
         strict_variables: true

@@ -8,6 +8,8 @@ parameters:
     uploads_uri_prefix_prod: 'https://%env(AWS_S3_BUCKET_NAME)%.s3.eu-west-3.amazonaws.com'
     uploads_uri_prefix_dev: '/uploads'
     timezone: '%env(APP_TIMEZONE)%'
+    locale: 'fr'
+    app_locales: fr|en
     
 services:
     # default configuration for services in *this* file
@@ -20,6 +22,8 @@ services:
             string $MAILCHIMP_SERVER_PREFIX: "%env(MAILCHIMP_SERVER_PREFIX)%"
             string $MAILCHIMP_LIST_ID: "%env(MAILCHIMP_LIST_ID)%"
             string $LOGIN_PATH_SECURITY_CHECK: "%env(LOGIN_PATH_SECURITY_CHECK)%"
+            $locales: '%app_locales%'
+            $defaultLocale: '%locale%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

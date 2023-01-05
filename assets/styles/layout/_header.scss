@@ -50,7 +50,8 @@ header {
 					@media screen and (max-width: 480px) {
 						width: 100px;
 					}
-					a {
+					a,
+					span {
 						color: var(--tertiary-color);
 						display: flex;
 						justify-content: center;
@@ -69,6 +70,10 @@ header {
 							color: var(--tertiary-color);
 							transition: 0.5s;
 						}
+					}
+					span .locale-flag {
+						border: 1.5px solid var(--tertiary-color);
+						padding: 2px;
 					}
 				}
 			}

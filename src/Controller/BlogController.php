@@ -24,7 +24,7 @@ class BlogController extends AbstractController
     public function all(PostRepository $postRepository): Response
     {
         $posts = $postRepository->findBy( ['status' => 'publish'], ['createdAt' => 'DESC'] );
-        
+
         return $this->render('blog/blog.html.twig', [
             'posts' => $posts,
             'page'  => 'blog',

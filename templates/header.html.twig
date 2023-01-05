@@ -9,6 +9,29 @@
 				<li><a href="{{ path('blog') }}"class="{{ page == 'blog' or page == 'post' ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i>Blog</a></li>
 				<li><a href="{{ path('projects') }}"class="{{ page == 'projects' or page == 'project' ? 'active' : '' }}"><i class="fa-solid fa-diagram-project"></i>Projets</a></li>
 				<li><a href="mailto:contact@hugoderre.fr"class="{{ page == 'contact' ? 'active' : '' }}"><i class="fa-solid fa-paper-plane"></i>Contact</a></li>
+				
+				{% for locale in locales|split('|') %}
+					{% if locale == app.request.locale %}
+						<li>
+							<span>
+								<img src="{{ asset("assets/#{locale}.svg") }}" alt="{{ locale|upper }} Country flag for language choice " height="auto" width="20" class="locale-flag">
+							</span>
+						</li>
+					{% else %}
+						<li>
+							<a href="
+								{% if change_locale_links|length > 0 %}
+
+								{% else %}
+									{{ path('change_locale', {'locale': locale}) }} 
+								{% endif %}
+							" class="">
+								<img src="{{ asset("assets/#{locale}.svg") }}" alt="{{ locale|upper }} Country flag for language choice " height="auto" width="20" class="locale-flag">
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+
 			</ul>
 		</nav>
 		<div class="dark-mode-button" {{ stimulus_controller('dark-mode') }}>

@@ -6,6 +6,8 @@ use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -38,9 +40,22 @@ class Post extends AbstractPostType
     private $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Post::class, inversedBy="relatedPosts")
+     * @ORM\ManyToMany(targetEntity="Post")
+     * @JoinTable(name="post_related",
+     *     joinColumns={@JoinColumn(name="post_a_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@JoinColumn(name="post_b_id", referencedColumnName="id")}
+     * )
      */
     private $relatedPosts;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Post")
+     * @JoinTable(name="post_translations",
+     *     joinColumns={@JoinColumn(name="post_a_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@JoinColumn(name="post_b_id", referencedColumnName="id")}
+     * )
+     */
+	private $translatedPosts;
 
     const STATUS_PUBLISH = 'publish';
     const STATUS_DRAFT = 'draft';
@@ -51,6 +66,7 @@ class Post extends AbstractPostType
         $this->tags = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->relatedPosts = new ArrayCollection();
+        $this->translatedPosts = new ArrayCollection();
     }
 
     public function getTitle(): ?string
@@ -175,6 +191,30 @@ class Post extends AbstractPostType
     public function removeRelatedPost(self $relatedPost): self
     {
         $this->relatedPosts->removeElement($relatedPost);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getTranslatedPosts(): Collection
+    {
+        return $this->translatedPosts;
+    }
+
+    public function addTranslatedPost(self $translatedPost): self
+    {
+        if (!$this->translatedPosts->contains($translatedPost)) {
+            $this->translatedPosts[] = $translatedPost;
+        }
+
+        return $this;
+    }
+
+    public function removeTranslatedPost(self $translatedPost): self
+    {
+        $this->translatedPosts->removeElement($translatedPost);
 
         return $this;
     }
