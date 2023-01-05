@@ -17,10 +17,10 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\PasswordUpgrade
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
-use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 
 class SecurityAuthenticator extends AbstractAuthenticator
 {
+	private string $loginRouteEndpoint;
 
     public function __construct(protected UserRepository $userRepository, protected UserPasswordHasherInterface $encoder, string $LOGIN_PATH_SECURITY_CHECK) {
 		$this->loginRouteEndpoint = 'login-' . $LOGIN_PATH_SECURITY_CHECK;
@@ -32,7 +32,7 @@ class SecurityAuthenticator extends AbstractAuthenticator
             && $request->isMethod('POST');
     }
 
-    public function authenticate(Request $request): PassportInterface
+    public function authenticate(Request $request): Passport
     {
 
         $username   = $request->get('login')['username'];
