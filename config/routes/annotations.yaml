@@ -8,12 +8,16 @@ controllers:
         _locale: '%locale%'
   
 locale_controller:
-    # controller: App\Controller\LocaleController
     resource: ../../src/Controller/LocaleController.php
     type: annotation
-    # don't want prefix for this controller
-    # prefix: ''
+  
+security_controller:
+    resource: ../../src/Controller/SecurityController.php
+    type: annotation
 
+easy_admin_controllers:
+    resource: ../../src/Controller/Admin/*/*.php
+    type: annotation
 
 kernel:
     resource: ../../src/Kernel.php

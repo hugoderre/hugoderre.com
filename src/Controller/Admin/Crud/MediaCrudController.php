@@ -15,7 +15,7 @@ use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class MediaCrudController extends AbstractCrudController
 {
-	protected $uploadHelper;
+	private $uploadsHelper;
 
 	public function __construct(UploadsHelpers $uploadsHelper)
 	{

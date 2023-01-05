@@ -33,6 +33,7 @@ class PostCrudController extends AbstractPostTypeCrudController
             TextEditorField::new('content', 'Contenu')->setFormType(CKEditorType::class),
             AssociationField::new('tags')->autocomplete(true),
             AssociationField::new('relatedPosts')->autocomplete(true),
+            AssociationField::new('translatedPosts')->autocomplete(true),
             AssociationField::new('author')->autocomplete(true),
 			TextareaField::new('metaDescription')->onlyOnForms(),
 			AssociationField::new('metaImage')->autocomplete(true)->onlyOnForms(),
