@@ -12,11 +12,11 @@
             {% for project in projects %}
                 <article class="project">
                     <div class="project__img">
-                        <img src="{{ vich_uploader_asset(project.thumbnail) }}" alt="{{ project.name }}">
+                        <img src="{{ vich_uploader_asset(project.thumbnail) }}" alt="{{ project.title }}">
                     </div>
                     <div class="project__content">
                         <h2>
-                            <a href="{{ path('project_view', {'slug': project.slug}) }}">{{ project.name }}</a>
+                            <a href="{{ path('project_view', {'slug': project.slug}) }}">{{ project.title }}</a>
                         </h2>
 						<div class="project__content__tags-container">
 							<ul>

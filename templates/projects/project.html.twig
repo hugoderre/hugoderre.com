@@ -9,7 +9,7 @@
 	{% if project.metaDescription %}
 		{{- project.metaDescription -}}
 	{% else %}
-		{{- project.description|striptags|u.truncate(160, '...', false) -}}
+		{{- project.content|striptags|u.truncate(160, '...', false) -}}
 	{%- endif %}
 {% endblock %}
 
@@ -23,7 +23,7 @@
 	{%- endif %}
 {% endblock %}
 
-{% block title %}{{ project.name }}{% endblock %}
+{% block title %}{{ project.title }}{% endblock %}
 
 {% block content %}
 	<div class="project__container">
@@ -32,16 +32,16 @@
 			{% if project.gallery|length > 0 %}
 				{% include "partials/block/slides.html.twig" with {'images': project.gallery} %}
 			{% elseif project.thumbnail is not null  %}
-				<img src="{{ vich_uploader_asset(project.thumbnail) }}" alt="{{ project.name }}">
+				<img src="{{ vich_uploader_asset(project.thumbnail) }}" alt="{{ project.title }}">
 			{% endif %}
 			</div>
 		</div>
 		<div class="right">
 			<div class="project__container__name page-title">
-				<h1>{{ project.name }}</h1>
+				<h1>{{ project.title }}</h1>
 			</div>
 			<div class="project__container__description">
-				{{ project.description|raw }}
+				{{ project.content|raw }}
 			</div>
 			<div class="project__container__tags-container ">
 				<ul>
