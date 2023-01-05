@@ -28,6 +28,9 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+		// Currently disabled
+		throw $this->createNotFoundException('Page not found');
+
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
@@ -65,6 +68,9 @@ class RegistrationController extends AbstractController
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, UserRepository $userRepository): Response
     {
+		// Currently disabled
+		throw $this->createNotFoundException('Page not found');
+
         $id = $request->get('id');
 
         if (null === $id) {
