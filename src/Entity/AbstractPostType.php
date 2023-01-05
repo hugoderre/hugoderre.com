@@ -222,4 +222,9 @@ abstract class AbstractPostType
 
         return $this;
     }
+
+	public function __toString()
+    {
+        return $this->title;
+    }
 }
