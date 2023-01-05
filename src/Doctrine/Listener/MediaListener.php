@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\Security;
 
 class MediaListener
 {
+	private $security;
+	
     public function __construct(Security $security)
     {
         $this->security = $security;

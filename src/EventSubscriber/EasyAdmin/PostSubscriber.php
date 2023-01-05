@@ -2,7 +2,7 @@
 
 namespace App\EventSubscriber\EasyAdmin;
 
-use App\Entity\Post;
+use App\Entity\PostType\Post;
 use DateTime;
 use DateTimeImmutable;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;

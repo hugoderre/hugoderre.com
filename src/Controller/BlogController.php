@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\Post;
+use App\Entity\PostType\Post;
 use App\Form\Type\Post\CommentType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;

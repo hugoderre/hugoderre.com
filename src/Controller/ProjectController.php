@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Project;
+use App\Entity\PostType\Project;
 use App\Repository\ProjectRepository;
 use App\Trait\PostTypeTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

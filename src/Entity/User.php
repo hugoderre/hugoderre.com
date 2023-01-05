@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\PostType\Post;
+use App\Entity\PostType\Project;
 use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;

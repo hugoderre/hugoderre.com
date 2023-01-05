@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin\Crud\PostType;
 
-use App\Entity\Project;
+use App\Entity\PostType\Project;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;

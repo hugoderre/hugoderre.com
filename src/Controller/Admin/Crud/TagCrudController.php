@@ -12,11 +12,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class TagCrudController extends AbstractCrudController
 {
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
-
     public static function getEntityFqcn(): string
     {
         return Tag::class;

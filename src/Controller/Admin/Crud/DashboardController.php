@@ -4,8 +4,8 @@ namespace App\Controller\Admin\Crud;
 
 use App\Entity\Comment;
 use App\Entity\Media;
-use App\Entity\Post;
-use App\Entity\Project;
+use App\Entity\PostType\Post;
+use App\Entity\PostType\Project;
 use App\Entity\Tag;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;

@@ -4,8 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\Comment;
 use App\Entity\Media;
-use App\Entity\Post;
-use App\Entity\Project;
+use App\Entity\PostType\Post;
+use App\Entity\PostType\Project;
 use App\Entity\Tag;
 use App\Entity\User;
 use DateTimeImmutable;
@@ -19,6 +19,16 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppFixtures extends Fixture
 {
+	private $slugger;
+	private $hasher;
+	private $faker;
+	private $manager;
+	private $userAdmin;
+	private $wordpressTag;
+	private $phpTag;
+	private $symfonyTag;
+	private $media;
+
     public function __construct(SluggerInterface $slugger, UserPasswordHasherInterface $hasher)
     {
         $this->slugger  = $slugger;
@@ -146,20 +156,20 @@ class AppFixtures extends Fixture
 			'Space Invaders revisité en Javascript',
 		];
         for ($i=0; $i < 3; $i++) { 
-            $this->project = new Project();
-            $this->project->setName($titles[$i]);
-            $this->project->setSlug($this->slugger->slug($titles[$i]));
-            $this->project->setThumbnail($this->media[$i]);
-            $this->project->setDescription(loremizer::getPhrase(5));
-            $this->project->setStatus(Project::STATUS_PUBLISH);
-			$this->project->addTag($this->wordpressTag);
-			$this->project->addTag($this->phpTag);
-			$this->project->addTag($this->symfonyTag);
-            $this->project->addGallery($this->media[0]);
-            $this->project->addGallery($this->media[1]);
-            $this->project->addGallery($this->media[2]);
-			$this->project->setAuthor($this->userAdmin);
-            $this->manager->persist($this->project);
+            $project = new Project();
+            $project->setTitle($titles[$i]);
+            $project->setSlug($this->slugger->slug($titles[$i]));
+            $project->setThumbnail($this->media[$i]);
+            $project->setContent(loremizer::getPhrase(5));
+            $project->setStatus(Project::STATUS_PUBLISH);
+			$project->addTag($this->wordpressTag);
+			$project->addTag($this->phpTag);
+			$project->addTag($this->symfonyTag);
+            $project->addGallery($this->media[0]);
+            $project->addGallery($this->media[1]);
+            $project->addGallery($this->media[2]);
+			$project->setAuthor($this->userAdmin);
+            $this->manager->persist($project);
         }
 	}
 }

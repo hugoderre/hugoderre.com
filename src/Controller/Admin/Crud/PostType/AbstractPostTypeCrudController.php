@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin\Crud\PostType;
 
-use App\Entity\AbstractPostType;
+use App\Entity\PostType\AbstractPostType;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;

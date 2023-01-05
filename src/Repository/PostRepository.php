@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Post;
+use App\Entity\PostType\Post;
 use App\Trait\RepositoryCustomFinders;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

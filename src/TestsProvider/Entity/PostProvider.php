@@ -2,7 +2,7 @@
 
 namespace App\TestsProvider\Entity;
 
-use App\Entity\Post;
+use App\Entity\PostType\Post;
 
 class PostProvider { 
     public static function getPost(): Post {

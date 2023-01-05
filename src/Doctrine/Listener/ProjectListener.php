@@ -2,15 +2,15 @@
 
 namespace App\Doctrine\Listener;
 
-use App\Entity\Project;
+use App\Entity\PostType\Project;
 use DateTimeImmutable;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProjectListener
 {
-
     private $slugger;
+	private $security;
 
     public function __construct(SluggerInterface $slugger, Security $security)
     {
@@ -20,7 +20,7 @@ class ProjectListener
 
     public function prePersist(Project $project)
     {
-        if(empty($project->getSlug()) && $title = $project->getName()) {
+        if(empty($project->getSlug()) && $title = $project->getTitle()) {
             $slug = strtolower($this->slugger->slug($title));
             $project->setSlug($slug);
         }

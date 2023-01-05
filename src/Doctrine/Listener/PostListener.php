@@ -2,15 +2,15 @@
 
 namespace App\Doctrine\Listener;
 
-use App\Entity\Post;
+use App\Entity\PostType\Post;
 use DateTimeImmutable;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PostListener
 {
-
     private $slugger;
+	private $security;
 
     public function __construct(SluggerInterface $slugger, Security $security)
     {
