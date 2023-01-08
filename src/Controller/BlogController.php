@@ -8,6 +8,7 @@ use App\Form\Type\Post\CommentType;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use App\Security\SpamCheckerService;
+use App\Trait\LocaleTrait;
 use App\Trait\PostTypeTrait;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,18 +19,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
 	use PostTypeTrait;
+	use LocaleTrait;
 
     #[Route('/blog', name: 'blog', options: ['sitemap' => true])]
-    // #[ParamConverter('post')]
-    public function all(PostRepository $postRepository): Response
+    public function blog(PostRepository $postRepository, Request $request): Response
     {
-        $posts = $postRepository->findBy( ['status' => 'publish'], ['createdAt' => 'DESC'] );
+        $posts = $postRepository->findBy([
+			'status' => 'publish', 
+			'lang' => $request->getLocale()
+		], [
+			'createdAt' => 'DESC'
+		]);
 
         return $this->render('blog/blog.html.twig', [
             'posts' => $posts,
             'page'  => 'blog',
         ]);
-        
     }
 
     #[Route('/blog/{slug}', name: 'post_view')]
@@ -44,7 +49,11 @@ class BlogController extends AbstractController
         if(!$this->canUserView($post)) {
 			throw $this->createNotFoundException('Post not found');
 		}
-		
+
+		if($post->getLang() !== $request->getLocale()) {
+			return $this->redirectEntityToCurrentLocale($post, 'post_view');
+		}
+
 		$commentForm = $this->createForm(CommentType::class);
 		$commentForm->handleRequest($request);
 		if($commentForm->isSubmitted() && $commentForm->isValid()) {
@@ -80,7 +89,7 @@ class BlogController extends AbstractController
 
 			return $this->redirect($request->getUri());
 		}
-
+		
         return $this->render('blog/post.html.twig', [
             'post'      => $post,
             'comments'  => [
@@ -88,6 +97,7 @@ class BlogController extends AbstractController
 				'form'   => $commentForm->createView(),
 			],
 			'relatedPosts' => $post->getRelatedPosts(),
+			'translatedEntities' => ['entities' => $post->getTranslatedPosts()->toArray(), 'fallback_route' => 'blog'],
             'page'      => 'post'
         ]);
     }

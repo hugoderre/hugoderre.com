@@ -30,7 +30,7 @@ class PostCrudController extends AbstractPostTypeCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('title'),
 			TextField::new('slug')->hideOnForm(),
-            TextEditorField::new('content', 'Contenu')->setFormType(CKEditorType::class),
+            TextEditorField::new('content', 'Contenu')->setFormType(CKEditorType::class)->hideOnIndex(),
             AssociationField::new('tags')->autocomplete(true),
             AssociationField::new('relatedPosts')->autocomplete(true),
             AssociationField::new('translatedPosts')->autocomplete(true),
@@ -38,6 +38,7 @@ class PostCrudController extends AbstractPostTypeCrudController
 			TextareaField::new('metaDescription')->onlyOnForms(),
 			AssociationField::new('metaImage')->autocomplete(true)->onlyOnForms(),
             ChoiceField::new('status')->setChoices(array_flip(Post::getStatusList())),
+			ChoiceField::new('lang')->setChoices($this->localesHelpers->getLocalesList()),
             DateTimeField::new('publishedAt')->hideOnForm(),
         ];
     }

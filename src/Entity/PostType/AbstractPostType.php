@@ -79,6 +79,11 @@ abstract class AbstractPostType
      */
     protected $publishedAt;
 
+	/**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $lang;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -221,6 +226,18 @@ abstract class AbstractPostType
     public function setPublishedAt(\DateTimeImmutable $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+	public function getLang(): ?string
+    {
+        return $this->lang;
+    }
+
+    public function setLang(string $lang): self
+    {
+        $this->lang = $lang;
 
         return $this;
     }

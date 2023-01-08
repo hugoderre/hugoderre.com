@@ -8,6 +8,8 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
@@ -40,10 +42,20 @@ class Project extends AbstractPostType
      */
     private $listOrder;
 
+	/**
+     * @ORM\ManyToMany(targetEntity=self::class, cascade={"persist"})
+     * @JoinTable(name="project_translations",
+     *     joinColumns={@JoinColumn(name="project_a_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@JoinColumn(name="project_b_id", referencedColumnName="id")}
+     * )
+     */
+	private $translatedProjects;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
         $this->tags = new ArrayCollection();
+		$this->translatedProjects = new ArrayCollection();
     }
 
     public function getGithubUrl(): ?string
@@ -129,4 +141,28 @@ class Project extends AbstractPostType
 
 		return $this;
 	}
+
+	/**
+     * @return Collection<int, self>
+     */
+    public function getTranslatedProjects(): Collection
+    {
+        return $this->translatedProjects;
+    }
+
+    public function addTranslatedProject(self $translatedProject): self
+    {
+        if (!$this->translatedProjects->contains($translatedProject)) {
+            $this->translatedProjects[] = $translatedProject;
+        }
+
+        return $this;
+    }
+
+    public function removeTranslatedProject(self $translatedProject): self
+    {
+        $this->translatedProjects->removeElement($translatedProject);
+
+        return $this;
+    }
 }

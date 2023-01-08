@@ -20,8 +20,13 @@
 					{% else %}
 						<li>
 							<a href="
-								{% if change_locale_links|length > 0 %}
-
+								{% if translatedEntities is defined %}
+									{% set translatedEntity = translatedEntities['entities']|filter(e => e.lang == locale)[0] %}
+									{% if translatedEntity is not empty %}
+										{{ path("#{app.request.get('_route')}", {'_locale': locale, 'slug': translatedEntity.slug}) }}
+									{% else %}
+										{{ path("#{translatedEntities['fallback_route']}", {'_locale': locale}) }}
+									{% endif %}
 								{% else %}
 									{{ path('change_locale', {'locale': locale}) }} 
 								{% endif %}

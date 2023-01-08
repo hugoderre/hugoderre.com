@@ -22,8 +22,8 @@ services:
             string $MAILCHIMP_SERVER_PREFIX: "%env(MAILCHIMP_SERVER_PREFIX)%"
             string $MAILCHIMP_LIST_ID: "%env(MAILCHIMP_LIST_ID)%"
             string $LOGIN_PATH_SECURITY_CHECK: "%env(LOGIN_PATH_SECURITY_CHECK)%"
-            $locales: '%app_locales%'
-            $defaultLocale: '%locale%'
+            string $locales: '%app_locales%'
+            string $defaultLocale: '%locale%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

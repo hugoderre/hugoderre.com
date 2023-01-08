@@ -41,6 +41,8 @@ class ProjectCrudController extends AbstractPostTypeCrudController
 			TextareaField::new('metaDescription')->onlyOnForms(),
 			AssociationField::new('metaImage')->autocomplete(true)->onlyOnForms(),
             ChoiceField::new('status')->setChoices(array_flip(Project::getStatusList())),
+			ChoiceField::new('lang')->setChoices($this->localesHelpers->getLocalesList()),
+			AssociationField::new('translatedProjects')->autocomplete(true),
             DateTimeField::new('createdAt')->hideOnForm(),
         ];
     }

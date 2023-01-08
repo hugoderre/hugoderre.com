@@ -3,6 +3,7 @@
 namespace App\Controller\Admin\Crud\PostType;
 
 use App\Entity\PostType\AbstractPostType;
+use App\Helpers\LocaleHelpers;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -14,10 +15,12 @@ use Symfony\Component\Security\Core\Security;
 abstract class AbstractPostTypeCrudController extends AbstractCrudController implements InterfacePostTypeCrudController
 {
 	protected $security;
+	protected $localesHelpers;
 
-    public function __construct(Security $security)
+    public function __construct(Security $security, LocaleHelpers $localeHelpers)
     {
 		$this->security = $security;
+		$this->localesHelpers = $localeHelpers;
     }
 
 	public function createEntity(string $entityFqcn) {

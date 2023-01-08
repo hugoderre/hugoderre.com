@@ -32,7 +32,7 @@ class Post extends AbstractPostType
     private $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Post")
+     * @ORM\ManyToMany(targetEntity=self::class)
      * @JoinTable(name="post_related",
      *     joinColumns={@JoinColumn(name="post_a_id", referencedColumnName="id")},
      *     inverseJoinColumns={@JoinColumn(name="post_b_id", referencedColumnName="id")}
@@ -41,7 +41,7 @@ class Post extends AbstractPostType
     private $relatedPosts;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Post")
+     * @ORM\ManyToMany(targetEntity=self::class, cascade={"persist"})
      * @JoinTable(name="post_translations",
      *     joinColumns={@JoinColumn(name="post_a_id", referencedColumnName="id")},
      *     inverseJoinColumns={@JoinColumn(name="post_b_id", referencedColumnName="id")}
