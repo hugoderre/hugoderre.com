@@ -6,7 +6,7 @@
 		</{{ post_card_title_tag }}>
 	</div>
 	<div class="post-card__body">
-		<p class="post-card__body-date">{{ post.publishedAt|format_datetime(locale='fr',pattern="dd MMMM YYYY")|upper }}</p>
+		<p class="post-card__body-date">{{ post.publishedAt|format_datetime(pattern="dd MMMM YYYY")|upper }}</p> {{locale}}
 		<p class="post-card__body-excerpt">{{ post.excerpt }}</p>
 	</div>
 	<div class="post-card__footer">
@@ -14,7 +14,7 @@
 		<div class="post-card__footer-wrapper">
 			<ul class="post-card__footer__tags">
 				{% for tag in post.tags %}
-					<li class="post-card__footer__tags-tag">{{ tag.name }}</li>
+					<li class="post-card__footer__tags-tag">{{ tag.name|trans }}</li>
 				{% endfor %}
 			</ul>
 			<ul class="post-card__footer__socials">

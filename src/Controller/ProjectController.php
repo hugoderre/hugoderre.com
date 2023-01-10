@@ -16,7 +16,7 @@ class ProjectController extends AbstractController
 	use PostTypeTrait;
 	use LocaleTrait;
 
-    #[Route('/projects', name: 'projects', options: ['sitemap' => true])]
+    #[Route('/projects', name: 'projects')]
     public function projects(ProjectRepository $projectRepository, Request $request): Response
     {
         $projects = $projectRepository->findBy([
@@ -52,4 +52,10 @@ class ProjectController extends AbstractController
             'page'      => 'project',
         ]);
     }
+
+	#[Route(name: 'project_locale_redirect')]
+	public function projectLocaleRedirect(Project $project): Response
+	{
+		return $this->redirectEntityToCurrentLocale($project, 'project_view');
+	}
 }

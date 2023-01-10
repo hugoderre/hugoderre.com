@@ -10,18 +10,17 @@ use App\Form\Type\Email\NewsletterType;
 use App\Integration\MailchimpService;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
-use MailchimpMarketing\ApiException;
 use Symfony\Component\Validator\Constraints\Email as EmailConstraint;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'home', options: ['sitemap' => true])]
+    #[Route('/home', name: 'home')]
     public function index(
 		Request $request, 
 		ValidatorInterface $validator,
 		MailchimpService $mailchimpService,
-		string $MAILCHIMP_LIST_ID
+		string $MAILCHIMP_LIST_ID,
 	): Response
     {
 		$newsletterForm = $this->createForm(NewsletterType::class);
@@ -64,7 +63,7 @@ class HomeController extends AbstractController
 			return $this->redirectToRoute('home');
 		}
 		
-        return $this->render('home/home.html.twig', [
+        return $this->render('home/home.' . $request->getLocale() . '.html.twig', [
             'page' => 'home',
 			'newsletterForm' => $newsletterForm->createView()
         ]);

@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 class TermsController extends AbstractController
 {
 	#[Route('/privacy', name: 'privacy', options: ['sitemap' => false])]
-	public function privacy(): Response
+	public function privacy(string $_locale): Response
 	{
-		return $this->render('terms/privacy.html.twig', [
+		return $this->render("terms/privacy.$_locale.html.twig", [
 			'page' => 'privacy',
 		]);
 	}

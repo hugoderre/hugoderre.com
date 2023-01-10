@@ -11,13 +11,22 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CommentType extends AbstractType {
+
+	private $translator;
+
+	public function __construct(TranslatorInterface $translator)
+	{
+		$this->translator = $translator;
+	}
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('authorName', TextType::class, [
-                'label' => 'Nom d\'utilisateur',
+                'label' => $this->translator->trans("Nom d'utilisateur"),
                 'attr'  => [
                     'placeholder' => '',
                     'class' => 'form-control',
@@ -37,7 +46,7 @@ class CommentType extends AbstractType {
                 ],
             ])
 			->add('authorWebsite', UrlType::class, [
-                'label' => 'Site web',
+                'label' => $this->translator->trans('Site web'),
                 'attr'  => [
                     'placeholder' => '',
                     'class' => 'form-control',
@@ -61,7 +70,7 @@ class CommentType extends AbstractType {
 				'required' => false,
 			])
             ->add('content', TextareaType::class, [
-                'label' => 'Votre commentaire',
+                'label' => $this->translator->trans('Votre commentaire'),
                 'attr'  => [
                     'placeholder' => '',
                     'class' => 'form-control',
@@ -72,7 +81,7 @@ class CommentType extends AbstractType {
                 ],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer',
+                'label' => $this->translator->trans('Envoyer'),
                 'attr'  => [
                     'class' => 'btn btn-primary',
                 ],

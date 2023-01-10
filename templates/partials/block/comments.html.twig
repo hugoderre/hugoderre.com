@@ -1,5 +1,5 @@
 <div class="comments">
-    <h3>{{ comments.posted|length }} commentaires</h3>
+    <h3>{{ comments.posted|length }} {{ 'commentaire'|trans({'%count%': comments.posted|length}) }}</h3>
 	<div class="comments__form">
 		{{ form(comments.form) }}
 	</div>
@@ -16,7 +16,7 @@
 			</div>
 			<div class="comment__header__info">
 				<h5>{{ comment.authorName }}</h5>
-				<div class="comment__header__info__created-at">{{ comment.createdAt|format_datetime(locale='fr') }}</div>
+				<div class="comment__header__info__created-at">{{ comment.createdAt|format_datetime() }}</div>
 			</div>
             
         </div>

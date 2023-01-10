@@ -32,7 +32,7 @@
 				<div>
 					<h1>{{ post.title }}</h1>
 					{% if post.publishedAt %}
-					<p class="post__date">Publié le {{ post.publishedAt|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</p>
+					<p class="post__date">{{ 'Publié le'|trans }} {{ post.publishedAt|format_datetime(pattern="dd MMMM YYYY") }}</p>
 					{% endif %}
 				</div>
 			</div>

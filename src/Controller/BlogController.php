@@ -21,7 +21,7 @@ class BlogController extends AbstractController
 	use PostTypeTrait;
 	use LocaleTrait;
 
-    #[Route('/blog', name: 'blog', options: ['sitemap' => true])]
+    #[Route('/blog', name: 'blog')]
     public function blog(PostRepository $postRepository, Request $request): Response
     {
         $posts = $postRepository->findBy([
@@ -101,4 +101,10 @@ class BlogController extends AbstractController
             'page'      => 'post'
         ]);
     }
+
+	#[Route(name: 'post_locale_redirect')]
+	public function postLocaleRedirect(Post $post): Response
+	{
+		return $this->redirectEntityToCurrentLocale($post, 'post_view');
+	}
 }

@@ -2,12 +2,12 @@
     {# <hr> #}
     <div class="footer__wrapper">
         <div class="footer__social">
-			<a href="https://github.com/hugoderre" target="_blank" rel="noopener noreferrer" title="Github" class="footer__social-icon social-icon github-link"><i class="fa-brands fa-github"></i></a>
+			<a href="https://github.com/hugoderre" target="_blank" rel="noopener noreferrer" title="GitHub" class="footer__social-icon social-icon github-link"><i class="fa-brands fa-github"></i></a>
 		</div>
         <div class="footer__nav"></div>
         <div class="footer__terms">
-            <a href="{{ path('privacy') }}" rel="noopener noreferrer">Politique de confidentialité</a>
-            <span>Copyright &copy;Hugo Derré 2022 — Tous droits réservés.</span>
+            <a href="{{ path('privacy') }}" rel="noopener noreferrer">{{ 'Politique de confidentialité'|trans }}</a>
+            <span>{{ 'Copyright © Hugo Derré 2022 — Tous droits réservés.'|trans }}</span>
         </div>
     </div>
 </footer>

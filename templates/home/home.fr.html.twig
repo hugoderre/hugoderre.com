@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hugo Derré – Le nouveau rendez-vous des développeurs
+{% endblock %}
+
+{% block content %}
+	<div class="home__header">
+		<figure class="home__header__img-me">
+			<div class="img-me__wrapper">
+				<img src="{{ asset('assets/me.png') }}" alt="Image du créateur de ce magnifique blog">
+			</div>
+			<figcaption>Le créateur de ce blog sirotant une petite binch.</figcaption>
+		</figure>
+		<div class="home__header__title page-title">
+			<h1>Hugo Derré<br>Développeur Web Full-Stack</h1>
+		</div>
+	</div>
+	<hr>
+	<div class="home__content">
+		<p>
+			<strong>Partager des connaissances</strong>
+			est un exercice vraiment enrichissant et exaltant pour quiconque se passionne de son sujet.<br>
+			C'est pourquoi je veux prendre de mon temps pour écrire des articles autour de ce domaine qui me captive tant :
+			<strong>le développement web</strong>.<br>
+			J'espère que vous repartirez de ce site avec un peu plus de connaissances que vous n'en aviez à votre arrivée !
+		</p>
+		<br>
+		<div class="home__content__blog-summary">
+			<h2>Mais alors quel contenu sur ce blog ?</h2>
+			<ul class="home__content__blog-summary__list">
+				<li class="home__content__blog-summary__list__blog-item">Des
+					<a href="{{ path('blog') }}">
+						<strong>articles de blog</strong>
+					</a>
+					autour du développement web.</li>
+				<li class="home__content__blog-summary__list__project-item">Mes
+					<a href="{{ path('projects') }}">
+						<strong>créations personnelles et side projects</strong>
+					</a>
+					du moment.</li>
+			</ul>
+		</div>
+		<br>
+		<div class="home__content__newsletter">
+			<h2>Et comment être informé des nouvelles publications ?</h2>
+			<p>
+				Si le contenu te plaît et que tu ne souhaites rien rater, tu peux t'inscrire à la
+				<strong>newsletter</strong>
+				!<br>
+				Rentre ton
+				<b>email</b>
+				juste ici et tu seras
+				<b>notifié à chaque nouvelle parution</b>.<br>
+				Garantie sans spam et sans partage d'email à des tiers.
+				<b>RGPD POWER 🦸‍♂️</b>
+			</p>
+			{{ form(newsletterForm) }}
+		</div>
+	</div>
+{% endblock %}

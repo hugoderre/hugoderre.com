@@ -53,12 +53,12 @@
 			<div class="project__container__links">
 				{% if project.websiteUrl is not empty %}
 				<div class="project__container__links__website">
-					<a href="{{ project.websiteUrl }}" target="_blank" rel="noopener noreferrer" title="Site Web" class="website-link"><i class="fa-solid fa-globe"></i><span>Voir le site</span></a>
+					<a href="{{ project.websiteUrl }}" target="_blank" rel="noopener noreferrer" title="Site Web" class="website-link"><i class="fa-solid fa-globe"></i><span>{{ 'Voir le site'|trans }}</span></a>
 				</div>
 				{% endif %}
 				{% if project.githubUrl is not empty %}
 				<div class="project__container__links__github">
-					<a href="{{ project.githubUrl }}" target="_blank" rel="noopener noreferrer" title="Github" class="github-link"><i class="fa-brands fa-github"></i><span>Voir le github du projet</span></a>
+					<a href="{{ project.githubUrl }}" target="_blank" rel="noopener noreferrer" title="GitHub" class="github-link"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
 				</div>
 				{% endif %}
 			</div>
