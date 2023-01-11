@@ -2,15 +2,13 @@
 
 namespace App\Helpers;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 class LocaleHelpers
 {
 	public $locales;
 
-	public function __construct(ContainerInterface $container)
+	public function __construct(string $locales)
 	{
-		$this->locales = $container->getParameter('app_locales');
+		$this->locales = $locales;
 	}
 
 	public function getLocalesList()

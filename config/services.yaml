@@ -79,3 +79,8 @@ services:
           credentials:
               key: '%env(AWS_S3_ACCESS_ID)%'
               secret: '%env(AWS_S3_ACCESS_SECRET)%'
+
+    App\Helpers\UploadsHelpers:
+        public: false
+        arguments:
+            $uploadsUriPrefix: "@=container.getParameter('env') == 'prod' ? parameter('uploads_uri_prefix_prod') : parameter('uploads_uri_prefix_dev')"

@@ -17,7 +17,7 @@ class UserSubscriber implements EventSubscriberInterface
 		$this->hasher = $hasher;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             BeforeEntityUpdatedEvent::class => [

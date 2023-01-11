@@ -19,7 +19,7 @@ class HomeController extends AbstractController
 		$newsletterForm = $newsletterService->createForm();
 		$newsletterForm->handleRequest($request);
 		if($newsletterForm->isSubmitted() && $newsletterForm->isValid()) {
-			$newsletterService->handleForm($newsletterForm->getData());
+			$newsletterService->handleForm($newsletterForm->getData(), $request);
 			$this->redirectToRoute('home');
 		}
 		
