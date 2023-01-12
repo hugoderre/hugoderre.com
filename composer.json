@@ -115,12 +115,10 @@
 			"php bin/console asset:install"
 		],
         "post-install-cmd": [
-            "@auto-scripts",
-			"@database-setup"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
-            "@auto-scripts",
-			"@database-setup"
+            "@auto-scripts"
         ]
     },
     "conflict": {
