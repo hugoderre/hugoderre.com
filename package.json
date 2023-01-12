@@ -1,12 +1,12 @@
 {
     "devDependencies": {
-        "@symfony/stimulus-bridge": "^2.0.0",
-        "@symfony/webpack-encore": "^1.6.1",
+        "@symfony/stimulus-bridge": "^3.2.1",
+        "@symfony/webpack-encore": "^4.2.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
         "sass": "^1.43.3",
-        "sass-loader": "10.0.0",
-        "stimulus": "^2.0.0",
+        "sass-loader": "13.2.0",
+        "stimulus": "^3.2.1",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
