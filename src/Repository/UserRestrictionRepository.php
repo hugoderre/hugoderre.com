@@ -39,14 +39,37 @@ class UserRestrictionRepository extends ServiceEntityRepository
         }
     }
 
-	public function getIpBlacklist(): array
+	public function getIpRestrictionList($restrictionType): array
 	{
-		$ips = $this->createQueryBuilder('ur')
-			->select('ur.ip')
-			->where('ur.ban = true')
-			->getQuery()
-			->getResult();
+		$ips = [];
 
-		return array_map(fn ($ip) => $ip['ip'], $ips);
+		switch($restrictionType) {
+			case 'all':
+				$restrictions = $this->findAll();
+				break;
+			case 'ban':
+				$restrictions = $this->findBy(['ban' => true]);
+				break;
+			case 'soft':
+				$restrictions = $this->findBy(['ban' => false]);
+				break;
+			default:
+				throw new \InvalidArgumentException('Invalid restriction type');
+		}
+
+		foreach ($restrictions as $restriction) {
+			$ips[] = $restriction->getIp();
+		}
+
+		return $ips;
+	}
+
+	public function isIpRestricted($ip, $restrictionType = 'all'): bool
+	{
+		if (in_array($ip, $this->getIpRestrictionList($restrictionType), true)) {
+			return true;
+		}
+
+		return false;
 	}
 }

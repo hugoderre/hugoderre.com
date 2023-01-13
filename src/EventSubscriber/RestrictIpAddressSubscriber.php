@@ -9,11 +9,11 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class RestrictIpAddressSubscriber implements EventSubscriberInterface
 {
-	private array $ipBlacklist;
+	private array $ipBanList;
 
-    public function __construct(UserRestrictionRepository $userRestrictionRepository)
+    public function __construct(private UserRestrictionRepository $userRestrictionRepository)
 	{
-		$this->ipBlacklist = $userRestrictionRepository->getIpBlacklist();
+		$this->ipBanList = $this->userRestrictionRepository->getIpRestrictionList('ban');
 	}
 
     public static function getSubscribedEvents(): array
@@ -27,7 +27,7 @@ class RestrictIpAddressSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if (in_array($event->getRequest()->getClientIp(), $this->ipBlacklist, true)) {
+        if ($this->userRestrictionRepository->isIpRestricted($event->getRequest()->getClientIp(), 'ban')) {
             throw new AccessDeniedHttpException('Access Denied');
         }
     }

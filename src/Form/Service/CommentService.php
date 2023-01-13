@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Entity\PostType\AbstractPostType;
 use App\Form\Type\Post\CommentType;
 use App\Repository\CommentRepository;
+use App\Repository\UserRestrictionRepository;
 use App\Security\SpamCheckerService;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -19,7 +20,8 @@ class CommentService
 		private ValidatorInterface $validator,
 		private CommentRepository $commentRepository, 
 		private LoggerInterface $logger,
-		private SpamCheckerService $spamChecker
+		private SpamCheckerService $spamChecker,
+		private UserRestrictionRepository $userRestrictionRepository
 	) {}
 
 	public function createForm()
@@ -29,6 +31,10 @@ class CommentService
 
 	public function handleForm($formData, AbstractPostType $post, Request $request)
 	{
+		if ($this->userRestrictionRepository->isIpRestricted($request->getClientIp())) {
+			return;
+		}
+
 		// Honneypot check
 		if(!empty($formData['country'])) {
 			$this->logger->info(sprintf('Honneypot caught from %s', $request->getClientIp()), $formData);
@@ -53,7 +59,17 @@ class CommentService
 		]);
 
 		$comment->setSpamScore($spamScore);
-		$comment->setStatus($spamScore > 0 ? Comment::STATUS_PENDING : Comment::STATUS_APPROVED);
+
+		if($spamScore > 0) {
+			$this->logger->info(sprintf('Spam caught from %s', $request->getClientIp()), [
+				'score' => $spamScore,
+				'comment' => $comment,
+			]);
+
+			$comment->setStatus(Comment::STATUS_PENDING);
+		} else {
+			$comment->setStatus(Comment::STATUS_APPROVED);
+		}
 
 		$this->commentRepository->add($comment, true);
 	}
