@@ -8,6 +8,7 @@ use App\Entity\PostType\Post;
 use App\Entity\PostType\Project;
 use App\Entity\Tag;
 use App\Entity\User;
+use App\Entity\UserRestriction;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -43,6 +44,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Project', 'fa fa-diagram-project', Project::class);
         yield MenuItem::linkToCrud('Tag', 'fa fa-tags', Tag::class);
         yield MenuItem::linkToCrud('Medias', 'fa fa-image', Media::class);
-        yield MenuItem::linkToCrud('Comptes', 'fa fa-users', User::class);
+        yield MenuItem::subMenu('Utilisateurs', 'fa fa-users')->setSubItems([
+			MenuItem::linkToCrud('Comptes', 'fa fa-user', User::class),
+			MenuItem::linkToCrud('Restrictions', 'fa fa-ban', UserRestriction::class),
+		]);
     }
 }
