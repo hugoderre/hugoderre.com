@@ -26,7 +26,7 @@ class BlogController extends AbstractController
 			'status' => 'publish', 
 			'lang' => $request->getLocale()
 		], [
-			'createdAt' => 'DESC'
+			'publishedAt' => 'DESC'
 		]);
 
         return $this->render('blog/blog.html.twig', [
