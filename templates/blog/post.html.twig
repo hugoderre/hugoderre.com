@@ -48,7 +48,7 @@
 		<hr class="hr-post-end">
 		{% if post.relatedPosts|length > 0 %}
 			<div class="post__related">
-				<h2>D'autres articles à découvrir :</h2>
+				<h2>{{ "D'autres articles à découvrir :"|trans }}</h2>
 				<nav class="post__related__posts">
 					{% for relatedPost in post.relatedPosts %}
 						{% include "partials/block/post-card.html.twig" with {'post': relatedPost} %}
