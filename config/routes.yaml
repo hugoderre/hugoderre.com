@@ -3,6 +3,8 @@ homepage:
     controller: App\Controller\HomeController::index
     defaults:
         _locale: '%locale%'
+    requirements:
+        _locale: '%app_locales%'
 
 # Redirects for old blog and project slugs, which are now localized. 
 # TODO - remove these routes after Google indexing new sitemap.
