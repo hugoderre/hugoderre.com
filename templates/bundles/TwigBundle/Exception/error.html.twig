@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="error-page">
 		<h1>{{ status_code }}</h1>
-		<p class="error-page__top-label">Une erreur s'est produite s'est produite et nous ne pouvons traiter votre requête à l'heure actuelle.</p>
+		<p class="error-page__top-label">{{ "Une erreur s'est produite s'est produite et nous ne pouvons traiter votre requête à l'heure actuelle."|trans }}</p>
 		<p class="error-page__bottom-label">{{ status_text }}</p>
 	</div>
 {% endblock %}
