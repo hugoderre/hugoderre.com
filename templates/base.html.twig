@@ -7,7 +7,7 @@
 		<meta name="description" content="{% block meta_description %}{{ "Moi c'est Hugo Derré, et j'ai créé ce blog de développeur fait pour les développeurs ! Articles de blog autour du développement web, créations personnelles et side projects du moment."|trans }}{% endblock %}" />
 
 		{# Facebook #}
-		<meta property="og:image" content="{% block meta_image %}{{ url('homepage')|trim('/') ~ asset('assets/meta-img.png') }}{% endblock %}" />
+		<meta property="og:image" content="{% block meta_image %}{{ asset('assets/meta-img.png') }}{% endblock %}" />
 		<meta property="og:title" content="{% block title %}{{ "Hugo Derré – Le nouveau rendez-vous des développeurs"|trans }}{% endblock %}" />
 		<meta property="og:description" content="{{ block('meta_description') }}" />
 		<meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}" />
