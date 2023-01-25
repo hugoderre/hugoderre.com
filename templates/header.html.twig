@@ -39,15 +39,15 @@
 
 			</ul>
 		</nav>
-		<div class="dark-mode-button" {{ stimulus_controller('dark-mode') }}>
+		<div class="dark-mode-button" data-controller="dark-mode">
 			<div class="dark-mode-button__toggle-wrapper">
 				<input 
 					type="checkbox" 
 					id="dark-mode-switch" 
 					aria-label="dark mode toggle" 
 					class="dark-mode-button__toggle-checkbox"
+					data-action="click->dark-mode#darkModeInputEvent"
 					{{ app.request.cookies.get('darkMode') == 'dark' ? 'checked' : '' }}
-					{{ stimulus_action('dark-mode', 'darkModeInputEvent') }}
 				/>
 				<div class="dark-mode-button__toggle-circle"></div>
 				<i class="icon icon_moon fa-solid fa-moon"></i>
