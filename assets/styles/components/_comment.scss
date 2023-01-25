@@ -8,32 +8,65 @@
 		margin: 20px 0;
 	}
 	&__form {
-		margin-bottom: 20px;
+		margin-bottom: 50px;
 	}
 	.comment {
-		margin: 45px 0;
-
-		&__header {
+		height: 100%;
+		margin-top: 20px;
+		display: flex;
+		gap: 18px;
+		&__left {
 			display: flex;
-			align-items: center;
-			margin-bottom: 16px;
-			gap: 18px;
+			flex-direction: column;
+			gap: 15px;
+
 			&__avatar {
+				// flex: 1 0 auto;
 				width: 50px;
 				height: 50px;
+				min-height: 50px;
 				border-radius: 100%;
 				overflow: hidden;
 			}
-			&__info {
-				h5 {
-					font-weight: bold;
+			&__subline {
+				flex-grow: 1;
+				height: 90%;
+				width: 5px;
+				margin: auto;
+				background-color: var(--comment-subline-color);
+				opacity: 0.8;
+				&:hover {
+					opacity: 1;
 				}
-				&__created-at {
-					font-size: 14px;
-					color: var(--quinary-color);
-					opacity: 0.8;
+
+				&--last {
+					visibility: hidden;
 				}
 			}
 		}
+
+		&__right {
+			h5 {
+				font-weight: bold;
+			}
+
+			&__created-at {
+				font-size: 14px;
+				color: var(--quinary-color);
+				opacity: 0.8;
+			}
+
+			&__content {
+				&__inner {
+					margin-bottom: 40px;
+				}
+				margin-top: 15px;
+			}
+		}
 	}
+}
+.reply-btn {
+	color: var(--quinary-color);
+	font-size: 14px;
+	font-weight: bold;
 }

@@ -1,26 +1,30 @@
-<div class="comments">
-    <h3>{{ comments.posted|length }} {{ 'commentaire'|trans({'%count%': comments.posted|length}) }}</h3>
-	<div class="comments__form">
-		{{ form(comments.form) }}
+{% for comment in comments %}
+<section class="comment">
+	<div class="comment__left">
+		<div class="comment__left__avatar">
+			<img 
+				src="{{ gravatar_exists(comment.authorEmail) ? gravatar(comment.authorEmail) : asset('assets/blank-avatar.jpg') }}" 
+				alt="Avatar de l'auteur du commentaire" 
+				width="50"
+				height="50"
+			/>
+		</div>
+		<div class="comment__left__subline {{ loop.last and comment.getReplies() is empty and comment.getParent() is empty ? 'comment__left__subline--last' : '' }}"></div>
 	</div>
-    {% for comment in comments.posted %}
-    <section class="comment">
-        <div class="comment__header">
-			<div class="comment__header__avatar">
-				<img 
-					src="{{ gravatar_exists(comment.authorEmail) ? gravatar(comment.authorEmail) : asset('assets/blank-avatar.jpg') }}" 
-					alt="Avatar de l'auteur du commentaire" 
-					width="50"
-					height="50"
-				/>
+	<div class="comment__right">
+		<div class="comment__right__header">
+			<h5>{{ comment.authorName }}</h5>
+			<div class="comment__right__created-at">{{ comment.createdAt|format_datetime() }}</div>
+		</div>
+		<div class="comment__right__content">
+			<div class="comment__right__content__inner">
+				{{ comment.content }}<br/><br>
+				<div class="reply-btn">Répondre <i class="fa-solid fa-comment-dots"></i></div>
 			</div>
-			<div class="comment__header__info">
-				<h5>{{ comment.authorName }}</h5>
-				<div class="comment__header__info__created-at">{{ comment.createdAt|format_datetime() }}</div>
-			</div>
-            
-        </div>
-        <div class="comment__content">{{ comment.content }}</div>
-    </section>
-    {% endfor %}
-</div>
+			{% if comment.getReplies() is not empty %}
+				{% include "partials/block/comments.html.twig" with {'comments': comment.getReplies()} %}
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endfor %}

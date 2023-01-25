@@ -39,6 +39,7 @@ class CommentCrudController extends AbstractCrudController
 			DateTimeField::new('createdAt')->hideOnForm(),
             NumberField::new('spamScore'),
             ChoiceField::new('status')->setChoices(array_flip(Comment::getStatusList())),
+			AssociationField::new('parent', 'Parent'),
         ];
     }
 }

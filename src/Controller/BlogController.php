@@ -58,11 +58,11 @@ class BlogController extends AbstractController
 			$commentService->handleForm($commentFormData, $post, $request);
 			return $this->redirect($request->getUri());
 		}
-		
+
         return $this->render('blog/post.html.twig', [
             'post'      => $post,
             'comments'  => [
-				'posted' => $commentRepository->findBy(['post' => $post, 'status' => Comment::STATUS_APPROVED]),
+				'posted' => $commentRepository->findBy(['post' => $post, 'status' => Comment::STATUS_APPROVED, 'parent' => null], ['createdAt' => 'DESC']),
 				'form'   => $commentForm->createView(),
 			],
 			'relatedPosts' => $post->getRelatedPosts(),

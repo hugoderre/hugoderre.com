@@ -1,43 +1,38 @@
-body[data-color-scheme='dark'] {
+body[data-color-scheme="dark"] {
 	--primary-color: #f2ece7;
-    --secondary-color: #130f0e;
-    --secondary-rgb-color: 19, 15, 14;
-    background-color: var(--dark-global-bg-color);
+	--secondary-color: #130f0e;
+	--secondary-rgb-color: 19, 15, 14;
+	--comment-subline-color: #3a4148;
+	background-color: var(--dark-global-bg-color);
 
-    h1 {
-        color: var(--primary-color);
-    }
-    
-    header {
-        // background-color: var(--secondary-color);
-    }
-    
-    &.post {
-        .shape-divider__top,
-        .shape-divider .shape-fill {
-            color: var(--primary-color)!important;
-            // background-color: var(--secondary-color);
-            // fill: var(--secondary-color);
-        } 
-        & p.post__date {
-            color: var(--primary-color)!important;
-        }
-    }
+	h1 {
+		color: var(--primary-color);
+	}
 
-    .post-card {
-        background-color: rgba(var(--secondary-rgb-color), 0.2);
-        &__footer {
-            &__tags-tag {
-                background-color: transparent;
-            }
-        }
-    }
+	&.post {
+		.shape-divider__top,
+		.shape-divider .shape-fill {
+			color: var(--primary-color) !important;
+		}
+		& p.post__date {
+			color: var(--primary-color) !important;
+		}
+	}
 
-    button {
-        color: var(--primary-color);
-    }
+	.post-card {
+		background-color: rgba(var(--secondary-rgb-color), 0.2);
+		&__footer {
+			&__tags-tag {
+				background-color: transparent;
+			}
+		}
+	}
 
-    code:not(.hljs) {
-        background-color: rgba(gainsboro, 0.2);
-    }
+	button {
+		color: var(--primary-color);
+	}
+
+	code:not(.hljs) {
+		background-color: rgba(gainsboro, 0.2);
+	}
 }

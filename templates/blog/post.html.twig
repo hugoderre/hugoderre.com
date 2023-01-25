@@ -56,6 +56,12 @@
 				</nav>
 			</div>
 		{% endif %}
-		{% include "partials/block/comments.html.twig" %}
+		<div class="comments" {{ stimulus_controller('comments') }}>
+			<h3>{{ comments.posted|length }} {{ 'commentaire'|trans({'%count%': comments.posted|length}) }}</h3>
+			<div class="comments__form">
+				{{ form(comments.form) }}
+			</div>
+			{% include "partials/block/comments.html.twig" with { 'comments': comments.posted } %}
+		</div>
 	</div>
 {% endblock %}
