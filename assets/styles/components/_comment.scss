@@ -4,30 +4,43 @@
 	color: var(--primary-color);
 	line-height: 1.6;
 	margin-top: 30px;
+
 	h3 {
 		margin: 20px 0;
 	}
+
 	&__form {
 		margin-bottom: 50px;
+
+		.form-buttons {
+			flex-direction: row;
+			gap: 10px;
+
+			#comment_cancel {
+				display: none;
+			}
+		}
 	}
+
 	.comment {
 		height: 100%;
 		margin-top: 20px;
 		display: flex;
 		gap: 18px;
+
 		&__left {
 			display: flex;
 			flex-direction: column;
 			gap: 15px;
 
 			&__avatar {
-				// flex: 1 0 auto;
 				width: 50px;
 				height: 50px;
 				min-height: 50px;
 				border-radius: 100%;
 				overflow: hidden;
 			}
+
 			&__subline {
 				flex-grow: 1;
 				height: 90%;
@@ -35,6 +48,7 @@
 				margin: auto;
 				background-color: var(--comment-subline-color);
 				opacity: 0.8;
+
 				&:hover {
 					opacity: 1;
 				}
@@ -46,6 +60,8 @@
 		}
 
 		&__right {
+			flex: 1;
+
 			h5 {
 				font-weight: bold;
 			}
@@ -59,14 +75,16 @@
 			&__content {
 				&__inner {
 					margin-bottom: 40px;
+
+					&__reply-btn {
+						color: var(--quinary-color);
+						font-size: 14px;
+						font-weight: bold;
+						cursor: pointer;
+					}
 				}
 				margin-top: 15px;
 			}
 		}
 	}
-}
-.reply-btn {
-	color: var(--quinary-color);
-	font-size: 14px;
-	font-weight: bold;
 }

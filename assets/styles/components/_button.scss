@@ -4,6 +4,6 @@
 	background-color: var(--tertiary-color);
 	border: 1px solid var(--tertiary-color);
 	border-radius: var(--global-radius);
-	padding: 10px;
+	padding: var(--global-padding-btn);
 	cursor: pointer;
 }

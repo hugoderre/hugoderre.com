@@ -4,6 +4,7 @@ namespace App\Form\Service;
 
 use App\Entity\Comment;
 use App\Entity\PostType\AbstractPostType;
+use App\Entity\PostType\Post;
 use App\Form\Type\Post\CommentType;
 use App\Repository\CommentRepository;
 use App\Repository\UserRestrictionRepository;
@@ -40,7 +41,7 @@ class CommentService
 			$this->logger->info(sprintf('Honneypot caught from %s', $request->getClientIp()), $formData);
 			throw new \RuntimeException('Blatant spam, go away!');
 		}
-
+		
 		$comment = new Comment();
 		$comment->setPost($post);
 		$comment->setCreatedAt(new \DateTimeImmutable());
@@ -50,14 +51,16 @@ class CommentService
 		$comment->setAuthorEmail($formData['authorEmail']);
 		$comment->setAuthorWebsite($formData['authorWebsite']);
 		$comment->setContent($formData['content']);
-		
-		$spamScore = $this->spamChecker->getSpamScore($comment, [
-			'user_ip' => $request->getClientIp(),
-			'user_agent' => $request->headers->get('User-Agent'),
-			'referrer' => $request->headers->get('Referer'),
-			'permalink' => $request->getUri(),
-		]);
 
+		if(is_numeric($formData['parentId'])) {
+			$parentComment = $this->commentRepository->find($formData['parentId']);
+
+			if($parentComment && $parentComment->getPost() === $post) { // Make sure the parent comment is on the same post
+				$comment->setParent($parentComment);
+			}
+		}
+		
+		$spamScore = $this->spamChecker->getSpamScore($comment);
 		$comment->setSpamScore($spamScore);
 
 		if($spamScore > 0) {

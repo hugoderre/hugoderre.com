@@ -56,12 +56,10 @@
 				</nav>
 			</div>
 		{% endif %}
-		<div class="comments" {{ stimulus_controller('comments') }}>
-			<h3>{{ comments.posted|length }} {{ 'commentaire'|trans({'%count%': comments.posted|length}) }}</h3>
-			<div class="comments__form">
-				{{ form(comments.form) }}
-			</div>
-			{% include "partials/block/comments.html.twig" with { 'comments': comments.posted } %}
+		<div class="comments" data-controller="comments" }}>
+			<h3>{{ comments.entities|length }} {{ 'commentaire'|trans({'%count%': comments.entities|length}) }}</h3>
+			{% include "partials/form/comment.html.twig" with { 'form': comments.form } %}
+			{% include "partials/block/comment.html.twig" with { 'comments': comments.entities|filter(c => c.parent is empty) } %}
 		</div>
 	</div>
 {% endblock %}

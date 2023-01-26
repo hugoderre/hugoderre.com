@@ -3,17 +3,16 @@
 namespace App\Security;
 
 use App\Entity\Comment;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SpamCheckerService
 {
-    private $client;
     private $endpoint;
 
-    public function __construct(HttpClientInterface $client, string $ASKIMET_KEY)
+    public function __construct(private HttpClientInterface $client, private RequestStack $requestStack, private string $ASKIMET_KEY)
     {
-        $this->client = $client;
-        $this->endpoint = sprintf('https://%s.rest.akismet.com/1.1/comment-check', $ASKIMET_KEY);
+        $this->endpoint = sprintf('https://%s.rest.akismet.com/1.1/comment-check', $this->ASKIMET_KEY);
     }
 
     /**
@@ -21,8 +20,17 @@ class SpamCheckerService
      *
      * @throws \RuntimeException if the call did not work
      */
-    public function getSpamScore(Comment $comment, array $context): int
+    public function getSpamScore(Comment $comment, array $context = []): int
     {
+		$request = $this->requestStack->getCurrentRequest();
+
+		$context = array_merge($context, [
+			'user_ip' => $request->getClientIp(),
+			'user_agent' => $request->headers->get('User-Agent'),
+			'referrer' => $request->headers->get('Referer'),
+			'permalink' => $request->getUri(),
+		]);
+
         $response = $this->client->request('POST', $this->endpoint, [
             'body' => array_merge($context, [
                 'blog' => 'https://hugoderre.fr',

@@ -3,8 +3,10 @@
 namespace App\Form\Type\Post;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -80,11 +82,21 @@ class CommentType extends AbstractType {
                     'class' => 'form-group',
                 ],
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => $this->translator->trans('Envoyer'),
+            ->add('send', SubmitType::class, [
+				'label' => $this->translator->trans('Envoyer'),
                 'attr'  => [
-                    'class' => 'btn btn-primary',
+					'class' => 'btn btn-primary',
                 ],
-            ]);
+            ])
+			->add('cancel', ButtonType::class, [
+				'label' => $this->translator->trans('Annuler'),
+                'attr'  => [
+					'class' => 'btn btn-primary',
+                ],
+            ])
+			->add('parentId', HiddenType::class, [
+				'label' => false,
+				'required' => false,
+			]);
     }
 }

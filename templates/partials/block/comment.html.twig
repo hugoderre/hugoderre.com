@@ -18,13 +18,13 @@
 		</div>
 		<div class="comment__right__content">
 			<div class="comment__right__content__inner">
-				<div>{{ comment.content }}</div>
-				{# <div class="comment__right__content__inner__reply-btn" data-action="click->comments#replyButtonClick" data-comment-id={{ comment.id }}>
+				<div>{{ comment.content }}</div><br>
+				<div class="comment__right__content__inner__reply-btn" data-action="click->comments#replyButtonClick" data-comment-id={{ comment.id }}>
 					{{ "Répondre"|trans }} <i class="fa-solid fa-comment-dots"></i>
-				</div> #}
+				</div>
 			</div>
 			{% if comment.getReplies() is not empty %}
-				{% include "partials/block/comments.html.twig" with {'comments': comment.getReplies()} %}
+				{% include "partials/block/comment.html.twig" with {'comments': comment.getReplies()} %}
 			{% endif %}
 		</div>
 	</div>
