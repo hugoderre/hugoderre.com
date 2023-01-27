@@ -33,6 +33,7 @@ footer {
 		}
 		.footer__social {
 			justify-content: flex-start;
+			gap: 10px;
 			@import "./../components/social-media";
 		}
 		.footer__nav {
