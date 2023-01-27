@@ -16,13 +16,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CommentType extends AbstractType {
-
-	private $translator;
-
-	public function __construct(TranslatorInterface $translator)
-	{
-		$this->translator = $translator;
-	}
+	
+	public function __construct(private TranslatorInterface $translator) {}
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
