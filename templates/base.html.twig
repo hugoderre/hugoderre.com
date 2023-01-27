@@ -34,7 +34,9 @@
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7425938915272291"
      crossorigin="anonymous"></script>
 
-		<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+		{% if app.request.attributes.get('_route') is not empty %}
+			<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"/>
+		{% endif %}
 
 		{# Favicon #}
 		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
