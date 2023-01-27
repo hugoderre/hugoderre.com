@@ -29,11 +29,14 @@ class LocaleSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if ($locale = $request->get('_locale')) {
-			$request->getSession()->set('_locale', $locale);
+        $locale = $request->get('_locale');
+        $sessionLocale = $request->getSession()->get('_locale', $this->defaultLocale);
+
+        if ($locale) {
+            $request->getSession()->set('_locale', $locale);
             $request->setLocale($locale);
         } else {
-            $request->setLocale($request->getSession()->get('_locale', $this->defaultLocale));
+            $request->setLocale($sessionLocale);
         }
     }
 }
