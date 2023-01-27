@@ -8,12 +8,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 class LocaleSubscriber implements EventSubscriberInterface
 {
-    private $defaultLocale;
-
-    public function __construct($defaultLocale = 'fr')
-    {
-        $this->defaultLocale = $defaultLocale;
-    }
+    public function __construct(private string $defaultLocale = 'fr') {}
 
     public static function getSubscribedEvents()
     {
