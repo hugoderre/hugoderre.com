@@ -38,7 +38,7 @@ class CommentService
 
 		// Honneypot check
 		if(!empty($formData['country'])) {
-			$this->logger->info(sprintf('Honneypot caught from %s', $request->getClientIp()), $formData);
+			$this->logger->info(sprintf('Honeypot caught from %s', $request->getClientIp()), $formData);
 			throw new \RuntimeException('Blatant spam, go away!');
 		}
 		
