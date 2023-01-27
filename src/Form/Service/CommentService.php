@@ -43,14 +43,14 @@ class CommentService
 		}
 		
 		$comment = new Comment();
-		$comment->setPost($post);
-		$comment->setCreatedAt(new \DateTimeImmutable());
-		$comment->setClientIp($request->getClientIp());
-		$comment->setUserAgent($request->headers->get('User-Agent'));
-		$comment->setAuthorName($formData['authorName']);
-		$comment->setAuthorEmail($formData['authorEmail']);
-		$comment->setAuthorWebsite($formData['authorWebsite']);
-		$comment->setContent($formData['content']);
+		$comment->setPost($post)
+				->setCreatedAt(new \DateTimeImmutable())
+				->setClientIp($request->getClientIp())
+				->setUserAgent($request->headers->get('User-Agent'))
+				->setAuthorName($formData['authorName'])
+				->setAuthorEmail($formData['authorEmail'])
+				->setAuthorWebsite($formData['authorWebsite'])
+				->setContent($formData['content']);
 
 		if(is_numeric($formData['parentId'])) {
 			$parentComment = $this->commentRepository->find($formData['parentId']);
