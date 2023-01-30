@@ -48,8 +48,8 @@ class CommentService
 				->setClientIp($request->getClientIp())
 				->setUserAgent($request->headers->get('User-Agent'))
 				->setAuthorName($formData['authorName'])
-				->setAuthorEmail($formData['authorEmail'])
-				->setAuthorWebsite($formData['authorWebsite'])
+				// ->setAuthorEmail($formData['authorEmail'])
+				// ->setAuthorWebsite($formData['authorWebsite'])
 				->setContent($formData['content']);
 
 		if(is_numeric($formData['parentId'])) {

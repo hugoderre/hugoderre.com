@@ -32,27 +32,27 @@ class CommentType extends AbstractType {
                     'class' => 'form-group',
                 ],
             ])
-            ->add('authorEmail', EmailType::class, [
-                'label' => 'Email',
-                'attr'  => [
-                    'placeholder' => '',
-                    'class' => 'form-control',
-                ],
-                'row_attr' => [
-                    'class' => 'form-group',
-                ],
-            ])
-			->add('authorWebsite', UrlType::class, [
-                'label' => $this->translator->trans('Site web'),
-                'attr'  => [
-                    'placeholder' => '',
-                    'class' => 'form-control',
-                ],
-                'row_attr' => [
-                    'class' => 'form-group',
-                ],
-				'required' => false,
-            ])
+            // ->add('authorEmail', EmailType::class, [
+            //     'label' => 'Email',
+            //     'attr'  => [
+            //         'placeholder' => '',
+            //         'class' => 'form-control',
+            //     ],
+            //     'row_attr' => [
+            //         'class' => 'form-group',
+            //     ],
+            // ])
+			// ->add('authorWebsite', UrlType::class, [
+            //     'label' => $this->translator->trans('Site web'),
+            //     'attr'  => [
+            //         'placeholder' => '',
+            //         'class' => 'form-control',
+            //     ],
+            //     'row_attr' => [
+            //         'class' => 'form-group',
+            //     ],
+			// 	'required' => false,
+            // ])
 			->add('country', CheckboxType::class, [ // Honneypot :)
 				'label' => false,
 				'attr'  => [
