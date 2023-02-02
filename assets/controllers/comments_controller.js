@@ -10,8 +10,12 @@ export default class extends Controller {
 	replyButtonClick( e ) {
 		this.removeReplyForm(); // remove any existing reply form
 
-		this.replyButton = e.target;
+		this.replyButton = e.target.parentNode;
 		this.replyForm = this.baseForm.cloneNode( true );
+
+		// Clear the form
+		this.replyForm.querySelector( '#comment_authorName' ).value = '';
+		this.replyForm.querySelector( '#comment_content' ).value = '';
 
 		const parentIdInput = this.replyForm.querySelector( 'input[name="comment[parentId]"]' );
 		parentIdInput.value = this.replyButton.dataset.commentId;
@@ -29,7 +33,7 @@ export default class extends Controller {
 	removeReplyForm() {
 		if ( this.replyForm ) {
 			this.replyForm.remove();
-			this.replyButton.style.display = 'block';
+			this.replyButton.style.display = 'flex';
 		}
 	}
 }

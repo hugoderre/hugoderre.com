@@ -20,7 +20,7 @@
 			<div class="comment__right__content__inner">
 				<div>{{ comment.content }}</div><br>
 				<div class="comment__right__content__inner__reply-btn" data-action="click->comments#replyButtonClick" data-comment-id={{ comment.id }}>
-					{{ "Répondre"|trans }} <i class="fa-solid fa-comment-dots"></i>
+					<div>{{ "Répondre"|trans }}</div> <i class="fa-solid fa-comment-dots"></i>
 				</div>
 			</div>
 			{% if comment.getReplies() is not empty %}

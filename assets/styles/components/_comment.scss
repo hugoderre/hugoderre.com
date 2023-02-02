@@ -78,6 +78,10 @@
 					margin-bottom: 40px;
 
 					&__reply-btn {
+						display: flex;
+						align-items: baseline;
+						width: fit-content;
+						gap: 5px;
 						color: var(--quinary-color);
 						font-size: 14px;
 						font-weight: bold;
