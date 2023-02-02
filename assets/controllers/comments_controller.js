@@ -13,9 +13,17 @@ export default class extends Controller {
 		this.replyButton = e.target.parentNode;
 		this.replyForm = this.baseForm.cloneNode( true );
 
-		// Clear the form
-		this.replyForm.querySelector( '#comment_authorName' ).value = '';
-		this.replyForm.querySelector( '#comment_content' ).value = '';
+		const replyFormInputs = {
+			authorName: this.replyForm.querySelector( '#comment_authorName' ),
+			content: this.replyForm.querySelector( '#comment_content' )
+		}
+
+		// Update the form inputs to be unique
+		for ( const [ key, input ] of Object.entries( replyFormInputs ) ) {
+			input.value = '';
+			input.parentNode.querySelector( 'label' ).setAttribute( 'for', input.id + '_reply' );
+			input.id = input.id + '_reply';
+		}
 
 		const parentIdInput = this.replyForm.querySelector( 'input[name="comment[parentId]"]' );
 		parentIdInput.value = this.replyButton.dataset.commentId;
@@ -27,7 +35,7 @@ export default class extends Controller {
 		this.replyButton.parentNode.appendChild( this.replyForm );
 		this.replyButton.style.display = 'none';
 
-		this.replyForm.querySelector( '#comment_authorName' ).focus();
+		replyFormInputs.authorName.focus();
 	}
 
 	removeReplyForm() {
