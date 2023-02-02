@@ -239,11 +239,6 @@ class Comment
         return $this;
     }
 
-	public function __toString()
-	{
-		return $this->id;
-	}
-
     /**
      * @return Collection<int, self>
      */
@@ -267,4 +262,9 @@ class Comment
 
         return $this;
     }
+
+	public function __toString()
+	{
+		return $this->id;
+	}
 }

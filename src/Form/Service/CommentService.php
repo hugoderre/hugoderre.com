@@ -62,13 +62,12 @@ class CommentService
 		
 		$spamScore = $this->spamChecker->getSpamScore($comment);
 		$comment->setSpamScore($spamScore);
-
 		if($spamScore > 0) {
 			$this->logger->info(sprintf('Spam caught from %s', $request->getClientIp()), [
 				'score' => $spamScore,
-				'comment' => $comment,
+				'comment' => $comment->getId(),
 			]);
-
+			
 			$comment->setStatus(Comment::STATUS_PENDING);
 		} else {
 			$comment->setStatus(Comment::STATUS_APPROVED);
