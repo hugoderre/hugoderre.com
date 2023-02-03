@@ -5,8 +5,8 @@
 	height: 325px;
 	margin: auto;
 	position: absolute;
-	top: -9%;
-	left: -7%;
+	top: -7.5%;
+	left: -7.4%;
 	rotate: 22.5deg;
 	overflow: hidden;
 
@@ -32,67 +32,75 @@
 		}
 
 		&:nth-child(1) {
-			animation: _rotate_1 5s infinite;
+			animation: _rotate_1 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(0deg);
 			.inner {
-				border-color: #c0392b;
-				box-shadow: inset 5px -19px 20px 0px #c0392b;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 		&:nth-child(2) {
-			animation: _rotate_2 5s infinite;
+			animation: _rotate_2 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(45deg);
 			.inner {
-				border-color: #2980b9;
-				box-shadow: inset 5px -19px 20px 0px #2980b9;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 		&:nth-child(3) {
-			animation: _rotate_3 5s infinite;
+			animation: _rotate_3 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(90deg);
 			.inner {
-				border-color: #27ae60;
-				box-shadow: inset 5px -19px 20px 0px #27ae60;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 		&:nth-child(4) {
-			animation: _rotate_4 5s infinite;
+			animation: _rotate_4 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(135deg);
 			.inner {
-				border-color: #9b59b6;
-				box-shadow: inset 5px -19px 20px 0px #9b59b6;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 		&:nth-child(5) {
-			animation: _rotate_5 5s infinite;
+			animation: _rotate_5 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(180deg);
 			.inner {
-				border-color: #c0392b;
-				box-shadow: inset 5px -19px 20px 0px #c0392b;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 		&:nth-child(6) {
-			animation: _rotate_6 5s infinite;
+			animation: _rotate_6 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(225deg);
 			.inner {
-				border-color: #95a5a6;
-				box-shadow: inset 5px -19px 20px 0px #95a5a6;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 		&:nth-child(7) {
-			animation: _rotate_7 5s infinite;
+			animation: _rotate_7 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(270deg);
 			.inner {
-				border-color: #e67e22;
-				box-shadow: inset 5px -19px 20px 0px #e67e22;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 		&:nth-child(8) {
-			animation: _rotate_8 5s infinite;
+			animation: _rotate_8 7s forwards;
+			animation-delay: 0.3s;
 			transform: rotate(315deg);
 			.inner {
-				border-color: #2980b9;
-				box-shadow: inset 5px -19px 20px 0px #2980b9;
+				border-color: #ff6b08;
+				box-shadow: inset 5px -19px 13px 0px #ff6b08;
 			}
 		}
 	}

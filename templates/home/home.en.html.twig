@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('aos') }}
+{% endblock %}
+
 {% block content %}
 	<div class="home__header">
 		<figure class="home__header__img-me">
 			<div class="img-me__wrapper">
 				<img src="{{ asset('assets/me.png') }}" alt="Image of the creator of this magnificent blog">
 			</div>
-			<figcaption>The creator of this blog sipping a little binch.</figcaption>
+			{% include "/partials/block/neoctagon.html.twig" %}
 		</figure>
-		<div class="home__header__title page-title">
+		<div class="home__header__title page-title" data-aos="fade-in">
 			<h1>Hugo Derré<br>Full-Stack Web Developer</h1>
 		</div>
 	</div>
 	<hr>
 	<div class="home__content">
-		<p>
+		<p data-aos="fade-in">
 			<strong>Sharing knowledge</strong>
 			is a really enriching and exhilarating exercise for anyone passionate about their subject.<br>
 			That's why I want to take some of my time to write articles about this field that captivates me so much:
@@ -22,7 +27,7 @@
 			I hope you will leave this site with a little more knowledge than you had upon arrival!
 		</p>
 		<br>
-		<div class="home__content__blog-summary">
+		<div class="home__content__blog-summary" data-aos="fade-in">
 			<h2>So, what kind of content on this site?</h2>
 			<ul class="home__content__blog-summary__list">
 				<li class="home__content__blog-summary__list__blog-item">Blog
@@ -38,7 +43,7 @@
 			</ul>
 		</div>
 		<br>
-		<div class="home__content__newsletter">
+		<div class="home__content__newsletter" data-aos="fade-in">
 			<h2>And how to be informed of new publications?</h2>
 			<p>
 				If you like the content and don't want to miss anything, you can subscribe to the

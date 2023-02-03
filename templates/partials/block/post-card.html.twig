@@ -1,5 +1,5 @@
 {% set post_card_title_tag = (app.request.get('_route') == 'blog') ? 'h2' : 'h4' %}
-<article class="post-card">
+<article class="post-card" data-aos="fade-in">
 	<div class="post-card__header">
 		<{{ post_card_title_tag }} class="post-card__header-title">
 			<a href="{{ path('post_view', {slug: post.slug}) }}" class="">{{ post.title }}</a>

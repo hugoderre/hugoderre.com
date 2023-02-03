@@ -23,6 +23,7 @@ Encore
 	.addEntry( 'app', './assets/app.js' )
 	.addEntry( 'admin', './assets/admin.js' )
 	.addEntry( 'hljs', './assets/modules/highlight.js' )
+	.addEntry( 'aos', './assets/modules/aos.js' )
 
 	// enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
 	.enableStimulusBridge( './assets/controllers.json' )

@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('aos') }}
+{% endblock %}
+
 {% block content %}
 	<div class="home__header">
 		<figure class="home__header__img-me">
 			<div class="img-me__wrapper">
 				<img src="{{ asset('assets/me.png') }}" alt="Image du créateur de ce magnifique blog">
 			</div>
-			{# <figcaption>Le créateur de ce blog sirotant une petite binch.</figcaption> #}
 			{% include "/partials/block/neoctagon.html.twig" %}
 		</figure>
-		<div class="home__header__title page-title">
+		<div class="home__header__title page-title" data-aos="fade-in">
 			<h1>Hugo Derré<br>Développeur Web Full-Stack</h1>
 		</div>
 	</div>
 	<hr>
 	<div class="home__content">
-		<p>
+		<p data-aos="fade-in">
 			<strong>Partager des connaissances</strong>
 			est un exercice vraiment enrichissant et exaltant pour quiconque se passionne de son sujet.<br>
 			C'est pourquoi je veux prendre de mon temps pour écrire des articles autour de ce domaine qui me captive tant :
@@ -23,7 +27,7 @@
 			J'espère que vous repartirez de ce site avec un peu plus de connaissances que vous n'en aviez à votre arrivée !
 		</p>
 		<br>
-		<div class="home__content__blog-summary">
+		<div class="home__content__blog-summary" data-aos="fade-in">
 			<h2>Mais alors quel contenu sur ce blog ?</h2>
 			<ul class="home__content__blog-summary__list">
 				<li class="home__content__blog-summary__list__blog-item">Des
@@ -39,7 +43,7 @@
 			</ul>
 		</div>
 		<br>
-		<div class="home__content__newsletter">
+		<div class="home__content__newsletter" data-aos="fade-in">
 			<h2>Et comment être informé des nouvelles publications ?</h2>
 			<p>
 				Si le contenu te plaît et que tu ne souhaites rien rater, tu peux t'inscrire à la

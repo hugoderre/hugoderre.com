@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('aos') }}
+{% endblock %}
+
 {% block title %}Projets{% endblock %}
 
 {% block content %}
@@ -10,7 +15,7 @@
 		</div>
         <section class="projects">
             {% for project in projects %}
-                <article class="project">
+                <article class="project" data-aos="fade-in">
                     <div class="project__img">
                         <img src="{{ vich_uploader_asset(project.thumbnail) }}" alt="{{ project.title }}">
                     </div>
