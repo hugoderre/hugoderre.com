@@ -1,0 +1,140 @@
+// From my codepen: https://codepen.io/hugoderre/pen/vYePwom
+
+.neoctagon {
+	width: 325px;
+	height: 325px;
+	margin: auto;
+	position: absolute;
+	top: -9%;
+	left: -7%;
+	rotate: 22.5deg;
+	overflow: hidden;
+
+	.outer {
+		width: 600px;
+		height: 600px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		white-space: nowrap;
+		transform-origin: top left;
+		clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+		.inner {
+			width: 150px;
+			height: 150px;
+			border-width: 2px;
+			border-style: solid;
+			transform: rotate(22.5deg);
+			transform-origin: top right;
+			clip-path: inherit;
+		}
+
+		&:nth-child(1) {
+			animation: _rotate_1 5s infinite;
+			transform: rotate(0deg);
+			.inner {
+				border-color: #c0392b;
+				box-shadow: inset 5px -19px 20px 0px #c0392b;
+			}
+		}
+		&:nth-child(2) {
+			animation: _rotate_2 5s infinite;
+			transform: rotate(45deg);
+			.inner {
+				border-color: #2980b9;
+				box-shadow: inset 5px -19px 20px 0px #2980b9;
+			}
+		}
+		&:nth-child(3) {
+			animation: _rotate_3 5s infinite;
+			transform: rotate(90deg);
+			.inner {
+				border-color: #27ae60;
+				box-shadow: inset 5px -19px 20px 0px #27ae60;
+			}
+		}
+		&:nth-child(4) {
+			animation: _rotate_4 5s infinite;
+			transform: rotate(135deg);
+			.inner {
+				border-color: #9b59b6;
+				box-shadow: inset 5px -19px 20px 0px #9b59b6;
+			}
+		}
+		&:nth-child(5) {
+			animation: _rotate_5 5s infinite;
+			transform: rotate(180deg);
+			.inner {
+				border-color: #c0392b;
+				box-shadow: inset 5px -19px 20px 0px #c0392b;
+			}
+		}
+		&:nth-child(6) {
+			animation: _rotate_6 5s infinite;
+			transform: rotate(225deg);
+			.inner {
+				border-color: #95a5a6;
+				box-shadow: inset 5px -19px 20px 0px #95a5a6;
+			}
+		}
+		&:nth-child(7) {
+			animation: _rotate_7 5s infinite;
+			transform: rotate(270deg);
+			.inner {
+				border-color: #e67e22;
+				box-shadow: inset 5px -19px 20px 0px #e67e22;
+			}
+		}
+		&:nth-child(8) {
+			animation: _rotate_8 5s infinite;
+			transform: rotate(315deg);
+			.inner {
+				border-color: #2980b9;
+				box-shadow: inset 5px -19px 20px 0px #2980b9;
+			}
+		}
+	}
+
+	@keyframes _rotate_1 {
+		100% {
+			transform: rotate(-360deg);
+		}
+	}
+	@keyframes _rotate_2 {
+		100% {
+			transform: rotate(675deg);
+		}
+	}
+	@keyframes _rotate_3 {
+		100% {
+			transform: rotate(-450deg);
+		}
+	}
+	@keyframes _rotate_4 {
+		100% {
+			transform: rotate(585deg);
+		}
+	}
+	@keyframes _rotate_5 {
+		100% {
+			transform: rotate(-540deg);
+		}
+	}
+	@keyframes _rotate_6 {
+		100% {
+			transform: rotate(495deg);
+		}
+	}
+	@keyframes _rotate_7 {
+		100% {
+			transform: rotate(-630deg);
+		}
+	}
+	@keyframes _rotate_8 {
+		100% {
+			transform: rotate(405deg);
+		}
+	}
+}
