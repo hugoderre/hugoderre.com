@@ -8,7 +8,7 @@
 				<li><a href="{{ path('homepage') }}"class="{{ page == 'home' ? 'active' : '' }}"><i class="fa-solid fa-home"></i>Home</a></li>
 				<li><a href="{{ path('blog') }}"class="{{ page == 'blog' or page == 'post' ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i>Blog</a></li>
 				<li><a href="{{ path('projects') }}"class="{{ page == 'projects' or page == 'project' ? 'active' : '' }}"><i class="fa-solid fa-diagram-project"></i>{{'Projets'|trans}}</a></li>
-				<li><a href="mailto:contact@hugoderre.fr"class="{{ page == 'contact' ? 'active' : '' }}"><i class="fa-solid fa-paper-plane"></i>Contact</a></li>
+				<li><a href="mailto:contact@hugoderre.com"class="{{ page == 'contact' ? 'active' : '' }}"><i class="fa-solid fa-paper-plane"></i>Contact</a></li>
 				
 				{% for locale in locales|split('|') %}
 					{% if locale == app.request.locale %}

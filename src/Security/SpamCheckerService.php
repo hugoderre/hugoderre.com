@@ -33,7 +33,7 @@ class SpamCheckerService
 
         $response = $this->client->request('POST', $this->endpoint, [
             'body' => array_merge($context, [
-                'blog' => 'https://hugoderre.fr',
+                'blog' => 'https://hugoderre.com',
                 'comment_type' => 'comment',
                 'comment_author' => $comment->getAuthorName(),
 				'comment_author_email' => $comment->getAuthorEmail(),
