@@ -20,23 +20,21 @@
 		<meta name="twitter:description" content="{{ block('meta_description') }}" />
 		<meta name="twitter:creator" content="@devgohu" />
 
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWCM18DCEF"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+		{% if app.environment == 'prod' %}
+			<!-- Google tag (gtag.js) -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWCM18DCEF"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
 
-			gtag('config', 'G-KWCM18DCEF');
-		</script>
+				gtag('config', 'G-KWCM18DCEF');
+			</script>
 
-		<!-- Fathom - beautiful, simple website analytics -->
-		<script src="https://molly.hugoderre.com/script.js" data-site="VOLPQBHM" defer></script>
-		<!-- / Fathom -->
-
-		{# Google Adsense #}
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7425938915272291"
-     crossorigin="anonymous"></script>
+			<!-- Fathom - beautiful, simple website analytics -->
+			<script src="https://molly.hugoderre.com/script.js" data-site="VOLPQBHM" defer></script>
+			<!-- / Fathom -->
+		{% endif %}
 
 		{# Canonical #}
 		{% if app.request.attributes.get('_route') is not empty %}
