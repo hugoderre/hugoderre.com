@@ -20,7 +20,7 @@
 		}
 	}
 	&__header {
-		display: flex;
+		display: block; // No more avatar on homepage, flex disabled
 		justify-content: center;
 		align-items: center;
 		gap: 60px;
